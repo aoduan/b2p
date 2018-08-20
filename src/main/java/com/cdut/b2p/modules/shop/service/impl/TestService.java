@@ -264,7 +264,7 @@ public class TestService {
 			goods.setGoodsPresentPrice(new BigDecimal(ad.getPrice()));
 			goods.setGoodsTitle(ad.getTitle());
 			goods.setGoodsStatus("0");
-			shopGoodsService.save(goods);
+			shopGoodsService.saveGoods(goods);
 			i++;
 		}
 

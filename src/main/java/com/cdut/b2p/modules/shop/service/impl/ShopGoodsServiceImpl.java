@@ -10,7 +10,9 @@ import com.cdut.b2p.common.utils.IdUtils;
 import com.cdut.b2p.common.utils.StringUtils;
 import com.cdut.b2p.modules.shop.mapper.ShopGoodsMapper;
 import com.cdut.b2p.modules.shop.mapper.ShopUserMapper;
+import com.cdut.b2p.modules.shop.po.ShopChatExample;
 import com.cdut.b2p.modules.shop.po.ShopGoods;
+import com.cdut.b2p.modules.shop.po.ShopGoodsExample;
 import com.cdut.b2p.modules.shop.po.ShopUser;
 import com.cdut.b2p.modules.shop.service.ShopGoodsService;
 import com.cdut.b2p.modules.shop.utils.ShopUserUtils;
@@ -39,11 +41,45 @@ public class ShopGoodsServiceImpl implements ShopGoodsService{
 	}
 	
 	@Transactional(readOnly = false)
+	//增加商品
 	@Override
-	public void save(ShopGoods shopGoods) {
+	public void saveGoods(ShopGoods shopGoods) {
 		preInsert(shopGoods);
 		shopGoodsMapper.insertSelective(shopGoods);
 	}
+	//修改商品
+	@Override
+	public void changeGoods(ShopGoods shopgoods) {
+		// TODO Auto-generated method stub
+		shopgoods.setUpdateDate(new Date());
+		shopGoodsMapper.updateByPrimaryKey(shopgoods);
+		
+		
+		
+		
+	}
+	//删除商品
+	@Override
+	public void deleteGoods(String goodsId) {
+		// TODO Auto-generated method stub
+		ShopGoodsExample sge=new ShopGoodsExample();
+		sge.or().andIdEqualTo(goodsId);
+		shopGoodsMapper.deleteByExample(sge);
+	}
+	//查询商品
+	@Override
+	public ShopGoods findGoodsbyid(String goodsId) {
+		// TODO Auto-generated method stub
+		ShopGoodsExample sge=new ShopGoodsExample();
+		sge.or().andIdEqualTo(goodsId);
+		if(shopGoodsMapper.selectByExample(sge).get(0)!=null)
+		{
+			return shopGoodsMapper.selectByExample(sge).get(0);
+		}
+		else 
+			return null;
+	}
+	
 
 
 }
