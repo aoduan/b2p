@@ -2,6 +2,8 @@ package com.cdut.b2p.common.utils;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.util.Random;
+
 import com.cdut.b2p.common.exception.UtilsException;
 
 public class SecurityUtils {
@@ -17,7 +19,7 @@ public class SecurityUtils {
 	}
 	
 	public static String getMD5(String str){
-		return getOneMD5(getOneMD5(str));
+	    return getOneMD5(getOneMD5(str));
 	}
-
+	
 }

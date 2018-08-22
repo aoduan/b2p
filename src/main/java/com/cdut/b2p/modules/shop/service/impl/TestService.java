@@ -35,7 +35,9 @@ import com.cdut.b2p.modules.shop.po.Advertisement;
 import com.cdut.b2p.modules.shop.po.AdvertisementExample;
 import com.cdut.b2p.modules.shop.po.ShopGoods;
 import com.cdut.b2p.modules.shop.po.ShopUser;
+import com.cdut.b2p.modules.shop.po.ShopUserExample;
 import com.cdut.b2p.modules.shop.po.ShopWallet;
+import com.cdut.b2p.modules.shop.po.ShopWalletExample;
 import com.cdut.b2p.modules.shop.service.ShopGoodsService;
 import com.cdut.b2p.modules.shop.service.ShopUserService;
 import com.cdut.b2p.modules.sys.mapper.SysAreaMapper;
@@ -52,6 +54,10 @@ public class TestService {
 
 	@Autowired
 	private AdvertisementMapper advertisementMapper;
+	@Autowired
+	private ShopUserMapper shopUserMapper;
+	@Autowired
+	private ShopWalletMapper shopWalletMapper;
 	@Autowired
 	private SysAreaService sysAreaService;
 	@Autowired
@@ -189,7 +195,7 @@ public class TestService {
 
 			String uid = IdUtils.uuid();
 			wallet.setAccount(IdUtils.uuid());
-			wallet.setId(IdUtils.uuid());
+			wallet.setId(uid);
 			wallet.setBalance(new BigDecimal(10000));
 			shopUserService.saveWallet(wallet);
 
@@ -269,13 +275,29 @@ public class TestService {
 		}
 
 	}
+	private void fix() {
+		ShopUserExample sue = new ShopUserExample();
+		sue.or();
+		List<ShopUser> l1 = shopUserMapper.selectByExample(sue);
+		
+		ShopWalletExample swe = new ShopWalletExample();
+		sue.or();
+		List<ShopWallet> l2 = shopWalletMapper.selectByExample(swe);
+		
+		for(int i = 0; i < l1.size() ; i++) {
+			l1.get(i).setUserWalletId(l2.get(i).getId());
+			shopUserMapper.updateByPrimaryKey(l1.get(i));
+		}
+		
+	}
 
 	public void start() {
-		load();
-		initArea();
-		initDict();
-		initUser();
-		initGoods();
+		//load();
+		//initArea();
+		//initDict();
+		//initUser();
+		//initGoods();
+		fix();
 
 	}
 

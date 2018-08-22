@@ -1,0 +1,208 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>平安二手</title>
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="location" content="" />
+<link type="text/css" rel="stylesheet" href="common/css/base.css"
+	tppabs="common/css/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="common/css/listzz.css"
+	tppabs="common/css/listzz.css" media="all" />
+<link rel="stylesheet" type="text/css" href="chat/font_Icon/iconfont.css">
+<link rel="stylesheet" type="text/css" href="chat/css/chat.css">
+<script src="./common/js/token.js"></script>
+<script src="./common/js/path.js"></script>
+<script src="./common/js/jquery.js"></script>
+<script src="./common/js/jquery.validate.min.js"></script>
+<script src="./common/js/messages_zh.js"></script>
+<script src="./common/js/pc_index.js"></script>
+<script src="./layer/layer.js"></script>
+<script src="./common/js/jquery.cookie.js"></script>
+<script src="./chat/js/chat.js"></script>
+
+</head>
+
+<body>
+
+	<!-- 网页顶部 -->
+	<div id="topbar">
+		<div class="w pos">
+			<div class="bar_left">
+				
+			</div>
+			<!-- 首页 -->
+			<div class="bar_right">
+				<div id="modify">
+					<a href="./index.html">平安二手首页</a> <span class="gap">|</span>
+				</div>
+				<!-- 登陆注册 -->
+				<div id="login">
+					<a href="./login.html" target="_self">登录</a> <span class="gap">|</span> <a
+						href="./register.html" target="_self">注册</a>
+				</div>
+				<!-- 个人中心 -->
+				<div id="topbar_mymenu" class="haschild">
+					<a id="topbar_tomy" target="_self" href="u_center.html">平安中心</a> <span
+						class="arrow"></span>
+					
+				</div>
+				<!-- 帮助 -->
+				<div style="padding-right: 10px" class="haschild">
+					<a href="#"onclick="">帮助</a>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+
+	<header id="header">
+
+		<div class="head">
+
+<div class="zz_search" id="SearchForm">
+<form id="search_loc" action="#" method="get">
+<input type="submit" onclick="setKeyword()" id="searchbtn" class="search_on" value=""><input class="but-wd"  value="请输入类别或关键字" maxlength="40" fdv="请输入类别或关键字" id="keyword1" autocomplete="off">
+</form>
+</div>
+<div class="logo"></div>
+</div>
+
+	</header>
+
+	<!-- 导航栏 -->
+	<div class="nav">
+		
+	</div>
+
+	<!-- 选择 -->
+	<section id="selection">
+		<div>
+			<!-- 选择品牌 -->
+			<dl class="secitem clearfix">
+				<dt>类别 ：</dt>
+				<dd id="searchbrand">
+					
+				</dd>
+			</dl>
+			<!-- 选择价格 -->
+			<dl class="secitem clearfix">
+				<dt>价格 ：</dt>
+				<dd >
+					<a class="select" href="#" id="price_all" onclick="setPrice('all')">全部</a> 
+					<a href="#" id="price_1" onclick="setPrice(1)">100元以下</a>
+					<a href="#" id="price_2" onclick="setPrice(2)">100-200元</a>
+					<a href="#" id="price_3" onclick="setPrice(3)">200-500元</a>
+					<a href="#" id="price_4" onclick="setPrice(4)">500-1000元</a>
+					<a href="#" id="price_5" onclick="setPrice(5)">1000-2000元</a>
+					<a href="#" id="price_6" onclick="setPrice(6)">2000-3500元</a>
+					<a href="#" id="price_7" onclick="setPrice(7)">3500元以上</a>
+				
+					 <span class="prifilter"> <span class="text"> <input
+							type="text" id="price_start" para="minprice" size="3" muti="1"
+							min="0" max="999999" name="b_q" autocomplete="off" />
+					</span> <span class="dev"> - </span> <span class="text"> <input
+							class="mr5" type="text" id="price_end" para="minprice" size="3"
+							muti="1" min="0" max="999999" name="b_q" autocomplete="off" />元
+					</span> <span class="btn" style="display: block"> <input
+							id="price_search" type="button" onclick="setOPrice()" value="价格筛选" />
+					</span>
+					</span>
+				</dd>
+			</dl>
+			<dl class="secitem secitem_area clearfix">
+				<dt>省：</dt>
+				<dd id="searchtwo">
+					
+				</dd>
+			</dl>
+			<dl class="secitem secitem_area clearfix">
+				<dt>市：</dt>
+				<dd id="searchthree">
+				
+					
+				</dd>
+			</dl>
+			<dl class="secitem secitem_area clearfix">
+				<dt>区域 ：</dt>
+				<dd id="searchfour">
+				
+					
+				</dd>
+			</dl>
+
+		</div>
+	</section>
+
+	<!-- 主界面 -->
+	<div id="main">
+		<!-- 主界面_左 -->
+		<div class="mainleft" id="glist">
+		<div class="check_tab">
+			<div class="tab_bar">
+			</div>	
+		</div>
+
+			<!-- 置顶 -->
+			<div class="infocon zhiding">
+				<table class="tbimg" cellspacing="0" cellpadding="0" id="zhiding">
+					<colgroup>
+						<col class="w130" />
+						<col class="w550" />
+						<col class="w100" />
+						<col class="w100" />
+						<col class="w100" />
+					</colgroup>
+
+					<tbody id="toptbody">
+						
+					</tbody>
+				</table>
+			</div>
+			<!-- 商品信息 -->
+			<div class="infocon">
+				<table class="tbimg" cellspacing="0" cellpadding="0">
+					<colgroup>
+						<col class="w130" />
+						<col class="w550" />
+						<col class="w100" />
+						<col class="w100" />
+						<col class="w100" />
+					</colgroup>
+
+					<tbody id="tbody">
+						
+
+					</tbody>
+				</table>
+			</div>
+
+			<!-- 页面跳转 -->
+			<div class="pager" id="pager">
+				
+			</div>
+
+			<!-- 统计 -->
+			<div id="infocont" class="infocont">
+				共 <span style="color: red"><b id="all_goods_nums"></b></span> 条信息
+
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+
+	<footer id="footer" class="footer">
+		<p class="copyright">
+			&copy; 平安二手 <a id="askicon" target="_blank" title="有问题请与平安客服进行对话"
+				rel="nofollow" href="javascript:if(confirm('#'))window.location='#'"
+				tppabs="#">帮助中心</a>
+		</p>
+	</footer>
+	<div id="chat"></div>
+
+</body>
+<script>
+$("#chat").load("./chat/index.html");
+</script>
+</html>

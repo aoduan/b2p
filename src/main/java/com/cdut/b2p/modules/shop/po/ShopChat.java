@@ -16,17 +16,17 @@ public class ShopChat implements Serializable {
     /**
      * 聊天用户id
      */
-    private String chatUserId;
+    private String chatFromId;
 
     /**
      * 聊天商品id
      */
-    private String chatGoodsId;
+    private String chatToId;
 
     /**
-     * 聊天内容
+     * 类别
      */
-    private String chatMessage;
+    private String chatType;
 
     /**
      * 状态
@@ -63,6 +63,11 @@ public class ShopChat implements Serializable {
      */
     private String delFlag;
 
+    /**
+     * 聊天内容
+     */
+    private String chatMessage;
+
     private static final long serialVersionUID = 1L;
 
     public String getId() {
@@ -73,28 +78,28 @@ public class ShopChat implements Serializable {
         this.id = id;
     }
 
-    public String getChatUserId() {
-        return chatUserId;
+    public String getChatFromId() {
+        return chatFromId;
     }
 
-    public void setChatUserId(String chatUserId) {
-        this.chatUserId = chatUserId;
+    public void setChatFromId(String chatFromId) {
+        this.chatFromId = chatFromId;
     }
 
-    public String getChatGoodsId() {
-        return chatGoodsId;
+    public String getChatToId() {
+        return chatToId;
     }
 
-    public void setChatGoodsId(String chatGoodsId) {
-        this.chatGoodsId = chatGoodsId;
+    public void setChatToId(String chatToId) {
+        this.chatToId = chatToId;
     }
 
-    public String getChatMessage() {
-        return chatMessage;
+    public String getChatType() {
+        return chatType;
     }
 
-    public void setChatMessage(String chatMessage) {
-        this.chatMessage = chatMessage;
+    public void setChatType(String chatType) {
+        this.chatType = chatType;
     }
 
     public String getChatStatus() {
@@ -153,6 +158,14 @@ public class ShopChat implements Serializable {
         this.delFlag = delFlag;
     }
 
+    public String getChatMessage() {
+        return chatMessage;
+    }
+
+    public void setChatMessage(String chatMessage) {
+        this.chatMessage = chatMessage;
+    }
+
     @Override
     public boolean equals(Object that) {
         if (this == that) {
@@ -166,16 +179,17 @@ public class ShopChat implements Serializable {
         }
         ShopChat other = (ShopChat) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getChatUserId() == null ? other.getChatUserId() == null : this.getChatUserId().equals(other.getChatUserId()))
-            && (this.getChatGoodsId() == null ? other.getChatGoodsId() == null : this.getChatGoodsId().equals(other.getChatGoodsId()))
-            && (this.getChatMessage() == null ? other.getChatMessage() == null : this.getChatMessage().equals(other.getChatMessage()))
+            && (this.getChatFromId() == null ? other.getChatFromId() == null : this.getChatFromId().equals(other.getChatFromId()))
+            && (this.getChatToId() == null ? other.getChatToId() == null : this.getChatToId().equals(other.getChatToId()))
+            && (this.getChatType() == null ? other.getChatType() == null : this.getChatType().equals(other.getChatType()))
             && (this.getChatStatus() == null ? other.getChatStatus() == null : this.getChatStatus().equals(other.getChatStatus()))
             && (this.getCreateBy() == null ? other.getCreateBy() == null : this.getCreateBy().equals(other.getCreateBy()))
             && (this.getCreateDate() == null ? other.getCreateDate() == null : this.getCreateDate().equals(other.getCreateDate()))
             && (this.getUpdateBy() == null ? other.getUpdateBy() == null : this.getUpdateBy().equals(other.getUpdateBy()))
             && (this.getUpdateDate() == null ? other.getUpdateDate() == null : this.getUpdateDate().equals(other.getUpdateDate()))
             && (this.getRemarks() == null ? other.getRemarks() == null : this.getRemarks().equals(other.getRemarks()))
-            && (this.getDelFlag() == null ? other.getDelFlag() == null : this.getDelFlag().equals(other.getDelFlag()));
+            && (this.getDelFlag() == null ? other.getDelFlag() == null : this.getDelFlag().equals(other.getDelFlag()))
+            && (this.getChatMessage() == null ? other.getChatMessage() == null : this.getChatMessage().equals(other.getChatMessage()));
     }
 
     @Override
@@ -183,9 +197,9 @@ public class ShopChat implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getChatUserId() == null) ? 0 : getChatUserId().hashCode());
-        result = prime * result + ((getChatGoodsId() == null) ? 0 : getChatGoodsId().hashCode());
-        result = prime * result + ((getChatMessage() == null) ? 0 : getChatMessage().hashCode());
+        result = prime * result + ((getChatFromId() == null) ? 0 : getChatFromId().hashCode());
+        result = prime * result + ((getChatToId() == null) ? 0 : getChatToId().hashCode());
+        result = prime * result + ((getChatType() == null) ? 0 : getChatType().hashCode());
         result = prime * result + ((getChatStatus() == null) ? 0 : getChatStatus().hashCode());
         result = prime * result + ((getCreateBy() == null) ? 0 : getCreateBy().hashCode());
         result = prime * result + ((getCreateDate() == null) ? 0 : getCreateDate().hashCode());
@@ -193,6 +207,7 @@ public class ShopChat implements Serializable {
         result = prime * result + ((getUpdateDate() == null) ? 0 : getUpdateDate().hashCode());
         result = prime * result + ((getRemarks() == null) ? 0 : getRemarks().hashCode());
         result = prime * result + ((getDelFlag() == null) ? 0 : getDelFlag().hashCode());
+        result = prime * result + ((getChatMessage() == null) ? 0 : getChatMessage().hashCode());
         return result;
     }
 
@@ -203,9 +218,9 @@ public class ShopChat implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", chatUserId=").append(chatUserId);
-        sb.append(", chatGoodsId=").append(chatGoodsId);
-        sb.append(", chatMessage=").append(chatMessage);
+        sb.append(", chatFromId=").append(chatFromId);
+        sb.append(", chatToId=").append(chatToId);
+        sb.append(", chatType=").append(chatType);
         sb.append(", chatStatus=").append(chatStatus);
         sb.append(", createBy=").append(createBy);
         sb.append(", createDate=").append(createDate);
@@ -213,6 +228,7 @@ public class ShopChat implements Serializable {
         sb.append(", updateDate=").append(updateDate);
         sb.append(", remarks=").append(remarks);
         sb.append(", delFlag=").append(delFlag);
+        sb.append(", chatMessage=").append(chatMessage);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

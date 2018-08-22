@@ -37,27 +37,25 @@
 	
 	<!-- 静态资源映射 -->
     <mvc:resources mapping="/static/**" location="/static/" cache-period="0"/>
-	
+    
 	<!-- 定义无Controller的path<->view直接映射 -->
 	<mvc:view-controller path="/" view-name="redirect:${web.view.index}"/>
 	
-	<!-- 拦截器配置，拦截顺序：先执行后定义的，排在第一位的最后执行。
-	<mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="${sysPath}/**" />
-			<mvc:exclude-mapping path="${sysPath}/"/>
-			<mvc:exclude-mapping path="${sysPath}/login"/>
-			<bean class="com.cdut.b2p.modules.sys.interceptor.LogInterceptor" />
-		</mvc:interceptor>
-	</mvc:interceptors>
+	<!-- 拦截器配置，拦截顺序：先执行后定义的，排在第一位的最后执行。-->
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="${shopPath}/**" />
-			<mvc:exclude-mapping path="${shopPath}/"/>
-			<mvc:exclude-mapping path="${shopPath}/login"/>
-			<bean class="com.cdut.b2p.modules.shop.interceptor.LogInterceptor" />
+			<bean class="com.cdut.b2p.modules.shop.interceptor.ShopAuthInterceptor" />
 		</mvc:interceptor>
-	</mvc:interceptors>-->
+	</mvc:interceptors>
+	
+	<!-- 拦截器配置，拦截顺序：先执行后定义的，排在第一位的最后执行。-->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="${sysPath}/**" />
+			<bean class="com.cdut.b2p.modules.sys.interceptor.SysAuthInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="exceptionMappings">
@@ -71,4 +69,5 @@
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
 		<property name="maxUploadSize" value="${web.maxUploadSize}" />  
 	</bean>
+
 </beans>

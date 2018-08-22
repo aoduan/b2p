@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>B2pAdmin| 注册</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="../plugins/iCheck/square/blue.css">
+
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <script src="../js/jquery.js"></script>
+  <script type="text/javascript">
+  	function register(){
+  		var userName=registerForm.userName.value;
+  		var userEmail=registerForm.userEmail.value;
+  		var userNickname=registerForm.userNickname.value;
+  		var userImage=registerForm.userImage.value;
+  		var userPassword=registerForm.userPassword.value;
+  		/*
+  		alert(isUserName());
+  		alert(isUserEmail());
+  		alert(isUserNickname());
+  		alert(isUserPassword());
+  		alert(isPassword());
+  		*/
+  		if(isUserName()&&isUserEmail()&&isUserNickname()&&isUserPassword()&&isPassword()){
+  			var param={};
+  	  		param.userName=userName;
+  	  		param.userEmail=userEmail;
+  	  		param.userNickname=userNickname;
+  	  		param. userImage= userImage;
+  	  		param.userPassword=userPassword;
+  			$.ajax({
+  				type:"POST",
+  				url:"/b2p/sys/admin/register",
+  				data:param,
+  				dataType:"json",
+  				async:true,
+  				success:function(data){ 
+  					//alert(data.model.Message);
+  					if(data.model.Message=="index"){
+  						var dialog=confirm("进入首页");
+  						if(dialog==false){
+  							window.location.href="sysLogin.html";
+  	  						flag=true;
+  						}
+  						/*表示注册成功，进入系统首页*/
+  						window.location.href="index.html";
+  						flag=true;
+  					}
+  					else if(data.model.Message=="error"){
+  						/*表示注册失败*/
+  						$("#warn").html("注册失败");
+  						flag=false
+  					}	
+
+  				}
+  			});
+  		}
+  		else{
+  			alert("信息有误！");
+  		}
+  		
+  	}
+  	/*即判断用户名注册的是否合法*/
+  	function isUserName(){
+  		var userName=registerForm.userName.value;
+        /*
+  		var p=/^[0-9][a-zA-Z]+/;
+  		设置正则匹配式，对用户名进行匹配(只包含英文和数字，或有特殊符号)
+  		([a-z][0-9a-zA-zZ]+)|([A-Z][0-9a-zA-zZ]+)/;
+        */
+  		if(userName.length<=10||userName==""){
+  			$("#warn-userName").html("账号长度 >10！");
+  			return false;
+  		}
+        /*
+  		if(p.test(userName)==false){
+  			$("#warn-userName").hide();
+  			$("#warn-userName").html("必须包含字母和数字！");
+  			return false;
+  		}
+		*/
+  		$("#warn-userName").hide();
+  		return true;
+  	}
+  	/*判断是否是合法的邮箱格式*/
+  	function isUserEmail(){
+  		var userEmail=registerForm.userEmail.value;
+  		if(userEmail==""||userEmail.length<3){
+  			$("#warn-userEmail").html("邮箱不能为空！");
+            return false;
+  		}
+  		/*使用邮箱的正则匹配式
+  		var filter=/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  		if(filter.test(userEmail)){
+  			$("#warn-userEmail").hide();
+  			$("#warn-userEmail").html("邮箱格式有误！");
+  			return false;
+  		}
+  		*/
+  		$("#warn-userEmail").hide();
+  		return true;	
+  	}
+  	function isUserNickname(){
+  		var userNickname=registerForm.userNickname.value;
+  		if(userNickname==""||userNickname==null||userNickname.length<2){
+  			$("#warn-userNickname").html("昵称不能为空！");
+  			return false;
+  		}
+  		$("#warn-userNickname").hide();
+  		return true;
+  	}
+  	function isUserPassword(){
+  		var userPassword=registerForm.userPassword.value;
+  		if(userPassword==""){
+  			$("#warn-userPassword").html("密码不能为空！");
+  			return false;
+  		}
+  		if(userPassword.length<=10){
+  			$("#warn-userPassword").html("密码长度大于10！【字母，数字，特殊符号】");
+  			return false;
+  		}
+  		$("#warn-userPassword").hide();
+  		return true;
+  	}
+  	function isPassword(){
+  		var password=registerForm.password.value;
+  		var userPassword=registerForm.userPassword.value;
+  		if(password==""||password!=userPassword){
+  			$("#warn-Password").html("请再次确认密码!");
+  			return false;
+  		}
+        $("#warn-Password").hide();
+  		return true;
+  	}
+  </script>
+</head>
+<body class="hold-transition register-page">
+<div class="register-box">
+  <div class="register-logo">
+    <a href="register.html"><b>B2p</b>Admin</a>
+  </div>
+
+  <div class="register-box-body">
+    <p class="login-box-msg">Register a new membership</p>
+	<!--注册
+	账号
+	邮箱
+	身份证
+	地址
+	头像
+	密码
+	确认密码
+	-->
+	<span id="warn" style="color:red;font-size:16px"></span>
+    <form name="registerForm"  method="post" enctype="multipart/form-data">
+      <div class="form-group has-feedback">
+        <input type="text" class="form-control" name="userName" placeholder="Account" 
+        onblur="isUserName()" autofocus="autofocus" value="cdut201513040415">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      	<span id="warn-userName" style="color:red;font-size:16px"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="email" class="form-control" name="userEmail" placeholder="Email" 
+        onblur="isUserEmail()" value="2711542504@qq.com">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <span id="warn-userEmail" style="color:red;font-size:16px"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="text" class="form-control" name="userNickname" placeholder="My NickName"
+        onblur="isUserNickname()" value="张先生">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <span id="warn-userNickname" style="color:red;font-size:16px"></span>
+      </div>
+	  <div class="form-group has-feedback">
+        <input type="text" id="image" name="userImage" class="form-control" placeholder="My Photo">
+        <span class="glyphicon glyphicon-picture form-control-feedback"></span>
+        <span id="warn-userImage" style="color:red;font-size:16px"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" class="form-control" name="userPassword" placeholder="Password"
+        onblur="isUserPassword()" value="cdut20180815">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        <span id="warn-userPassword" style="color:red;font-size:16px"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" class="form-control" name="password" placeholder="Retype password"
+        onblur="isPassword()" value="cdut20180815">
+        <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+        <span id="warn-Password" style="color:red;font-size:16px"></span>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox"> I agree to the <a href="#">terms</a>
+            </label>
+          </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="button" class="btn btn-primary btn-block btn-flat" onclick="register()">Register</button>
+		  
+        </div>
+     
+      </div>
+    </form>
+	
+    <a href="sysLogin.html" class="text-center">I already have a membership</a>
+  </div>
+  <!-- /.form-box -->
+</div>
+<!-- /.register-box -->
+
+<!-- jQuery 3-
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../plugins/iCheck/icheck.min.js"></script>
+-->
+</body>
+</html>

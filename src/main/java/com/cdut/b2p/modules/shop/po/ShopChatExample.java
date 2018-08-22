@@ -195,213 +195,213 @@ public class ShopChatExample {
             return (Criteria) this;
         }
 
-        public Criteria andChatUserIdIsNull() {
-            addCriterion("chat_user_id is null");
+        public Criteria andChatFromIdIsNull() {
+            addCriterion("chat_from_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andChatUserIdIsNotNull() {
-            addCriterion("chat_user_id is not null");
+        public Criteria andChatFromIdIsNotNull() {
+            addCriterion("chat_from_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andChatUserIdEqualTo(String value) {
-            addCriterion("chat_user_id =", value, "chatUserId");
+        public Criteria andChatFromIdEqualTo(String value) {
+            addCriterion("chat_from_id =", value, "chatFromId");
             return (Criteria) this;
         }
 
-        public Criteria andChatUserIdNotEqualTo(String value) {
-            addCriterion("chat_user_id <>", value, "chatUserId");
+        public Criteria andChatFromIdNotEqualTo(String value) {
+            addCriterion("chat_from_id <>", value, "chatFromId");
             return (Criteria) this;
         }
 
-        public Criteria andChatUserIdGreaterThan(String value) {
-            addCriterion("chat_user_id >", value, "chatUserId");
+        public Criteria andChatFromIdGreaterThan(String value) {
+            addCriterion("chat_from_id >", value, "chatFromId");
             return (Criteria) this;
         }
 
-        public Criteria andChatUserIdGreaterThanOrEqualTo(String value) {
-            addCriterion("chat_user_id >=", value, "chatUserId");
+        public Criteria andChatFromIdGreaterThanOrEqualTo(String value) {
+            addCriterion("chat_from_id >=", value, "chatFromId");
             return (Criteria) this;
         }
 
-        public Criteria andChatUserIdLessThan(String value) {
-            addCriterion("chat_user_id <", value, "chatUserId");
+        public Criteria andChatFromIdLessThan(String value) {
+            addCriterion("chat_from_id <", value, "chatFromId");
             return (Criteria) this;
         }
 
-        public Criteria andChatUserIdLessThanOrEqualTo(String value) {
-            addCriterion("chat_user_id <=", value, "chatUserId");
+        public Criteria andChatFromIdLessThanOrEqualTo(String value) {
+            addCriterion("chat_from_id <=", value, "chatFromId");
             return (Criteria) this;
         }
 
-        public Criteria andChatUserIdLike(String value) {
-            addCriterion("chat_user_id like", value, "chatUserId");
+        public Criteria andChatFromIdLike(String value) {
+            addCriterion("chat_from_id like", value, "chatFromId");
             return (Criteria) this;
         }
 
-        public Criteria andChatUserIdNotLike(String value) {
-            addCriterion("chat_user_id not like", value, "chatUserId");
+        public Criteria andChatFromIdNotLike(String value) {
+            addCriterion("chat_from_id not like", value, "chatFromId");
             return (Criteria) this;
         }
 
-        public Criteria andChatUserIdIn(List<String> values) {
-            addCriterion("chat_user_id in", values, "chatUserId");
+        public Criteria andChatFromIdIn(List<String> values) {
+            addCriterion("chat_from_id in", values, "chatFromId");
             return (Criteria) this;
         }
 
-        public Criteria andChatUserIdNotIn(List<String> values) {
-            addCriterion("chat_user_id not in", values, "chatUserId");
+        public Criteria andChatFromIdNotIn(List<String> values) {
+            addCriterion("chat_from_id not in", values, "chatFromId");
             return (Criteria) this;
         }
 
-        public Criteria andChatUserIdBetween(String value1, String value2) {
-            addCriterion("chat_user_id between", value1, value2, "chatUserId");
+        public Criteria andChatFromIdBetween(String value1, String value2) {
+            addCriterion("chat_from_id between", value1, value2, "chatFromId");
             return (Criteria) this;
         }
 
-        public Criteria andChatUserIdNotBetween(String value1, String value2) {
-            addCriterion("chat_user_id not between", value1, value2, "chatUserId");
+        public Criteria andChatFromIdNotBetween(String value1, String value2) {
+            addCriterion("chat_from_id not between", value1, value2, "chatFromId");
             return (Criteria) this;
         }
 
-        public Criteria andChatGoodsIdIsNull() {
-            addCriterion("chat_goods_id is null");
+        public Criteria andChatToIdIsNull() {
+            addCriterion("chat_to_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andChatGoodsIdIsNotNull() {
-            addCriterion("chat_goods_id is not null");
+        public Criteria andChatToIdIsNotNull() {
+            addCriterion("chat_to_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andChatGoodsIdEqualTo(String value) {
-            addCriterion("chat_goods_id =", value, "chatGoodsId");
+        public Criteria andChatToIdEqualTo(String value) {
+            addCriterion("chat_to_id =", value, "chatToId");
             return (Criteria) this;
         }
 
-        public Criteria andChatGoodsIdNotEqualTo(String value) {
-            addCriterion("chat_goods_id <>", value, "chatGoodsId");
+        public Criteria andChatToIdNotEqualTo(String value) {
+            addCriterion("chat_to_id <>", value, "chatToId");
             return (Criteria) this;
         }
 
-        public Criteria andChatGoodsIdGreaterThan(String value) {
-            addCriterion("chat_goods_id >", value, "chatGoodsId");
+        public Criteria andChatToIdGreaterThan(String value) {
+            addCriterion("chat_to_id >", value, "chatToId");
             return (Criteria) this;
         }
 
-        public Criteria andChatGoodsIdGreaterThanOrEqualTo(String value) {
-            addCriterion("chat_goods_id >=", value, "chatGoodsId");
+        public Criteria andChatToIdGreaterThanOrEqualTo(String value) {
+            addCriterion("chat_to_id >=", value, "chatToId");
             return (Criteria) this;
         }
 
-        public Criteria andChatGoodsIdLessThan(String value) {
-            addCriterion("chat_goods_id <", value, "chatGoodsId");
+        public Criteria andChatToIdLessThan(String value) {
+            addCriterion("chat_to_id <", value, "chatToId");
             return (Criteria) this;
         }
 
-        public Criteria andChatGoodsIdLessThanOrEqualTo(String value) {
-            addCriterion("chat_goods_id <=", value, "chatGoodsId");
+        public Criteria andChatToIdLessThanOrEqualTo(String value) {
+            addCriterion("chat_to_id <=", value, "chatToId");
             return (Criteria) this;
         }
 
-        public Criteria andChatGoodsIdLike(String value) {
-            addCriterion("chat_goods_id like", value, "chatGoodsId");
+        public Criteria andChatToIdLike(String value) {
+            addCriterion("chat_to_id like", value, "chatToId");
             return (Criteria) this;
         }
 
-        public Criteria andChatGoodsIdNotLike(String value) {
-            addCriterion("chat_goods_id not like", value, "chatGoodsId");
+        public Criteria andChatToIdNotLike(String value) {
+            addCriterion("chat_to_id not like", value, "chatToId");
             return (Criteria) this;
         }
 
-        public Criteria andChatGoodsIdIn(List<String> values) {
-            addCriterion("chat_goods_id in", values, "chatGoodsId");
+        public Criteria andChatToIdIn(List<String> values) {
+            addCriterion("chat_to_id in", values, "chatToId");
             return (Criteria) this;
         }
 
-        public Criteria andChatGoodsIdNotIn(List<String> values) {
-            addCriterion("chat_goods_id not in", values, "chatGoodsId");
+        public Criteria andChatToIdNotIn(List<String> values) {
+            addCriterion("chat_to_id not in", values, "chatToId");
             return (Criteria) this;
         }
 
-        public Criteria andChatGoodsIdBetween(String value1, String value2) {
-            addCriterion("chat_goods_id between", value1, value2, "chatGoodsId");
+        public Criteria andChatToIdBetween(String value1, String value2) {
+            addCriterion("chat_to_id between", value1, value2, "chatToId");
             return (Criteria) this;
         }
 
-        public Criteria andChatGoodsIdNotBetween(String value1, String value2) {
-            addCriterion("chat_goods_id not between", value1, value2, "chatGoodsId");
+        public Criteria andChatToIdNotBetween(String value1, String value2) {
+            addCriterion("chat_to_id not between", value1, value2, "chatToId");
             return (Criteria) this;
         }
 
-        public Criteria andChatMessageIsNull() {
-            addCriterion("chat_message is null");
+        public Criteria andChatTypeIsNull() {
+            addCriterion("chat_type is null");
             return (Criteria) this;
         }
 
-        public Criteria andChatMessageIsNotNull() {
-            addCriterion("chat_message is not null");
+        public Criteria andChatTypeIsNotNull() {
+            addCriterion("chat_type is not null");
             return (Criteria) this;
         }
 
-        public Criteria andChatMessageEqualTo(String value) {
-            addCriterion("chat_message =", value, "chatMessage");
+        public Criteria andChatTypeEqualTo(String value) {
+            addCriterion("chat_type =", value, "chatType");
             return (Criteria) this;
         }
 
-        public Criteria andChatMessageNotEqualTo(String value) {
-            addCriterion("chat_message <>", value, "chatMessage");
+        public Criteria andChatTypeNotEqualTo(String value) {
+            addCriterion("chat_type <>", value, "chatType");
             return (Criteria) this;
         }
 
-        public Criteria andChatMessageGreaterThan(String value) {
-            addCriterion("chat_message >", value, "chatMessage");
+        public Criteria andChatTypeGreaterThan(String value) {
+            addCriterion("chat_type >", value, "chatType");
             return (Criteria) this;
         }
 
-        public Criteria andChatMessageGreaterThanOrEqualTo(String value) {
-            addCriterion("chat_message >=", value, "chatMessage");
+        public Criteria andChatTypeGreaterThanOrEqualTo(String value) {
+            addCriterion("chat_type >=", value, "chatType");
             return (Criteria) this;
         }
 
-        public Criteria andChatMessageLessThan(String value) {
-            addCriterion("chat_message <", value, "chatMessage");
+        public Criteria andChatTypeLessThan(String value) {
+            addCriterion("chat_type <", value, "chatType");
             return (Criteria) this;
         }
 
-        public Criteria andChatMessageLessThanOrEqualTo(String value) {
-            addCriterion("chat_message <=", value, "chatMessage");
+        public Criteria andChatTypeLessThanOrEqualTo(String value) {
+            addCriterion("chat_type <=", value, "chatType");
             return (Criteria) this;
         }
 
-        public Criteria andChatMessageLike(String value) {
-            addCriterion("chat_message like", value, "chatMessage");
+        public Criteria andChatTypeLike(String value) {
+            addCriterion("chat_type like", value, "chatType");
             return (Criteria) this;
         }
 
-        public Criteria andChatMessageNotLike(String value) {
-            addCriterion("chat_message not like", value, "chatMessage");
+        public Criteria andChatTypeNotLike(String value) {
+            addCriterion("chat_type not like", value, "chatType");
             return (Criteria) this;
         }
 
-        public Criteria andChatMessageIn(List<String> values) {
-            addCriterion("chat_message in", values, "chatMessage");
+        public Criteria andChatTypeIn(List<String> values) {
+            addCriterion("chat_type in", values, "chatType");
             return (Criteria) this;
         }
 
-        public Criteria andChatMessageNotIn(List<String> values) {
-            addCriterion("chat_message not in", values, "chatMessage");
+        public Criteria andChatTypeNotIn(List<String> values) {
+            addCriterion("chat_type not in", values, "chatType");
             return (Criteria) this;
         }
 
-        public Criteria andChatMessageBetween(String value1, String value2) {
-            addCriterion("chat_message between", value1, value2, "chatMessage");
+        public Criteria andChatTypeBetween(String value1, String value2) {
+            addCriterion("chat_type between", value1, value2, "chatType");
             return (Criteria) this;
         }
 
-        public Criteria andChatMessageNotBetween(String value1, String value2) {
-            addCriterion("chat_message not between", value1, value2, "chatMessage");
+        public Criteria andChatTypeNotBetween(String value1, String value2) {
+            addCriterion("chat_type not between", value1, value2, "chatType");
             return (Criteria) this;
         }
 

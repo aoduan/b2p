@@ -3,9 +3,9 @@
 <mapper namespace="com.cdut.b2p.modules.shop.mapper.ShopChatMapper">
   <resultMap id="BaseResultMap" type="com.cdut.b2p.modules.shop.po.ShopChat">
     <id column="id" jdbcType="VARCHAR" property="id" />
-    <result column="chat_user_id" jdbcType="VARCHAR" property="chatUserId" />
-    <result column="chat_goods_id" jdbcType="VARCHAR" property="chatGoodsId" />
-    <result column="chat_message" jdbcType="VARCHAR" property="chatMessage" />
+    <result column="chat_from_id" jdbcType="VARCHAR" property="chatFromId" />
+    <result column="chat_to_id" jdbcType="VARCHAR" property="chatToId" />
+    <result column="chat_type" jdbcType="CHAR" property="chatType" />
     <result column="chat_status" jdbcType="CHAR" property="chatStatus" />
     <result column="create_by" jdbcType="VARCHAR" property="createBy" />
     <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
@@ -13,6 +13,9 @@
     <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
     <result column="remarks" jdbcType="VARCHAR" property="remarks" />
     <result column="del_flag" jdbcType="CHAR" property="delFlag" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.cdut.b2p.modules.shop.po.ShopChat">
+    <result column="chat_message" jdbcType="LONGVARCHAR" property="chatMessage" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,9 +76,36 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, chat_user_id, chat_goods_id, chat_message, chat_status, create_by, create_date, 
-    update_by, update_date, remarks, del_flag
+    id, chat_from_id, chat_to_id, chat_type, chat_status, create_by, create_date, update_by, 
+    update_date, remarks, del_flag
   </sql>
+  <sql id="Blob_Column_List">
+    chat_message
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.cdut.b2p.modules.shop.po.ShopChatExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from shop_chat
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
   <select id="selectByExample" parameterType="com.cdut.b2p.modules.shop.po.ShopChatExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -98,9 +128,11 @@
       </if>
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from shop_chat
     where id = #{id,jdbcType=VARCHAR}
   </select>
@@ -115,14 +147,16 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.cdut.b2p.modules.shop.po.ShopChat">
-    insert into shop_chat (id, chat_user_id, chat_goods_id, 
-      chat_message, chat_status, create_by, 
+    insert into shop_chat (id, chat_from_id, chat_to_id, 
+      chat_type, chat_status, create_by, 
       create_date, update_by, update_date, 
-      remarks, del_flag)
-    values (#{id,jdbcType=VARCHAR}, #{chatUserId,jdbcType=VARCHAR}, #{chatGoodsId,jdbcType=VARCHAR}, 
-      #{chatMessage,jdbcType=VARCHAR}, #{chatStatus,jdbcType=CHAR}, #{createBy,jdbcType=VARCHAR}, 
+      remarks, del_flag, chat_message
+      )
+    values (#{id,jdbcType=VARCHAR}, #{chatFromId,jdbcType=VARCHAR}, #{chatToId,jdbcType=VARCHAR}, 
+      #{chatType,jdbcType=CHAR}, #{chatStatus,jdbcType=CHAR}, #{createBy,jdbcType=VARCHAR}, 
       #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
-      #{remarks,jdbcType=VARCHAR}, #{delFlag,jdbcType=CHAR})
+      #{remarks,jdbcType=VARCHAR}, #{delFlag,jdbcType=CHAR}, #{chatMessage,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.cdut.b2p.modules.shop.po.ShopChat">
     insert into shop_chat
@@ -130,14 +164,14 @@
       <if test="id != null">
         id,
       </if>
-      <if test="chatUserId != null">
-        chat_user_id,
+      <if test="chatFromId != null">
+        chat_from_id,
       </if>
-      <if test="chatGoodsId != null">
-        chat_goods_id,
+      <if test="chatToId != null">
+        chat_to_id,
       </if>
-      <if test="chatMessage != null">
-        chat_message,
+      <if test="chatType != null">
+        chat_type,
       </if>
       <if test="chatStatus != null">
         chat_status,
@@ -160,19 +194,22 @@
       <if test="delFlag != null">
         del_flag,
       </if>
+      <if test="chatMessage != null">
+        chat_message,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=VARCHAR},
       </if>
-      <if test="chatUserId != null">
-        #{chatUserId,jdbcType=VARCHAR},
+      <if test="chatFromId != null">
+        #{chatFromId,jdbcType=VARCHAR},
       </if>
-      <if test="chatGoodsId != null">
-        #{chatGoodsId,jdbcType=VARCHAR},
+      <if test="chatToId != null">
+        #{chatToId,jdbcType=VARCHAR},
       </if>
-      <if test="chatMessage != null">
-        #{chatMessage,jdbcType=VARCHAR},
+      <if test="chatType != null">
+        #{chatType,jdbcType=CHAR},
       </if>
       <if test="chatStatus != null">
         #{chatStatus,jdbcType=CHAR},
@@ -195,6 +232,9 @@
       <if test="delFlag != null">
         #{delFlag,jdbcType=CHAR},
       </if>
+      <if test="chatMessage != null">
+        #{chatMessage,jdbcType=LONGVARCHAR},
+      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.cdut.b2p.modules.shop.po.ShopChatExample" resultType="java.lang.Long">
@@ -209,14 +249,14 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=VARCHAR},
       </if>
-      <if test="record.chatUserId != null">
-        chat_user_id = #{record.chatUserId,jdbcType=VARCHAR},
+      <if test="record.chatFromId != null">
+        chat_from_id = #{record.chatFromId,jdbcType=VARCHAR},
       </if>
-      <if test="record.chatGoodsId != null">
-        chat_goods_id = #{record.chatGoodsId,jdbcType=VARCHAR},
+      <if test="record.chatToId != null">
+        chat_to_id = #{record.chatToId,jdbcType=VARCHAR},
       </if>
-      <if test="record.chatMessage != null">
-        chat_message = #{record.chatMessage,jdbcType=VARCHAR},
+      <if test="record.chatType != null">
+        chat_type = #{record.chatType,jdbcType=CHAR},
       </if>
       <if test="record.chatStatus != null">
         chat_status = #{record.chatStatus,jdbcType=CHAR},
@@ -239,7 +279,28 @@
       <if test="record.delFlag != null">
         del_flag = #{record.delFlag,jdbcType=CHAR},
       </if>
+      <if test="record.chatMessage != null">
+        chat_message = #{record.chatMessage,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update shop_chat
+    set id = #{record.id,jdbcType=VARCHAR},
+      chat_from_id = #{record.chatFromId,jdbcType=VARCHAR},
+      chat_to_id = #{record.chatToId,jdbcType=VARCHAR},
+      chat_type = #{record.chatType,jdbcType=CHAR},
+      chat_status = #{record.chatStatus,jdbcType=CHAR},
+      create_by = #{record.createBy,jdbcType=VARCHAR},
+      create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      update_by = #{record.updateBy,jdbcType=VARCHAR},
+      update_date = #{record.updateDate,jdbcType=TIMESTAMP},
+      remarks = #{record.remarks,jdbcType=VARCHAR},
+      del_flag = #{record.delFlag,jdbcType=CHAR},
+      chat_message = #{record.chatMessage,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -247,9 +308,9 @@
   <update id="updateByExample" parameterType="map">
     update shop_chat
     set id = #{record.id,jdbcType=VARCHAR},
-      chat_user_id = #{record.chatUserId,jdbcType=VARCHAR},
-      chat_goods_id = #{record.chatGoodsId,jdbcType=VARCHAR},
-      chat_message = #{record.chatMessage,jdbcType=VARCHAR},
+      chat_from_id = #{record.chatFromId,jdbcType=VARCHAR},
+      chat_to_id = #{record.chatToId,jdbcType=VARCHAR},
+      chat_type = #{record.chatType,jdbcType=CHAR},
       chat_status = #{record.chatStatus,jdbcType=CHAR},
       create_by = #{record.createBy,jdbcType=VARCHAR},
       create_date = #{record.createDate,jdbcType=TIMESTAMP},
@@ -264,14 +325,14 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.cdut.b2p.modules.shop.po.ShopChat">
     update shop_chat
     <set>
-      <if test="chatUserId != null">
-        chat_user_id = #{chatUserId,jdbcType=VARCHAR},
+      <if test="chatFromId != null">
+        chat_from_id = #{chatFromId,jdbcType=VARCHAR},
       </if>
-      <if test="chatGoodsId != null">
-        chat_goods_id = #{chatGoodsId,jdbcType=VARCHAR},
+      <if test="chatToId != null">
+        chat_to_id = #{chatToId,jdbcType=VARCHAR},
       </if>
-      <if test="chatMessage != null">
-        chat_message = #{chatMessage,jdbcType=VARCHAR},
+      <if test="chatType != null">
+        chat_type = #{chatType,jdbcType=CHAR},
       </if>
       <if test="chatStatus != null">
         chat_status = #{chatStatus,jdbcType=CHAR},
@@ -294,14 +355,32 @@
       <if test="delFlag != null">
         del_flag = #{delFlag,jdbcType=CHAR},
       </if>
+      <if test="chatMessage != null">
+        chat_message = #{chatMessage,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.cdut.b2p.modules.shop.po.ShopChat">
+    update shop_chat
+    set chat_from_id = #{chatFromId,jdbcType=VARCHAR},
+      chat_to_id = #{chatToId,jdbcType=VARCHAR},
+      chat_type = #{chatType,jdbcType=CHAR},
+      chat_status = #{chatStatus,jdbcType=CHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=CHAR},
+      chat_message = #{chatMessage,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.cdut.b2p.modules.shop.po.ShopChat">
     update shop_chat
-    set chat_user_id = #{chatUserId,jdbcType=VARCHAR},
-      chat_goods_id = #{chatGoodsId,jdbcType=VARCHAR},
-      chat_message = #{chatMessage,jdbcType=VARCHAR},
+    set chat_from_id = #{chatFromId,jdbcType=VARCHAR},
+      chat_to_id = #{chatToId,jdbcType=VARCHAR},
+      chat_type = #{chatType,jdbcType=CHAR},
       chat_status = #{chatStatus,jdbcType=CHAR},
       create_by = #{createBy,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=TIMESTAMP},

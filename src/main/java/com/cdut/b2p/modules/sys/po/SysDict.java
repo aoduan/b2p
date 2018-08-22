@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * sys_dict
  * @author 
@@ -47,31 +49,37 @@ public class SysDict implements Serializable {
     /**
      * 创建者
      */
+    @JsonIgnore
     private String createBy;
 
     /**
      * 创建时间
      */
+    @JsonIgnore
     private Date createDate;
 
     /**
      * 更新者
      */
+    @JsonIgnore
     private String updateBy;
 
     /**
      * 更新时间
      */
+    @JsonIgnore
     private Date updateDate;
 
     /**
      * 备注信息
      */
+    @JsonIgnore
     private String remarks;
 
     /**
      * 删除标记
      */
+    @JsonIgnore
     private String delFlag;
 
     private static final long serialVersionUID = 1L;

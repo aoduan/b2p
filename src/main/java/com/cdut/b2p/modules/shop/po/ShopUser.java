@@ -3,6 +3,8 @@ package com.cdut.b2p.modules.shop.po;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * shop_user
  * @author 
@@ -16,11 +18,13 @@ public class ShopUser implements Serializable {
     /**
      * 用户登录名
      */
+    @JsonIgnore
     private String userName;
 
     /**
      * 用户密码
      */
+    @JsonIgnore
     private String userPassword;
 
     /**
@@ -31,26 +35,31 @@ public class ShopUser implements Serializable {
     /**
      * 用户邮箱
      */
+    @JsonIgnore
     private String userEmail;
 
     /**
      * 用户真实姓名
      */
+    @JsonIgnore
     private String userRealName;
 
     /**
      * 用户身份证
      */
+    @JsonIgnore
     private String userIdcard;
 
     /**
      * 用户地址
      */
+    @JsonIgnore
     private String userAddress;
 
     /**
      * 用户手机
      */
+    @JsonIgnore
     private String userTelphone;
 
     /**
@@ -66,6 +75,7 @@ public class ShopUser implements Serializable {
     /**
      * 用户钱包id
      */
+    @JsonIgnore
     private String userWalletId;
 
     /**
@@ -76,36 +86,43 @@ public class ShopUser implements Serializable {
     /**
      * 用户状态
      */
+    @JsonIgnore
     private String userStatus;
 
     /**
      * 创建者
      */
+    @JsonIgnore
     private String createBy;
 
     /**
      * 创建时间
      */
+    @JsonIgnore
     private Date createDate;
 
     /**
      * 更新者
      */
+    @JsonIgnore
     private String updateBy;
 
     /**
      * 更新时间
      */
+    @JsonIgnore
     private Date updateDate;
 
     /**
      * 备注信息
      */
+    @JsonIgnore
     private String remarks;
 
     /**
      * 删除标记
      */
+    @JsonIgnore
     private String delFlag;
 
     private static final long serialVersionUID = 1L;

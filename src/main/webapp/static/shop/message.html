@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet" type="text/css" href="./common/css/CompontsLoader.css">   
+<link rel="stylesheet" type="text/css" href="./common/css/user_center_new.css">
+<link rel="stylesheet" type="text/css" href="./common/css/pc_changepwd.css">
+
+</head>
+
+<body>
+
+	<div class="title clearfix">
+		<h2 class="balance-h2">查看信息</h2>
+	</div>
+
+<div class="infos">
+
+    <form id="form_id" name="subform" method="post" target="formSubmit" action="" onsubmit="return checkPwd()">
+	
+        <ul class="info-item">
+           <!--  <li>
+                <label for="">用户名</label>
+                <span><strong>cdut135</strong></span>
+            </li> -->
+            <li>
+                <label for=""><span class="warning">*</span>旧密码</label>
+                <input type="password" id="oldpwd" class="old_pwd inw inp" maxlength="16" placeholder="请输入旧密码" autocomplete="off">
+                <span id="txtOldPwd_tip"></span>
+            </li>
+            <li>
+                <label for=""><span class="warning">*</span>新密码</label>
+                <input type="password" id="newpwd" class="new_pwd inw inp" placeholder="6-16个字符" autocomplete="off">
+                <span id="txtNewPwd_tip"></span>
+            </li>
+            <li>
+                <label for=""><span class="warning">*</span>确认密码</label>
+                <input type="password" id="renewpwd" class="inw inp" placeholder="请再次输入密码" autocomplete="off">
+                <span id="txtReNewPwd_tip"></span>
+            </li>
+			<li>
+                <label></label>
+                <input type="submit" id="submitButton" value="完成修改" class="btns">
+            </li>
+        </ul>
+    </form>
+</div>
+
+</body>
+</html>

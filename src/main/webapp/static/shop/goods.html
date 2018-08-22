@@ -1,0 +1,227 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title></title>
+
+<link rel="stylesheet" type="text/css" href="common/css/zzdetails.css"
+	media="all">
+<link rel="stylesheet" type="text/css" href="common/css/base.css"
+	media="all">
+<link rel="stylesheet" type="text/css" href="common/css/listzz.css"
+	media="all">
+<link rel="stylesheet" type="text/css" href="chat/font_Icon/iconfont.css">
+<link rel="stylesheet" type="text/css" href="chat/css/chat.css">
+
+<script src="./common/js/token.js"></script>
+<script src="./common/js/path.js"></script>
+<script src="./common/js/jquery.js"></script>
+<script src="./common/js/jquery.validate.min.js"></script>
+<script src="./common/js/messages_zh.js"></script>
+<script src="./common/js/pc_goods.js"></script>
+<script src="./layer/layer.js"></script>
+<script src="./common/js/jquery.cookie.js"></script>
+<script src="./jqthumb/jqthumb.js"></script>
+<script src="./common/js/sockjs.min.js"></script>
+<script src="./chat/js/chat.js"></script>
+
+
+
+</head>
+<body>
+
+	<!-- 网页顶部 -->
+	<div id="topbar">
+		<div class="w pos">
+
+			<div class="bar_left">
+				<h2>平安二手</h2>
+			</div>
+			<!-- 首页 -->
+			<div class="bar_right">
+				<div id="modify">
+					<a href="./index.html">平安二手首页</a> <span class="gap">|</span>
+				</div>
+				<!-- 登陆注册 -->
+				<div id="login">
+					<a href="./login.html" target="_self">登录</a> <span class="gap">|</span>
+					<a href="./register.html" target="_self">注册</a>
+				</div>
+				<!-- 个人中心 -->
+				<div id="topbar_mymenu" class="haschild">
+					<a id="topbar_tomy" target="_self" href="#">平安中心</a> <span
+						class="arrow"></span>
+
+				</div>
+				<!-- 帮助 -->
+				<div style="padding-right: 10px" class="haschild">
+					<a href="#" target="_blank">帮助</a>
+				</div>
+				<!-- 通知 -->
+
+			</div>
+		</div>
+	</div>
+	</div>
+
+	<!-- 横条 -->
+	<div class="header">
+		<div class="header_top wrapper clearfix">
+			<a class="header_top_logo" href="./index.html" target="_blank"
+				title="回首页">
+				<div class="header_top_intro">
+					<div class="intro_top">
+						平安二手,一个赚钱的网站<i class="line"></i>
+					</div>
+				</div>
+			</a> <span class="zzbiaozhi clearfix"></span>
+		</div>
+	</div>
+
+	<!-- 页面主要内容 -->
+	<div class="content">
+		<!-- 视图盒子 -->
+		<div class="box wrapper clearfix">
+			<!-- 视图左部 -->
+			<div class="box_left">
+
+
+				<!-- 展示 -->
+				<div class="info_lubotu clearfix">
+
+					<!-- display_top -->
+					<div class="box_left_top">
+						<h1 class="info_titile" id="goods_title"></h1>
+						<p class="info_p">
+							<br />
+
+						</p>
+					</div>
+
+					<!-- display_left -->
+					<div class="banner">
+						<div class="gallery">
+
+							<!-- 显示大图 -->
+							<div class="g_img">
+								<span> <img id="goods_img1" src="" style="height: 280px; width: 370px;">
+								</span>
+							</div>
+
+
+						</div>
+					</div>
+
+					<!-- display_right -->
+					<div class="info_massege right">
+
+						<div class="price_li">
+							<span class="price_now">原价：<i id="goods_price_pre"></i>元
+							</span> <span class="price_now">现价：<i id="goods_price_now"></i>元
+							</span>
+						</div>
+						<br />
+						<div class="palce_li">
+							<span>区域：<i id="goods_area"></i></span>
+						</div>
+						<br />
+						<div class="palce_li">
+							<span>浏览次数：<i id="goods_read_times"></i>次浏览
+							</span>
+						</div>
+
+						<div class="biaoqian_li">
+							<br /> <span>真实个人</span><span>担保交易</span><span>支持全国</span><span>在线沟通</span>
+						</div>
+
+						<div class="button_li">
+							<span class="talk_button download_button" id="contact">联系卖家</span>
+
+						</div>
+
+						<div class="buy_warn"></div>
+
+						<!-- <div class="want_li"> -->
+							<!-- <span class="want_left"> <img src="common/img/want.png"> -->
+								<!-- 想要 -->
+							<!-- </span> <span class="want_right"> <span class="want_no">宝贝还没有被收藏，快来抢沙发</span> -->
+							<!-- </span> -->
+						<!-- </div> -->
+					</div>
+
+				</div>
+
+				<!-- 描述 -->
+				<div class="info_baby">
+					<h3 class="box_title">宝贝描述</h3>
+					<div class="baby_talk">
+						<p class="baby_face  clearfix">
+							<span class="baby_face_img"> <img src="" id="seller_img"
+								alt="">
+							</span> <span><i id="seller_nickname"></i>有话说</span>
+						</p>
+						<div class="baby_kuang clearfix">
+							<span class="icon_png sanjiao"></span>
+							<p id="goods_desc"></p>
+						</div>
+					</div>
+				</div>
+
+				<div class="ad_detail_middle"></div>
+
+				<!-- 图片 -->
+				<div class="info_baby">
+					<h3 class="box_title">宝贝图片</h3>
+					<div class="boby_pic">
+						<img id=goods_img2 src="">
+
+					</div>
+				</div>
+
+			</div>
+
+			<!-- 视图右部 -->
+			<div class="box_right">
+
+				<!-- 商家介绍 -->
+				<div class="personal">
+
+					<div class="personal">
+
+						<!-- 商家简介 -->
+						<div class="personal_jieshao">
+
+							<!-- 头像 -->
+							<div class="personal_touxiang" data-adjust="adjust">
+								<img src="" alt="" id="seller_img2">
+							</div>
+							<!-- 昵称 -->
+							<p class="personal_name" id="seller_nickname1"></p>
+							<!-- 签名 -->
+							<p class="personal_chengjiu" id="seller_autograph"></p>
+							<!-- 信誉 -->
+							<div class="zhima">
+								<span>查看卖家平安信用</span>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="personal tuijian_div">
+					<div class="personal_tuijian">
+						<h3 class="box_title">精选推荐</h3>
+						<ul class="personal_list" id="recomend">
+
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="chat"></div>
+	</div>
+</body>
+<script>
+$("#chat").load("./chat/index.html");
+</script>
+</html>

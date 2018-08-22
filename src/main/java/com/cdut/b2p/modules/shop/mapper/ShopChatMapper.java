@@ -18,15 +18,21 @@ public interface ShopChatMapper {
 
     int insertSelective(ShopChat record);
 
+    List<ShopChat> selectByExampleWithBLOBs(ShopChatExample example);
+
     List<ShopChat> selectByExample(ShopChatExample example);
 
     ShopChat selectByPrimaryKey(String id);
 
     int updateByExampleSelective(@Param("record") ShopChat record, @Param("example") ShopChatExample example);
 
+    int updateByExampleWithBLOBs(@Param("record") ShopChat record, @Param("example") ShopChatExample example);
+
     int updateByExample(@Param("record") ShopChat record, @Param("example") ShopChatExample example);
 
     int updateByPrimaryKeySelective(ShopChat record);
+
+    int updateByPrimaryKeyWithBLOBs(ShopChat record);
 
     int updateByPrimaryKey(ShopChat record);
 }

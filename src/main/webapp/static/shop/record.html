@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+	<link rel="stylesheet" href="./common/css/reset.css">
+    <link rel="stylesheet" href="./common/css/style.css">
+    <!-- <link rel="stylesheet" href="./common/css/new.css"> -->
+    <!-- <link rel="stylesheet" href="./common/css/cancel.css"> -->
+	
+</head>
+<body class="bai">
+	<input type="text" name="rootPath" id="rootPath" value="/orderonline" style="display: none;">    
+	
+<form id="myorderlist" method="post">
+<div class="order">
+    
+    <div class="ownOrder">
+        
+        <!-- 当前第几页 -->
+		<input type="hidden" name="pageNo" id="pageNo" value="1">
+		<!-- 每页显示多少条记录 -->
+		<input type="hidden" name="pageSize" id="pageSize" value="5">
+		<!-- 页号开始的值 -->
+		<input type="hidden" name="startIndex" id="startIndex" value="1">  
+		<!-- 页号结束的值 -->
+		<input type="hidden" name="endIndex" id="endIndex" value="0">
+		<!-- 总共多少条记录 -->
+		<input type="hidden" name="totalRecord" id="totalRecord" value="0">
+		<!-- 订单ID -->
+		<input type="hidden" name="orderId" id="orderId" value="">
+		<!-- <input type="hidden" name="cancelOId" id="cancelOId" value=""> -->
+		<!-- tab page number -->
+    	<input type="hidden" id="listNo" name="listNo" value="1">
+    	<!-- <input type="hidden" id="orderState" name="orderState" value=""> -->
+        <div class="head">
+		
+			<div>商品名称</div>
+			<div>交易时间</div>
+			<div>交易金额</div>
+			
+        </div>
+		
+		<div class="body">
+			<!--第一个table在bodytop里背景是蓝色-->
+			<div class="bodyTop">
+				<div class="table">
+					<div><span> 4</span></div>
+					<div><span> 4</span></div>
+					<div><span> 4</span><span>元</span></div>
+				</div>
+			</div>
+			<!--第二个table没在bodytop里背景是白色-->
+			<div class="table">
+				<div><span> 4</span></div>
+				<div><span> 4</span></div>
+				<div><span> 4</span><span>元</span></div>
+			</div>
+			<!--第三个table在bodytop里背景是蓝色-->
+			<div class="bodyTop">
+				<div class="table">
+					<div><span> 4</span></div>
+					<div><span> 4</span></div>
+					<div><span> 4</span><span>元</span></div>
+				</div>
+			</div>
+			
+		</div>
+		
+        <div class="pa">
+			<a class="prev "  lang="1">上一页</a>
+			<a class="next"  lang="0">下一页</a>
+			<span class="total">共0页</span>
+			<span class="word">到第</span><input type="text" class="pageNumber" value=""><span class="word">页</span>
+			<input type="button" class="confirm" value="确定">
+		</div>
+		
+    </div>
+</div>
+
+</form>
+
+</body>
+</html>

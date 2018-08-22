@@ -2,6 +2,7 @@ package com.cdut.b2p.common.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
@@ -366,4 +367,17 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
     	result.append(val.substring(1));
     	return result.toString();
     }
+    
+
+	public static String genRandomStringOfInt(int length) {
+		 StringBuffer sb = new StringBuffer();
+	        String str = "0123456789";
+	        Random r = new Random();
+	        for(int i=0;i<length;i++){
+	            int num = r.nextInt(str.length());
+	            sb.append(str.charAt(num));
+	            str = str.replace((str.charAt(num)+""), "");
+	        }
+	        return sb.toString();
+	}
 }

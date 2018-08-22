@@ -3,10 +3,15 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
 	<title>用户登录-平安二手</title> 
+	<script src="./common/js/token.js"></script>
+	<script src="./common/js/path.js"></script> 
 	<script src="./common/js/jquery.js"></script> 
 	<script src="./common/js/jquery.validate.min.js"></script> 
 	<script src="./common/js/messages_zh.js"></script> 
 	<script src="./common/js/pc_reg.js"></script> 
+	<script src="./layer/layer.js"></script> 
+    <script src="./common/js/jquery.cookie.js"></script> 
+
 	<!-- <link rel="stylesheet" href="./common/css/pclogin.css" />  -->
 	<link rel="stylesheet" href="./common/css/pcregister.css" /> 
 </head> 
@@ -19,11 +24,11 @@
 	<!-- 离开登陆界面 --> 
 	<div id="outregBox">
 		<div id="backtoindex">
-			<a href="" onclick="">返回首页</a>
+			<a href="./index.html" onclick="">返回首页</a>
 		</div>
 		<div id="goReg">
-			没有账户？
-			<a href="#" onclick="">去注册</a>
+			已有账户？
+			<a href="./login.html" onclick="">去登陆</a>
 		</div>
 	</div>
 	
@@ -55,20 +60,20 @@
 					<!--验证码-->
 					<li class="emailcodeliUser">
 						<span class="logpic_new" style="display: none;">验证码</span>
-						<input type="text" id="emailcodeUser" autocomplete="off" name="emailcode" size="20" class="passport-login-input emailcode_new inputNull" minlength="4" maxlength="4" placeholder="验证码" required/>
+						<input type="text" id="emailcodeUser" autocomplete="off" name="emailcode" size="20" class="passport-login-input emailcode_new inputNull" minlength="6" maxlength="6" placeholder="验证码" required/>
 						<span id="emailcodeTip" class="wrong1 errorTip"></span>
-					</li>
-					<!--手机号-->
-					<li class="mobileliUser">
-						<span class="logpic_new" style="display: none;">手机号码</span>
-						<input type="text" id="mobileUser" autocomplete="off" name="mobile" size="20" class="passport-login-input mobile_new inputNull"  minlength="11" maxlength="11" placeholder="手机号" required/>
-						<span id="mobileTip" class="wrong1 errorTip"></span>
 					</li>
 					<!--用户名-->
 					<li class="usernameliUser">
 						<span class="logpic_new" style="display: none;">用户名</span>
 						<input type="text" id="usernameUser" autocomplete="off" name="username" size="20" class="passport-login-input username_new inputNull"  minlength="6" maxlength="16" placeholder="用户名" required/>
 						<span id="usernameTip" class="wrong1 errorTip"></span>
+					</li>
+					<!--昵称-->
+					<li class="usernameliUser">
+						<span class="logpic_new" style="display: none;">昵称</span>
+						<input type="text" id="nicknameUser" autocomplete="off" name="nickname" size="20" class="passport-login-input username_new inputNull"  minlength="2" maxlength="8" placeholder="昵称" required/>
+						<span id="nicknameTip" class="wrong1 errorTip"></span>
 					</li>
 					<!--设置密码-->
 					<li class="passwordliUser">
@@ -83,7 +88,7 @@
 						<span id="repasswordTip" class="wrong1 errorTip"></span>
 					</li>
 					<!--提交-->
-					<li class="submit_new"><input type="submit" id="btnSubmitUser" class="submit" name="btnSubmit" value="登录" accesskey="l" />
+					<li class="submit_new"><input type="submit" id="btnSubmitUser" class="submit" name="btnSubmit" value="注册" accesskey="l" />
 					</li>
 					</ul>
 				
@@ -110,17 +115,37 @@
   {
     var email=document.getElementById("emailUser").value;
     if(email==""){
-      alert("电子邮件不能为空");
+      layer.alert("电子邮件不能为空");
       return false;
     }
     else
     {
       reg=/^([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/gi;
       if(!reg.test(email)){
-          alert("非法的电子邮件");
+          layer.alert("非法的电子邮件");
           return false;
       }
     }
+	 $.ajax({
+             type: "POST",
+             url: getPath() + "/shop/user/reg/sendEmail",
+             data: {email:$("#emailUser").val()},
+             dataType: "json",
+             success: function(data){  
+                         if(data['success']){
+						    $('#regGetcodeBtn').attr('disabled',"true");
+							$('#regGetcodeBtn').attr('value',"已发送");
+							$('#regGetcodeBtn').attr('class',"regGetcodeBtn1");
+							layer.alert(data['msg']);
+						 }else{
+						    layer.alert(data['msg']);
+						 }
+                      },
+					  
+             error: function(data){  
+                         layer.alert('系统错误');
+                      }
+         });
   }
 </script>
 </body>

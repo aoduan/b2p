@@ -1010,13 +1010,32 @@ a {
 .regGetcodeBtn {
 	position: absolute;
 	cursor: pointer;
+	background: #FF552E;
+	border-radius: 0px;
+	width: 110px;
+	height: 34px;
+	font-size: 14px!important;
+	color: #FFF;
+	letter-spacing: -.01px;
+	right: 8px;
+	top: 8px;
+	margin-top: 0;
+	border: none;
+
+}
+.regGetcodeBtn1 {
+	position: absolute;
+	cursor: pointer;
 	background: #F6F6F6;
-	border-radius: 3px;
+	border-radius: 0px;
 	width: 110px;
 	height: 34px;
 	font-size: 14px!important;
 	color: #CCC;
 	letter-spacing: -.01px;
 	right: 8px;
-	top: 8px
+	top: 8px;
+	margin-top: 0;
+	border: none;
+
 }

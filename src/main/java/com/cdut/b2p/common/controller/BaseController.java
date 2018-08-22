@@ -3,7 +3,7 @@ package com.cdut.b2p.common.controller;
 import java.beans.PropertyEditorSupport;
 import java.io.IOException;
 import java.util.Date;
-
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.ConstraintViolationException;
@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cdut.b2p.common.utils.JsonUtils;
+import com.cdut.b2p.common.security.TokenManger;
 import com.cdut.b2p.common.utils.DateUtils;
 
 public abstract class BaseController {
@@ -48,6 +49,7 @@ public abstract class BaseController {
 	@Value("${urlSuffix}")
 	protected String urlSuffix;
 	
+	
 	/**
 	 * 添加Model消息
 	 * @param message
@@ -70,6 +72,80 @@ public abstract class BaseController {
 			sb.append(message).append(messages.length>1?"<br/>":"");
 		}
 		redirectAttributes.addFlashAttribute("message", sb.toString());
+	}
+	
+	/**
+	 * 客户端返回JSON字符串
+	 * @param response
+	 * @param object
+	 * @return
+	 */
+	protected String renderErrorString(HttpServletResponse response, String msg) {
+		HashMap<Object,Object> map = new HashMap<Object,Object>();
+		map.clear();
+		map.put("msg", msg);
+		map.put("success", false);
+		return renderString(response, JsonUtils.toJsonString(map), "application/json");
+	}
+	
+	/**
+	 * 客户端返回JSON字符串
+	 * @param response
+	 * @param object
+	 * @return
+	 */
+	protected String renderSuccessString(HttpServletResponse response, String msg) {
+		HashMap<Object,Object> map = new HashMap<Object,Object>();
+		map.clear();
+		map.put("msg", msg);
+		map.put("success", true);
+		return renderString(response, JsonUtils.toJsonString(map), "application/json");
+	}
+	
+	/**
+	 * 客户端返回JSON字符串
+	 * @param response
+	 * @param object
+	 * @return
+	 */
+	protected String renderSuccessString(HttpServletResponse response, String msg, Object data) {
+		HashMap<Object,Object> map = new HashMap<Object,Object>();
+		map.clear();
+		map.put("data", data);
+		map.put("msg", msg);
+		map.put("success", true);
+		return renderString(response, JsonUtils.toJsonString(map), "application/json");
+	}
+	
+	/**
+	 * 客户端返回JSON字符串
+	 * @param response
+	 * @param object
+	 * @return
+	 */
+	protected String renderSuccessStringAndUserId(HttpServletResponse response, String msg, Object data,Object user) {
+		HashMap<Object,Object> map = new HashMap<Object,Object>();
+		map.clear();
+		map.put("data", data);
+		map.put("msg", msg);
+		map.put("success", true);
+		map.put("user", user);
+		return renderString(response, JsonUtils.toJsonString(map), "application/json");
+	}
+	
+	/**
+	 * 客户端返回JSON字符串
+	 * @param response
+	 * @param object
+	 * @return
+	 */
+	protected String renderTokenString(HttpServletResponse response, String uid, String msg){
+		HashMap<Object,Object> map = new HashMap<Object,Object>();
+		map.clear();
+		map.put("msg", msg);
+		map.put("success", true);
+		map.put("token", TokenManger.createToken(uid));
+		return renderString(response, JsonUtils.toJsonString(map), "application/json");
 	}
 	
 	/**

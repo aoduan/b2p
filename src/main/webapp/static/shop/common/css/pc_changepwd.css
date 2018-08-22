@@ -1,0 +1,86 @@
+.info-item .warning {
+	color: #ff552e
+}
+
+.info-item label {
+	width: 65px;
+	height: 36px;
+	padding-right: 33px;
+	float: left;
+	text-align: right;
+	color: #666;
+	line-height: 36px;
+	font-size: 14px
+}
+
+.info-item li {
+	float: left;
+	padding-top: 18px;
+	clear: both
+}
+
+.info-item strong {
+	font-size: 16px;
+	line-height: 1.7
+}
+
+.info-item input {
+	padding: 12px 0 12px 12px;
+	height: 14px;
+	width: 150px;
+	line-height: 14px;
+	outline: 0;
+	border: 1px solid #DDD;
+	border-radius: 2px;
+	float: left
+}
+
+.info-item .regtip,.info-item .regerror {
+	line-height: 40px;
+	padding-left: 10px
+}
+
+.info-item .regtip {
+	color: #666
+}
+
+.info-item .regerror {
+	color: #ff552e
+}
+
+.info-item .btns {
+	padding: 0;
+	background: #ff552e;
+	color: #FFF;
+	width: 140px;
+	height: 36px;
+	border-radius: 2px;
+	border: none
+}
+
+.title {
+	display: none
+}
+
+h2.balance-h2 {
+	background: 0 0
+}
+
+#validcodeImg {
+	position: absolute;
+	width: 80px;
+	height: 32px;
+	left: 250px;
+	top: 22px;
+	cursor: pointer
+}
+
+.info-item li {
+	position: relative
+}
+
+#forgetPwd {
+	position: absolute;
+	top: 28px;
+	right: -90px
+}

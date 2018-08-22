@@ -1,0 +1,380 @@
+@charset "UTF-8";
+
+.paytoptips {
+	position: relative;
+	width: 970px;
+	color: #ec4514;
+	padding: 10px 15px;
+	background-color: #fffbe4;
+	margin-top: 10px
+}
+
+.paytoptips .payright {
+	float: right
+}
+
+.paytoptips .payright a {
+	color: #ec6c01
+}
+
+.paytoptips .paytips {
+	margin-left: 26px
+}
+
+.paytoptips .payhorns {
+	background-image: url(//img.58cdn.com.cn/ui7/post/pc/imgs/icons.png);
+	background-position: -62px -375px;
+	width: 25px;
+	height: 20px;
+	position: absolute;
+	top: 15px;
+	left: 13px
+}
+
+.payGuide,.payState {
+	margin: 0 40px;
+	position: relative;
+	font: 400 14px/26px "Hiragino Sans GB","微软雅⿊","Microsoft YaHei",SimHei,Tahoma,"宋体b8b体",SimSun,sansserif
+}
+
+.payGuide ul,.payState ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0
+}
+
+.payGuideTip,.payStateTip {
+	margin: 10px 17px;
+	line-height: 30px;
+	color: gray;
+	text-align: center
+}
+
+.payGuideTip div,.payStateTip div {
+	text-align: center
+}
+
+.payCount {
+	position: absolute;
+	right: 0;
+	_right: 40px;
+	top: 80px
+}
+
+.payCount span {
+	color: red
+}
+
+.payListsWrap {
+	margin-top: 30px;
+	color: #606060
+}
+
+.payListsTip {
+	font-size: 18px
+}
+
+.payGuide .payLists {
+	margin-top: 20px
+}
+
+.payLists li {
+	float: left;
+	height: 120px;
+	width: 140px;
+	line-height: normal;
+	text-align: center
+}
+
+#payListsWX {
+	margin-left: 20px
+}
+
+#payListsWX.noMorePayWay {
+	margin-left: 70px
+}
+
+#payListsWX .payicon {
+	background-image: url(//img.58cdn.com.cn/ui7/post/pc/imgs/icons.png);
+	background-position: -504px 0
+}
+
+#payListsAL .payicon {
+	background-image: url(//img.58cdn.com.cn/ui7/post/pc/imgs/icons.png);
+	background-position: -584px 0
+}
+
+#payListsFC .payicon {
+	background-image: url(//img.58cdn.com.cn/ui7/post/pc/imgs/icons.png);
+	background-position: -567px -272px
+}
+
+#payListsOT .payicon {
+	background-image: url(//img.58cdn.com.cn/ui7/post/pc/imgs/icons.png);
+	background-position: -664px 0
+}
+
+.payicon {
+	display: block;
+	width: 100%;
+	width: 73px;
+	height: 73px;
+	margin: 12px auto
+}
+
+.useFcBack {
+	position: absolute;
+	left: 40px;
+	top: 20px
+}
+
+.useFcBton {
+	width: 201px;
+	height: 40px;
+	border: 1px solid #ff6a22;
+	text-align: center;
+	line-height: 40px;
+	font-size: 14px;
+	margin: 0 auto;
+	margin-top: 20px;
+	cursor: pointer
+}
+
+.userFcTitle {
+	margin-left: 40px;
+	font-size: 14px;
+	color: #999;
+	margin-top: 6px
+}
+
+.payim {
+	position: relative;
+	display: inline-block;
+	height: 30px;
+	background: #ffc55d;
+	padding: 0 10px
+}
+
+.payimicon {
+	position: absolute;
+	left: 7px;
+	top: 6px;
+	width: 25px;
+	height: 20px;
+	background-image: url(//img.58cdn.com.cn/ui7/post/pc/imgs/icons.png);
+	background-position: -744px 0
+}
+
+.payState .paycontact {
+	margin-left: 30px;
+	color: #fff;
+	text-decoration: none
+}
+
+.payStateBtn ul {
+	padding: 48px 40px 0 92px
+}
+
+#paySuccess,#payAgain {
+	float: left;
+	width: 137px;
+	height: 35px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	text-align: center;
+	line-height: 35px
+}
+
+#paySuccess {
+	background: #ed6d06
+}
+
+#payAgain {
+	margin-left: 20px
+}
+
+#payAgain .payBtn {
+	color: gray;
+	text-decoration: none
+}
+
+#paySuccess .payBtn {
+	color: #FFF;
+	text-decoration: none
+}
+
+.payBtn {
+	line-height: 34px;
+	text-align: center;
+	cursor: pointer
+}
+
+.clearfix:before,.clearfix:after {
+	content: "";
+	display: table
+}
+
+.clearfix:after {
+	clear: both;
+	overflow: hidden
+}
+
+.clearfix {
+	zoom: 1
+}
+
+.payGuideRefresh .payLists {
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 16px
+}
+
+.payGuideRefresh .refresh {
+	margin-top: 15px;
+	line-height: 25px;
+	text-align: center;
+	color: gray
+}
+
+.payGuideRefresh .refresh a {
+	color: #392cff;
+	display: none
+}
+
+.payGuideRefresh .bizRefresh {
+	line-height: 25px;
+	text-align: center;
+	color: gray
+}
+
+.payGuideRefresh .bizRefresh a {
+	color: #392cff
+}
+
+#payListsZM .payicon {
+	background-image: url(//img.58cdn.com.cn/ui7/post/pc/imgs/icons_v20160705.png);
+	_background-image: url(//img.58cdn.com.cn/ui7/post/pc/imgs/icons_ie6_v20160705.png);
+	background-position: -328px -192px
+}
+
+#payListsZM .payicon.greyPayListsZMicon {
+	background-position: -436px -192px
+}
+
+.rzLists li {
+	width: 138px;
+	margin-left: 22px
+}
+
+.payListsEm {
+	color: #ff552e
+}
+
+.greyPayListsEm,.greyPayListsZM {
+	color: #c3c3c3
+}
+
+#feComPopMask {
+	left: 0;
+	top: 0;
+	filter: Alpha(Opacity=30);
+	opacity: .3;
+	background-color: #000;
+	z-index: 9996
+}
+
+#feComPopMaskIframe {
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	filter: alpha(Opacity=0);
+	opacity: 0
+}
+
+#feComPop {
+	position: fixed;
+	_position: absolute;
+	z-index: 9997;
+	left: 50%;
+	top: 50%
+}
+
+#feComPopWrap {
+	position: relative
+}
+
+.feComPopContains {
+	position: absolute;
+	background: #fff;
+	border-radius: 4px;
+	z-index: 9999
+}
+
+.feComPopiframe {
+	width: 100%;
+	border-radius: 0 0 4px 4px
+}
+
+.feComPopTopbar {
+	margin: 0 40px;
+	border-bottom: 1px solid #ccc
+}
+
+.feComPopTitle {
+	font: 400 22px/26px "Hiragino Sans GB","微软雅⿊","Microsoft YaHei",SimHei,Tahoma,"宋体b8b体",SimSun,sansserif;
+	margin-left: 20px;
+	line-height: 66px;
+	color: #000
+}
+
+.feComPopClosebtn {
+	display: block;
+	font-weight: 900;
+	width: 16px;
+	height: 18px;
+	font-size: 16px;
+	color: #d0d0d0;
+	overflow: hidden;
+	position: absolute;
+	right: 12px;
+	top: 12px
+}
+
+.feComPopClosebtn:hover {
+	color: #ed6d06
+}
+
+.feComPopload {
+	font-size: 14px;
+	background: url(http://pic2.58.com/n/images/loading.gif) no-repeat center center;
+	margin-left: -60px;
+	padding-left: 90px;
+	text-align: center;
+	color: #666;
+	line-height: 350px;
+	z-index: 9998
+}
+
+.feComPopDom {
+	display: none;
+	width: 100%
+}
+
+.feComPopGoBackbtn {
+	line-height: 20px;
+	font-family: "微软雅⿊","Microsoft YaHei",SimHei,Tahoma,"宋体b8b体",SimSun,sansserif;
+	font-size: 16px;
+	color: #999;
+	cursor: pointer
+}
+
+.feComPopGoBackbtn i {
+	display: inline-block;
+	background-image: url(//img.58cdn.com.cn/ui7/post/pc/imgs/icons.png);
+	_background-image: url(//img.58cdn.com.cn/ui7/post/pc/imgs/icons_ie6.png);
+	background-position: -792px -39px;
+	*background-position: -792px -36px;
+	width: 8px;
+	height: 20px;
+	margin-right: 4px;
+	vertical-align: middle
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>用户中心</title>
+
+<link rel="stylesheet" type="text/css" href="./common/css/user_center_new.css">
+<link rel="stylesheet" type="text/css" href="./common/css/CompontsLoader.css">
+
+</head>
+
+<body>
+
+    <!--顶部-->
+	<div id="commonTopbar" class="commonTopbar" style="min-width: 1190px;">
+		<!--包-->
+		<div class="w pos">
+			<!--顶左-->
+			<div class="bar_left"><h2>成都</h2>
+				<div id="commonTopbar_homepageLink">
+					<strong><a class="mytxt"  target="_blank" tongji_tag="">B@P首页</a></strong>
+				</div>
+			</div>
+			<!--顶右-->
+			<div class="bar_right">
+				<div id="commonTopbar_login">
+					<span title="cdut135">cdut135</span>
+					<a  style="margin-left:6px" target="_self">退出</a>
+				</div>
+				<div id="commonTopbar_mymenu" class="haschild">
+					<a id="commonTopbar_tomy" target="_blank" href="Usercenter.html" tongji_tag="pc_topbar_log_my">买家中心</a>
+				</div>
+				<div id="commonTopbar_vip" class="haschild">
+					<a class="mytxt"  target="_blank">卖家中心</a>
+				</div>
+				<div id="commonTopbar_help" class="help-con haschild">
+					<a  class="mytxt" tongji_tag="pc_topbar_log_ai" target="_blank">联系客服</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+    <!--水平导航栏-->
+    <div class="header-guide">
+        <div class="header-container">
+        	<img id="uc-newlogo" src="./common/img/logo.png" onclick="" style="cursor:pointer">
+            <ul class="header-ul" id="header-ul">
+				<li class="header-selected">
+					<a class="a1"  target="_self" onclick="">买家中心</a>
+				</li>
+				<li>
+					<a class="a1"  target="_self" onclick="">账户设置</a>
+				</li>
+				<li>
+					<a class="a1"  target="_self" onclick="">我的资金</a>
+				</li>
+				<li>
+					<a class="a1"  target="_blank" onclick="">卖家中心</a>
+				</li>
+			</ul>
+            <div class="header-search-div">
+                <form onsubmit="b_query();return false;">
+			        <div class="header-input-div" id="searchbar">
+			                        <span id="key">
+			                            <input type="text" id="keyword" name="key" class="header-input" onblur="win.closeToolTipWindow();" placeholder="搜索" autocomplete="off" onkeyup="win.GetContentData();">
+			                        </span>
+			            <input type="submit" class="header-input-search-bt" id="searchbtn" value="" onclick="">
+			        </div>
+			    </form>
+                
+                <a class="header-bt"  onclick="" target="_blank">发布信息</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="uc-content-div">
+
+		<!--左侧垂直导航栏-->
+        <div class="leftmenu-div">
+		
+            <!--左侧菜单-->
+            <div class="leftmenu-content">
+                
+				<!--标题-->
+                <div class="leftmenu-content-header">
+                    <a  onclick=""><span>买家中心</span></a>
+                </div>
+                
+				<!--菜单-->
+				<ul class="leftmenu-content-ul">
+					<li id="menu3">
+						<a id="19"  target="_self" onclick="">
+						<span>我的收藏</span></a></li>     	              	
+					<li id="menu7" class="li-selected">
+						<a id="140"  target="_self" onclick="">
+						<span>交易记录</span></a></li>
+					<li id="menu7">
+						<a id="140"  target="_self" onclick="">
+						<span>查询积分</span></a></li>
+				</ul>
+                           
+			</div>
+
+        </div>
+
+        <div class="rightmenu-div">
+        <a class="tousu-bt"  target="_blank" onclick="">
+        	<span></span>
+        	<i>在线<br>客服</i>
+        </a>
+            <span id="currentmenu_name">交易记录</span>
+		<iframe id="ContainerFrame" 
+				name="ContainerFrame" 
+				onreadystatechange="stateChangeIE(this)" 
+				onload="ResizeFrame(this);Statistics()" 
+				scrolling="no" 
+				frameborder="0" 
+				width="815px" 
+				height="750px" 
+				src="./record.html" 
+				style="height: 750px; background: rgb(255, 255, 255);"></iframe>
+		</div>
+    </div>
+
+	<div class="footer">
+		<span class="blk">B@P</span>
+		<span class="red"><a  target="_blank">联系客服</a></span>
+	</div>
+
+
+<!-- <div id="addInfo" style="display: none;"><a href="">推荐信息</a></div> -->
+
+	<div style="display:none" id="ucAccountSetMask" class="ucAccountSetMask"></div>
+	<div style="display: none; top: 140px; left: 159.5px;" id="ucAccountSetMaskTip" class="ucAccountSetMaskTip">
+	<div></div>
+	</div>
+</body>
+</html>

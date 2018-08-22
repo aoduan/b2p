@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * shop_goods
  * @author 
@@ -17,21 +19,25 @@ public class ShopGoods implements Serializable {
     /**
      * 商品种类id
      */
+ 
     private String goodsCategoryId;
 
     /**
      * 卖方id
      */
+  
     private String goodsSellerId;
 
     /**
      * 商品区域id
      */
+  
     private String goodsAreaId;
 
     /**
      * 商品品牌id
      */
+  
     private String goodsBrandId;
 
     /**
@@ -87,31 +93,37 @@ public class ShopGoods implements Serializable {
     /**
      * 创建者
      */
+  
     private String createBy;
 
     /**
      * 创建时间
      */
+  
     private Date createDate;
 
     /**
      * 更新者
      */
+  
     private String updateBy;
 
     /**
      * 更新时间
      */
+  
     private Date updateDate;
 
     /**
      * 备注信息
      */
+  
     private String remarks;
 
     /**
      * 删除标记
      */
+  
     private String delFlag;
 
     /**

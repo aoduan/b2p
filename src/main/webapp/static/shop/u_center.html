@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>用户中心</title>
+
+	<link rel="stylesheet" type="text/css" href="./common/css/CompontsLoader.css">
+	<link rel="stylesheet" type="text/css" href="./common/css/user_center_new.css">
+	<script src="./common/js/jquery.js"></script>
+	<script src="./common/js/token.js"></script>
+	<script src="./common/js/u_index.js"></script>
+</head>
+
+<body>
+  <!--顶部-->
+	<div id="commonTopbar" class="commonTopbar" style="min-width: 1190px;">
+		<!--包-->
+		<div class="w pos">
+			<!--顶左-->
+			<div class="bar_left"><h2>成都</h2>
+				<div id="commonTopbar_homepageLink">
+					<strong><a class="mytxt" target="_self" href ="index.html" tongji_tag="">B@P首页</a></strong>
+				</div>
+			</div>
+			<!--顶右-->
+			<div class="bar_right">
+				<div id="commonTopbar_login">
+					<span title="cdut135" id="userNameOne" style="color:orange">my account</span><!--获取用户信息-->
+					
+					<a style="margin-left:6px" target="_self">退出</a>
+				</div>
+				<div id="commonTopbar_mymenu" class="haschild">
+					<a id="commonTopbar_tomy" target="_blank" href="Usercenter.html" tongji_tag="pc_topbar_log_my">买家中心</a>
+				</div>
+				<div id="commonTopbar_vip" class="haschild">
+					<a class="mytxt" target="_blank">卖家中心</a>
+				</div>
+				<div id="commonTopbar_help" class="help-con haschild">
+					<a class="mytxt" tongji_tag="pc_topbar_log_ai" target="_blank">联系客服</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!--水平导航栏-->
+    <div class="header-guide">
+        <div class="header-container">
+        	<!-- <img id="uc-newlogo" src="./common/img/logo.png" onclick="" style="cursor:pointer"> -->
+            <ul class="header-ul" id="header-ul">
+				<li>
+					<a class="a1" target="_self" onclick="">买家中心</a>
+				</li>
+				<li class="header-selected">
+					<a class="a1" target="_self" onclick="">账户设置</a>
+				</li>
+				<li>
+					<a class="a1" target="_self" onclick="">我的资金</a>
+				</li>
+				<li>
+					<a class="a1" target="_blank" onclick="">卖家中心</a>
+				</li>
+			</ul>
+            <div class="header-search-div">
+                <form onsubmit="b_query();return false;">
+			        <div class="header-input-div" id="searchbar">
+			                        <span id="key">
+			                            <input type="text" id="keyword" name="key" class="header-input" onblur="win.closeToolTipWindow();" placeholder="搜索" autocomplete="off" onkeyup="win.GetContentData();">
+			                        </span>
+			            <input type="submit" class="header-input-search-bt" id="searchbtn" value="" onclick="">
+			        </div>
+			    </form>
+                <a class="header-bt" onclick="" target="_blank">发布信息</a>
+            </div>
+        </div>
+    </div>
+	
+	<div class="uc-content-div">
+
+	<!--左侧垂直导航栏-->
+	<div class="leftmenu-div">
+		<div class="leftmenu-content">
+			<div class="leftmenu-content-header">
+				<a><span>账户设置</span></a>
+			</div>
+			<ul class="leftmenu-content-ul">
+				<li id="menu163" class="li-selected">
+				<a id="128" >
+				<span onclick="setInfo()">个人资料</span>
+				</a></li>
+				<li id="menu183">
+				<a id="71">
+				<span onclick="setPWD()">密码设置</span>
+				</a></li>
+				<li id="menu182">
+				<a id="43" >
+				<span onclick="setMessage()">消息管理</span>
+				</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="rightmenu-div">
+		<a class="tousu-bt" target="_blank" onclick="">
+		<span></span>
+		<i>在线<br>客服</i>
+		</a>
+		<div id="myInfo" style="display:block">
+		<iframe id="ContainerFrame"  
+				name="ContainerFrame"  
+				scrolling="no"  
+				frameborder="0" 
+				width="815px"  
+				height="750px"  
+				src="./persondata.html">
+	    </iframe>
+		</div>
+		<div id="myPWD" style="display:none">
+		<iframe id="ContainerFrame"  
+				name="ContainerFrame"  
+				scrolling="no"  
+				frameborder="0" 
+				width="815px"  
+				height="750px"  
+				src="./password.html">
+	    </iframe>
+		</div>
+		<div id="myMessage" style="display:none">
+		<iframe id="ContainerFrame"  
+				name="ContainerFrame"  
+				scrolling="no"  
+				frameborder="0" 
+				width="815px"  
+				height="750px"  
+				src="./message.html">
+	    </iframe>
+		</div>
+		
+				  
+	</div>
+	
+	</div>
+
+	<div class="footer">
+		<span class="blk">B@P</span><span class="red"><a target="_blank">联系客服</a></span>
+	</div>
+
+	<div></div>
+
+</body>
+</html>
