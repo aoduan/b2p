@@ -264,6 +264,31 @@ function initRecommend(){
 
 	});
 }
+/*将物品加入购物车*/
+function buy(){
+	if( GLOBAL_TOKEN==""){
+		window.location.href="./login.html";
+	}
+	$.ajax({
+		type : "POST",
+		headers : {
+			cdutb2p_shop_token : GLOBAL_TOKEN
+		},
+		url : getPath() + "/shop/customerCenter/myCart",
+		data : {
+			goods_id : getQueryString("goods_id"),
+		},
+		dataType : "json",
+		success : function(data) {
+			alert("添加成功");
+		},
+		error : function(data) {
+			//layer.alert('系统错误');
+		}
+
+	});
+	
+}
 function renderRecommend(data){
 	html = "";
 	for(var i in data){

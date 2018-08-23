@@ -398,6 +398,16 @@ public class ShopGoodsServiceImpl implements ShopGoodsService {
 		
 		return rs;
 	}
+	/**
+	 * @desc 对比商品信息
+	 * @param shopGoodsInfo
+	 * @return
+	 */
+	@Override
+	public List<ShopGoods> compareGoods(ShopGoodsInfo shopGoodsInfo) {
+		List<ShopGoods>list=shopGoodsMapper.compareGoods(shopGoodsInfo);
+		return list;
+	}
 
 	@Transactional(readOnly = false)
 	@Override

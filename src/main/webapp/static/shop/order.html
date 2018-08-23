@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="icon" href="./common/img/page_logo.png" type="image/x-icon" />
+<title>购买</title>
+<link rel="stylesheet" type="text/css" href="./common/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="./common/css/CompontsLoader.css">
+<link rel="stylesheet" type="text/css" href="./common/css/user_center_new.css">
+<link rel="stylesheet" type="text/css" href="./common/css/ershou_pub.css">
+<link rel="stylesheet" href="./common/css/font-awesome.min.css">
+<link rel="stylesheet" href="./common/css/common.css">
+<link rel="stylesheet" href="./common/css/order-confirm.css">
+<link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css">
+<script src="./common/js/token.js"></script>
+<script src="./common/js/path.js"></script>
+<script src="./common/js/jquery.js"></script>
+<script src="./common/js/order.js"></script>
+</head>
+
+<body>
+	<!--顶部-->
+	<div id="commonTopbar" class="commonTopbar" style="min-width: 1190px;">
+		<!--包-->
+		<div class="w pos">
+			<!--顶左-->
+			<div class="bar_left">
+				<h2>成都</h2>
+				<div id="commonTopbar_homepageLink">
+					<strong><a class="mytxt" href="./index.html" target="_self">B@P首页</a></strong>
+				</div>
+			</div>
+			<!--顶右-->
+			<div class="bar_right">
+				<div id="commonTopbar_login">
+					<span title="cdut135">cdut135</span>
+					<!--获取用户信息-->
+					<a style="margin-left: 6px" href="./login.html" target="_self">退出</a>
+				</div>
+				<div id="commonTopbar_mymenu" class="haschild">
+					<a id="commonTopbar_tomy" href=""
+						target="_blank">买家中心</a>
+				</div>
+				<div id="commonTopbar_vip" class="haschild">
+					<a class="mytxt" href="./m_seller_product.html" target="_blank">卖家中心</a>
+				</div>
+				<div id="commonTopbar_help" class="help-con haschild">
+					<a class="mytxt" target="_blank">联系客服</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--水平导航栏-->
+	<div class="header-guide">
+		<div class="header-container">
+			<ul class="header-ul" id="header-ul">
+				<li><a class="a1" href="./m_buyer_collection.html"
+					target="_self">买家中心</a></li>
+				<li><a class="a1" href="#" target="_self">账户设置</a>
+				</li>
+				<li><a class="a1" href="#" target="_self">卖家中心</a>
+				</li>
+			</ul>
+			<div class="header-search-div">
+				<a class="header-bt" href="#" target="_blank">发布信息</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="page-wrap w">
+		<div class="panel">
+			<h1 class="panel-title">收货地址</h1>
+			<div class="panel-body address-con" style="display:inline-block" id="address">
+				<div class="address-add" onclick="address()">
+					<div class="address-new">
+						<i class="fa fa-plus"></i>
+						<div class="text">使用新地址</div>
+					</div>
+				</div>
+			</div>
+			<!-- 弹出新增地址 -->
+			<div id="increAddress" style="display:none;position: fixed;left: 0;top: 0;width: 100%;height: 100%;background-color: rgba(0,0,0,0.5);">
+			    <div style="border-radius: 4px;background:#eeeeee;width:400px;height:380px;z-index: 1;margin: 12% auto;overflow: auto;">
+			        <div style="display:block;">
+			        <h1 class="panel-title" style="display:inline-block;">使用新地址</h1>
+			        <input type="button" value="X" style="font-size:20px;margin-left:270px;width:30px;height:30px;background:#eeeeee;border-radius:8px;border:1px solid #eeeeee;display:inline-block;"
+			        onclick="closeAddress()">
+			        </div>
+			        <form>
+			            <span style="display:inline-block;text-align:right;width: 100px;line-height: 40px"><label style="color:red;">*</label>收件人:</span>
+			            <div style="display:inline-block;width:250px;height:40px">
+			                <input type="text" id="addressReceiverName" name="addressReceiverName" style="display:inline-block;width:200px;height:30px;border:1px solid #EEEED1;" value="张三先生"/>
+			            </div>
+			            <span style="display:inline-block;text-align:right;width: 100px;line-height: 40px"><label  style="color:red;">*</label>所在城市:</span>
+			            <div style="display:inline-block;width:250px;height:40px">
+			                <select id="select_area_province" style="display:inline-block;width:66px;height:30px;border:1px solid #EEEED1;">   
+			                </select>
+			                <select id="select_area_city" style="display:inline-block;width:65px;height:30px;border:1px solid #EEEED1;">         
+			                </select>
+			                <select id="select_area_area" style=";display:inline-block;width:65px;height:30px;border:1px solid #EEEED1;">     
+			                </select>
+			            </div>
+			            <span style="display:inline-block;text-align:right;width:100px;line-height: 40px"><label  style="color:red;">*</label>详细地址:</span>
+			            <div style="display:inline-block;width:250px;height:40px">
+			                <input type="text" id="addressDetail" name="addressDetail" style="display:inline-block;width:200px;height:30px;border:1px solid #EEEED1;" value="成都理工大学">
+			            </div>
+			            <span style="display:inline-block;text-align:right;width: 100px;line-height: 40px"><label  style="color:red;">*</label>手机号:</span>
+			            <div style="display:inline-block;width:250px;height:40px">
+			                <input type="text" id="addressTelphone" name="addressTelphone" style="display:inline-block;width:200px;height:30px;border:1px solid #EEEED1;" value="18426633459">
+			            </div>
+			            <span style="display:inline-block;text-align:right;width: 100px;line-height: 40px"><label  style="color:red;"></label>邮政编码:</span>
+			            <div style="display:inline-block;width:250px;height:40px">
+			                <input type="text" id="addressZipcode" name="addressZipcode" style="display:inline-block;width:200px;height:30px;border:1px solid #EEEED1;" value="618270">
+			            </div>
+			            <div style="margin-top:20px;display:block;width:250px;height:40px">
+			                <input type="button" value="保存该地址" onclick="sureAddress()" style="margin-left:105px;border-radius:4px;width: 100px;height: 40px;background: #fff;color:orangered;border:1px solid orangered;">
+			            </div>
+			
+			        </form>
+			    </div>
+			</div>
+			<!-- 新增地址结束 -->
+			<script src="./common/js/tankuang.js"></script>
+		</div>
+		<div class="panel">
+			<h1 class="panel-title">商品清单</h1>
+			<div class="panel-body product-con">
+				<table class="product-table">
+					<tbody>
+						<tr>
+							<th class="cell-img">&nbsp;</th>
+							<th class="cell-info">商品描述</th>
+							<th class="cell-price">价格</th>
+							<th class="cell-count">数量</th>
+							<th class="cell-total">小计</th>
+						</tr>
+						<tr>
+							<td class="cell-img">
+							<a href=""><img class="p-img" id="goods_img"/></a>
+							</td>
+							<td class="cell-info">
+								<a><span id="goods_title"></span></a>
+							</td>
+							<td class="cell-price"><span id="goods_price"></span></td>
+							<td class="cell-count"><span id="goods_count">1</span></td>
+							<td class="cell-total"><span id="goods_total"></span></td>
+							<td><input type="hidden" id="order_id" value=""></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="submit-con">
+					<span >订单总价:</span> <span class="submit-total" id="order_price"></span>
+					<span class="btn order-submit">提交订单</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>

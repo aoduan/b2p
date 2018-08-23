@@ -16,6 +16,7 @@ import com.cdut.b2p.common.utils.IdUtils;
 import com.cdut.b2p.modules.shop.mapper.ShopCommentMapper;
 import com.cdut.b2p.modules.shop.po.ShopComment;
 import com.cdut.b2p.modules.shop.po.ShopCommentExample;
+import com.cdut.b2p.modules.shop.po.ShopCommentVo;
 import com.cdut.b2p.modules.shop.service.ShopCommentService;
 @Service
 @Transactional
@@ -139,6 +140,15 @@ public class ShopCommentServiceImpl implements ShopCommentService {
 		ShopCommentExample example=new ShopCommentExample();
 		example.or().andCreateDateBetween(startDate, endDate);
 		List<ShopComment> list=shopCommentMapper.selectByExample(example);
+		return list;
+	}
+	/**
+     * @desc 展示用户对某件商品的评论
+     * @param gid
+     */
+	@Override
+	public List<ShopCommentVo> selectCommentByGId(String gid) {
+		List<ShopCommentVo> list=shopCommentMapper.selectCommentByGId(gid);
 		return list;
 	}
 

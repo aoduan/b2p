@@ -8,6 +8,7 @@ import java.util.List;
 import org.quartz.SimpleTrigger;
 
 import com.cdut.b2p.modules.shop.po.ShopOrder;
+import com.cdut.b2p.modules.shop.po.ShopOrderVo;
 
 public interface ShopOrderService {
 	/**
@@ -15,6 +16,13 @@ public interface ShopOrderService {
 	 * @author zsb
 	 */
 	public Integer addOrdersCountByMonth();
+	/**
+	 * @desc 添加一个订单
+	 * @param uid
+	 * @param gid
+	 * @return
+	 */
+	public ShopOrder addOrder(String uid,String gid);
 	/**
 	 * @desc 查询某一时间段内的用户订单
 	 * @author zsb
@@ -35,6 +43,12 @@ public interface ShopOrderService {
 	 * @return
 	 */
 	public List<ShopOrder> findOrderByCustomer(String id);
+	/**
+	 * @desc 展示用户的 订单信息
+	 * @param uid
+	 * @return
+	 */
+	public List<ShopOrderVo> myOrders(String uid);
 	/**
 	 * @desc 通过卖方id，查询订单
 	 * @param id

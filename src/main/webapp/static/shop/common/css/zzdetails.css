@@ -126,6 +126,7 @@ body {
 
 .wrapper {
 	width: 1100px;
+	height: 100%;
 	margin: 0 auto
 }
 
@@ -229,6 +230,22 @@ body {
 	background-color: #fff
 }
 
+.watch {
+	margin-top:15px;
+    font-size: 9.6px;
+	width:78px;
+    height: 34px;
+	color: #666;
+    background-color: #EFE;
+    border-color: #EFE;
+    font-weight: 300;
+	/* font-family: tahoma,arial,\5FAE\8F6F\96C5\9ED1,sans-serif; */
+    text-decoration: none;
+    text-align: center;
+	font: 400 13.3333px Arial;
+	letter-spacing: normal;
+}
+
 .box_left {
 	float: left;
 	width: 750px;
@@ -240,7 +257,7 @@ body {
 	float: right;
 	width: 280px;
 	margin: 0;
-	background: #fff
+	background: #f8f8f8
 }
 
 .banner {
@@ -280,6 +297,24 @@ body {
 	line-height: 16px;
 	font-size: 12px;
 	color: #499aff
+}
+/* 评论 */
+.box_title {
+	height: 18px;
+	margin: 30px 0 10px 0;
+	border-left: solid 2px #fe5039;
+	line-height: 18px;
+	text-indent: 10px;
+	font-size: 16px;
+	color: #333
+}
+
+.baby_comment .box_title {
+	margin: 20px 0 10px 0
+}
+
+.box_title i {
+	color: #ff472e
 }
 
 #fix_erweima {
@@ -748,6 +783,7 @@ span.btn_sold_icon {
 }
 
 .boby_pic {
+	background:rgb(248, 248, 248);
 	width: 100%;
 	margin: 20px auto
 }
@@ -758,6 +794,107 @@ span.btn_sold_icon {
 	width: 750px;
 	height: 500px;
 	overflow: hidden
+}
+/* 评论 */
+.com_body {
+	width: 750px;
+	height: auto;
+	/* margin: 20px auto */
+	font: 12px/1.5 tahoma,arial,"\5b8b\4f53";
+}
+
+.baby_comment{
+}
+
+.baby_comment .com_body table {
+	background:rgb(248, 248, 248);
+	width:750px;
+	height:40px;
+	border-top:5px;
+	border:solid 1px #FFDAB9;
+}
+
+.baby_comment .com_body tbody {
+	background:rgb(248, 248, 248);
+	width:343px;
+	height:40px;
+}
+
+.baby_comment .com_body tr {
+	text-align:left;
+	background:rgb(248, 248, 248);
+	width:343px;
+	height:40px;
+}
+
+.baby_comment .com_body .com_main .com_content {
+	text-align:left;
+	/* font-family: "楷体"; */
+	line-height:18px;
+	font-size:12px;
+	font-family: tahoma,arial,\5FAE\8F6F\96C5\9ED1,sans-serif;
+	width:auto;
+	height:40px;
+	margin-top:5px;
+}
+
+.baby_comment .com_body .com_author div{
+	
+}
+
+.baby_comment .com_body .com_author .com_date {
+	text-align:center;
+	font-family: "楷体";
+	/* font-family: tahoma,arial,\5FAE\8F6F\96C5\9ED1,sans-serif; */
+	font-size:14px;
+	width:auto;
+}
+
+.baby_comment .com_body .com_author .author_info {
+	text-align:center;
+	font-family: "楷体";
+	/* font-family: tahoma,arial,\5FAE\8F6F\96C5\9ED1,sans-serif; */
+	font-size:14px;
+	width:100px;
+	height:20px;
+	margin-top:5px;
+}
+
+.baby_comment .com_body .com_author .author_info span {
+	font-family: "楷体";
+	/* font-family: tahoma,arial,\5FAE\8F6F\96C5\9ED1,sans-serif; */
+	font-size:14px;
+}
+.baby_comment .com_body .com_user{
+}
+.baby_comment .com_body .com_user .com_describle {
+	text-align:left;
+	margin-top:15px;
+	background:#f8f8f8;
+	font-family: tahoma,arial,\5FAE\8F6F\96C5\9ED1,sans-serif;
+	color:#233333;
+	height:130px;   
+	width:750px;
+	font-size:14px;
+	resize:none;
+	border:solid 1px #FFDAB9;
+	
+}
+
+.baby_comment .com_body .com_user .com_button {
+	border-radius: 4px;
+    font-size: 9.6px;
+    height: 24px;
+    padding: 0 24px;
+	color: #666;
+    background-color: #EFE;
+    border-color: #EFE;
+    font-weight: 300;
+	/* font-family: tahoma,arial,\5FAE\8F6F\96C5\9ED1,sans-serif; */
+    text-decoration: none;
+    text-align: center;
+	font: 400 13.3333px Arial;
+	letter-spacing: normal;
 }
 
 .ad_detail_middle a {
@@ -1406,7 +1543,7 @@ img.no_comts {
 	text-align: center;
 	color: #999;
 	background: #fff;
-	border: #ccc solid 0px;
+	border: #ccc solid 1px;
 	overflow: hidden
 }
 

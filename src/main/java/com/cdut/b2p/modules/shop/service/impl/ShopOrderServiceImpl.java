@@ -1,6 +1,9 @@
 package com.cdut.b2p.modules.shop.service.impl;
 
 
+import static org.junit.jupiter.api.Assumptions.assumingThat;
+
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,6 +17,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+
+import com.cdut.b2p.common.utils.IdUtils;
+
 import com.cdut.b2p.modules.shop.mapper.ShopGoodsMapper;
 import com.cdut.b2p.modules.shop.mapper.ShopOrderMapper;
 import com.cdut.b2p.modules.shop.po.ShopGoods;
@@ -21,6 +27,7 @@ import com.cdut.b2p.modules.shop.po.ShopGoodsExample;
 
 import com.cdut.b2p.modules.shop.po.ShopOrder;
 import com.cdut.b2p.modules.shop.po.ShopOrderExample;
+import com.cdut.b2p.modules.shop.po.ShopOrderVo;
 import com.cdut.b2p.modules.shop.service.ShopOrderService;
 
 @Service
@@ -204,6 +211,39 @@ public class ShopOrderServiceImpl implements ShopOrderService{
 		}
 		return false;
 
+	}
+	/**
+	 * @desc 展示用户的 订单信息
+	 * @param uid
+	 * @return
+	 */
+	@Override
+	public List<ShopOrderVo> myOrders(String uid) {
+		List<ShopOrderVo> list=shopOrderMapper.myOrders(uid);
+		return list;
+	}
+	/**
+	 * @desc 添加一个订单
+	 * @param uid
+	 * @param gid
+	 * @return
+	 */
+	@Override
+	public ShopOrder addOrder(String uid, String gid) {
+		//根据商品id，查询商品价格
+		ShopGoods goods=shopGoodsMapper.selectByPrimaryKey(gid);
+		ShopOrder order=new ShopOrder();
+		order.setId(IdUtils.uuid());
+		order.setOrderBuyerId(uid);
+		order.setOrderGoodsId(gid);
+		order.setCreateDate(new Date());
+		order.setOrderStatus("0");
+		order.setDelFlag("0");
+		order.setOrderPrice(goods.getGoodsPresentPrice());
+	
+		int count=shopOrderMapper.insertSelective(order);
+		
+		return order;
 	}
 
 }

@@ -90,15 +90,14 @@ public class SysUserController extends BaseController{
 	 */
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String register(HttpServletResponse response,HttpSession session,SysUser sysUser) {
+	public String register(HttpServletResponse response,SysUser sysUser) {
 		ModelAndView model=new ModelAndView();
 		System.out.println("注册信息:"+sysUser);
 		int count = sysUserService.addSysUser(sysUser);
 		if(count!=0) {
-			session.setAttribute("SYSUSER",sysUser);
+		
 			model.addObject("Message", "index");
 			//输出sessionid
-			System.out.println(session.getId());
 			return renderString(response, model);
 		}
 		//表示表示注册信息失败

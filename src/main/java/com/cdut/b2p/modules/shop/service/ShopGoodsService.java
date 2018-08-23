@@ -33,6 +33,12 @@ public interface ShopGoodsService {
 	 */
 	public List<ShopGoods> findGoodsByDate(Date startDate,Date endDate);
 	/**
+	 * @desc 对比商品信息
+	 * @param shopGoodsInfo
+	 * @return
+	 */
+	public List<ShopGoods> compareGoods(ShopGoodsInfo shopGoodsInfo);
+	/**
 	 * @desc 根据id，更新某一件商品
 	 * @param shopGoods
 	 * @return boolean

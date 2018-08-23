@@ -7,20 +7,20 @@ $.ajax({
 	url : "/b2p/shop/customerCenter/selectMyCollection",
 	data : {},
 	success : function(data) {
+		
 		$("#tbody").append('<form method="post">');
 		$.each(data.model.CollectionList, function(index, item) {
-				
-			$("#tbody").append('<tr>' +
-					'<td><input name="checkbox" type="checkbox" /></td>' +
-					'<td><img style="width:100px;height:100px" src=../..'+item.url+'></td>'+
-					'<td>'+item.describe+'</td>' + 
-					'<td>'+item.createDate+'</td>'+
-					'<td><input type="hidden" id="id'+index+'" value='+item.id+'>'+
-				    '</tr>');
+			
+			$("#tbody").append('<tr style="height:120px; overflow: hidden;display:block;margin-top:15px;border-bottom:thick dotted #fff;">' +
+					'<td style="width:20px;margin-right:10px"><input name="checkbox" type="checkbox" /></td>' +
+					'<td><a href="goods.html?goods_id='+item.collectionGoodsId+'"><img style="width:100px;height:100px" src=../..'+item.url+'></a></td>'+
+					'<td><span style="padding-top:20px;font-size:12px;margin-left:10px;text-align:left;width:200px;height:100px;overflow:hidden;display:block">'+item.describe+'<span></td>' + 
+					'</td>'+
+				    '</tr>');	
 		});
-		$("#tbody").append('<tr>' +
-				'<td><input type="checkbox" name="answer" onclick="checkAll(this)"/>全选<td>'+
-				'<td><input type="button" onclick="isCheck()" value="删除">'+
+		$("#tbody").append('<tr style="height:120px; overflow: hidden;display:block;margin-top:15px;border-bottom:thick dotted #fff;">' +
+				'<td style="width:60px;margin-right:10px"><input type="checkbox" name="answer" onclick="checkAll(this)"/>全选<td>'+
+				'<td style="width:60px"><input type="button" onclick="isCheck()" value="删除" style="background:#ff552e;color:#fff;border:1px solid #ff552e;">'+
 				'</tr>');
 		$("#tbody").append("</form>");
 	},

@@ -66,7 +66,7 @@ i {
 }
 
 th,td {
-    border: 1px solid #999;
+    border: 1px solid #FFDAB9;
     padding: .5em 1em
 }
 
@@ -245,7 +245,8 @@ a:hover,a:focus,a:active {
 }
 
 .tr {
-    text-align: right
+    text-align: right;
+	border:solid 1px #FFDAB9;
 }
 
 .bc {

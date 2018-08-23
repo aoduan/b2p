@@ -28,6 +28,7 @@ import com.cdut.b2p.common.config.Global;
 import com.cdut.b2p.common.controller.BaseController;
 import com.cdut.b2p.common.utils.IdUtils;
 import com.cdut.b2p.common.utils.SecurityUtils;
+import com.cdut.b2p.modules.shop.po.ShopAddress;
 import com.cdut.b2p.modules.shop.po.ShopCart;
 import com.cdut.b2p.modules.shop.po.ShopCartVo;
 import com.cdut.b2p.modules.shop.po.ShopCollection;
@@ -35,6 +36,7 @@ import com.cdut.b2p.modules.shop.po.ShopCollectionVo;
 import com.cdut.b2p.modules.shop.po.ShopGoods;
 import com.cdut.b2p.modules.shop.po.ShopGoodsInfo;
 import com.cdut.b2p.modules.shop.po.ShopOrder;
+import com.cdut.b2p.modules.shop.po.ShopOrderVo;
 import com.cdut.b2p.modules.shop.po.ShopUser;
 import com.cdut.b2p.modules.shop.po.ShopWorkorder;
 import com.cdut.b2p.modules.shop.security.annotation.ShopAuth;
@@ -142,10 +144,12 @@ public class CustomerCenterController extends BaseController{
 	@ShopAuth
 	@RequestMapping(value="/myOrder",method=RequestMethod.POST)
 	public String getMyOrder(HttpServletResponse response,HttpServletRequest request) {
+		System.out.println("查询我的订单信息");
 		ModelAndView model=new ModelAndView();
 		String uid=(String) request.getAttribute("uid");
-		List<ShopOrder> orderList=shopOrderService.findOrderByCustomer(uid);
-		model.addObject("OrderList", orderList);
+		List<ShopOrderVo> orderList=shopOrderService.myOrders(uid);
+		System.out.println("查询我的订单信息"+orderList.size());
+		model.addObject("OrderVoList", orderList);
 		return renderString(response, model); 
 	}
 	/**
@@ -252,46 +256,6 @@ public class CustomerCenterController extends BaseController{
 		return renderString(response, "删除成功");
 	}
 
-//	/**
-//	 * @desc 添加商品到购物车
-//	 * @param response
-//	 * @param request
-//	 * @return
-//	 */
-//	@ShopAuth
-//	@RequestMapping(value="/myCart",method=RequestMethod.POST)
-//	public String myCart(HttpServletResponse response,HttpServletRequest request) {
-//		String uid=(String) request.getAttribute("uid");
-//		String gid=request.getParameter("gid");
-//		shopCartService.addCart(uid, gid);
-//		return renderString(response, "添加成功");
-//	}
-//	/**
-//	 * @desc 查询我的购物车
-//	 * @param response
-//	 * @param request
-//	 * @return
-//	 */
-//	@ShopAuth
-//	@RequestMapping("/selectMyCart")
-//	public String selectMyCart(HttpServletResponse response,HttpServletRequest request) {
-//		String uid=(String) request.getAttribute("uid");
-//		ModelAndView model=new ModelAndView();
-//		List<ShopCart> list=shopCartService.findCartByUser(uid);
-//		model.addObject("CartList", list);
-//		return renderString(response, model);
-//	}
-//	/**
-//	 * @desc 删除我的购物车
-//	 * @param response
-//	 * @param request
-//	 * @return
-//	 */
-//	public String delMyCart(HttpServletResponse response,HttpServletRequest request) {
-//		String[]ids=request.getParameterValues("gid");
-//		shopCartService.delCart(ids);
-//		return renderString(response, "删除成功");
-//	}
 
 	
 	
@@ -324,11 +288,7 @@ public class CustomerCenterController extends BaseController{
 	}
 	
 	
-	
-	
-	
-	
-	
+
 	
 	/**
 	 * @desc 添加商品到购物车
@@ -340,7 +300,7 @@ public class CustomerCenterController extends BaseController{
 	@RequestMapping(value="/myCart",method=RequestMethod.POST)
 	public String myCart(HttpServletResponse response,HttpServletRequest request) {
 		String uid=(String) request.getAttribute("uid");
-		String gid=request.getParameter("gid");
+		String gid=request.getParameter("goods_id");
 		shopCartService.addCart(uid, gid);
 		return renderString(response, "添加成功");
 	}
@@ -387,6 +347,10 @@ public class CustomerCenterController extends BaseController{
 		//获取商品id
 		ShopGoodsInfo goods=shopGoodsService.findGoodsByGoodsId(cart.getCartGoodsId(), false);
 		//对比功能->价格
+		List<ShopGoods> list=shopGoodsService.compareGoods(goods);
+		System.out.println("对比商品:"+list.size());
+		System.out.println(list.get(0));
+		model.addObject("ShopGoodsList", list);
 		return renderString(response, model);
 	}
 

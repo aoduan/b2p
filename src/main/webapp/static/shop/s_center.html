@@ -1,16 +1,16 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="icon" href="./common/img/page_logo.png" type="image/x-icon" />
 	<title>卖家中心</title>
+	<link rel="icon" href="./common/img/page_logo.png" type="image/x-icon" />
 	<link rel="stylesheet" type="text/css" href="./common/css/user_center_new.css">
 	<link rel="stylesheet" type="text/css" href="./common/css/CompontsLoader.css">
 	<script src="./common/js/token.js"></script>
 	<script src="./common/js/path.js"></script>
 	<script src="./common/js/jquery.js"></script>
 	<script src="./common/js/s_index.js"></script>
-
+    <script src="./common/js/s_goods.js"></script>
 </head>
 
 <body>
@@ -41,8 +41,7 @@
 	<!--水平导航栏-->
     <div class="header-guide">
         <div class="header-container">
-        	<!-- <img id="uc-newlogo" src="./common/img/logo.png" onclick="" style="cursor:pointer"> -->
-            <ul class="header-ul" id="header-ul">
+        	 <ul class="header-ul" id="header-ul">
 				<li>
 					<a class="a1" target="_self" onclick="" href="c_center.html">买家中心</a>
 				</li>
@@ -53,85 +52,131 @@
 					<a class="a1" target="_self" onclick="" href="#">卖家中心</a>
 				</li>
 			</ul>
-            <div class="header-search-div">
-                
+            <div class="header-search-div"> 
                 <a class="header-bt" onclick="" target="_self" href="goods_onshelf.html">发布信息</a>
             </div>
         </div>
     </div>
-	
+
 	<div class="uc-content-div">
 
-	<!--左侧垂直导航栏-->
-	<div class="leftmenu-div">
-		<div class="leftmenu-content">
-			<div class="leftmenu-content-header">
-				<a><span>卖家中心</span></a>
+		<!--左侧垂直导航栏-->
+		<div class="leftmenu-div">
+			<div class="leftmenu-content">
+				<div class="leftmenu-content-header">
+					<a><span>卖家中心</span></a>
+				</div>
+				<ul class="leftmenu-content-ul">
+					<li id="menu163" class="li-selected"><a id="128"
+						href="s_center.html"> <span>我的商品</span>
+					</a></li>
+					<li id="menu183"><a id="71" href="s_record.html"> <span>交易记录</span>
+					</a></li>
+					<li id="menu182"><a id="43" href="s_message.html"> <span>卖家通知</span>
+					</a></li>
+				</ul>
 			</div>
-			<ul class="leftmenu-content-ul">
-				<li id="menu163" class="li-selected">
-				<a id="128" >
-				<span onclick="setGoods()">我的商品</span>
-				</a></li>
-				<li id="menu183">
-				<a id="71">
-				<span onclick="setOrder()">交易记录</span>
-				</a></li>
-				<li id="menu182">
-				<a id="43" >
-				<span onclick="setMessage()">卖家通知</span>
-				</a></li>
-			</ul>
-		</div>
-	</div>
-	
-	<div class="rightmenu-div">
-		<a class="tousu-bt" target="_blank" onclick="">
-		<span></span>
-		<i>在线<br>客服</i>
-		</a>
-		<div id="myGoods" style="display:block">
-		<iframe id="ContainerFrame"  
-				name="ContainerFrame"  
-				scrolling="no" 
-				frameborder="0" 
-				width="815px"  
-				height="750px"  
-				src="./s_goods.html">
-	    </iframe>
-		</div>
-		<div id="myOrder" style="display:none">
-		<iframe id="ContainerFrame"  
-				name="ContainerFrame"  
-				scrolling="no"  
-				frameborder="0" 
-				width="815px"  
-				height="750px"  
-				src="./s_record.html">
-	    </iframe>
-		</div>
-		<div id="myMessage" style="display:none">
-		<iframe id="ContainerFrame"  
-				name="ContainerFrame"  
-				scrolling="no"  
-				frameborder="0" 
-				width="815px"  
-				height="750px"  
-				src="./s_message.html">
-	    </iframe>
-		</div>
-		
-				  
-	</div>
-	
-	</div>
-
-		<div class="footer">
-			<span class="blk">B@P</span> <span class="red"><a
-				target="_blank">联系客服</a></span>
 		</div>
 
+		<div class="rightmenu-div">
+			<a class="tousu-bt" target="_blank" onclick=""> <span></span> <i>在线<br>客服
+			</i></a>
+			<div id="myGoods" style="display: block;width:100%;">
+				<!--右侧发布信息-->
+				<div class="rightside-publish-content">
+					<div class="my-item-div" id="my-item">
+
+
+						<div class="my-item-item">
+							<table class="my-item-item-tb my-item-item-hover"
+								id="tr35131990758322" key="35131990758322" state="1">
+
+								<thead class="my-item-item-tb-header">
+									<tr>
+										<!--商品编号-->
+										<th colspan="2" class="my-item-item-tb-code"><span
+											class="my-item-item-header-code">商品id: 35131990758322</span>
+										</th>
+
+									</tr>
+								</thead>
+
+								<tbody>
+									<tr class="my-item-item-tb-content disp">
+										<!--商品图片-->
+										<td class="my-item-item-tb-content-img-td width90"><a
+											target="_blank"> <img
+												src="./common/img/n_v24f1c2675a4894c80b485d3d80c3e0e02.jpg">
+										</a></td>
+										<!--商品信息-->
+										<td class="width223">
+											<div class="my-item-item-tb-content-titles">
+												<p class="my-item-item-content-left-title">
+													<a target="_blank" class="t">balabala好东西</a>
+												</p>
+												<p class="my-item-item-content-left-date">2018-08-17
+													09:17</p>
+												<p class="my-item-item-content-left-detail">
+													<a target="_blank" class="a_xq1">成都</a> - <a
+														target="_blank" class="a_xq1">二手手机</a>
+												</p>
+											</div>
+										</td>
+										<!--商品状态-->
+										<td class="width243">
+											<div class="my-item-item-tb-content-states">
+												<p class="my-item-item-tb-content-states-p1">
+													<span>货架显示中</span>
+												</p>
+												<p class="my-item-item-tb-content-states-p2">浏览 3</p>
+												<p class="xsitxt" id="zdmsgts_35131990758322"
+													style="display: block;">该信息正处于置顶中，把电话充好电准备接电话吧~</p>
+											</div>
+										</td>
+										<!--商品操作-->
+										<td>
+											<div class="my-item-item-tb-content-option" id="">
+
+												<span><a id="" href="./goods_edit.html"
+													target="_blank">修改</a></span> <span><a onclick="" id="">删除</a></span>
+
+												<span><a onclick=""
+													class="commercial_link commercial_link_hyt">置顶</a></span>
+											</div>
+										</td>
+
+									</tr>
+									<tr class="infotdno">
+									</tr>
+								</tbody>
+
+							</table>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div style="display: none" id="ucAccountSetMask"
+				class="ucAccountSetMask"></div>
+
+			<div style="display: none; top: 140px; left: 0px;"
+				id="ucAccountSetMaskTip" class="ucAccountSetMaskTip">
+				<div></div>
+			</div>
+
+		</div>
+
 	</div>
+
+
+	</div>
+
+
+	<div class="footer">
+		<span class="blk">B@P</span> <span class="red"><a target="_blank">联系客服</a></span>
+	</div>
+
 </body>
 <script>
 </script>

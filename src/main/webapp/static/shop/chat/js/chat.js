@@ -42,10 +42,10 @@ if(token != ""){
 		}	
 	};
 	websocket.onerror = function(event) {
-		layer.alert("系统错误");
+		//layer.alert("系统错误");
 	};
 	websocket.onclose = function(event) {
-		layer.alert("系统错误");	
+		//layer.alert("系统错误");	
 	}
 }else{
 	$('#chat').hide()
@@ -366,7 +366,7 @@ function getMsgList(){
 			}
 		},
 		error : function(data) {
-			layer.alert('系统错误');
+			//layer.alert('系统错误');
 		}
 
 	});
@@ -390,7 +390,7 @@ function getMsg(to_id){
 			}
 		},
 		error : function(data) {
-			layer.alert('系统错误');
+			//layer.alert('系统错误');
 		}
 
 	});

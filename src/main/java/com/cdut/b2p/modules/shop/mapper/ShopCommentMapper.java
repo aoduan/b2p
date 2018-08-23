@@ -3,6 +3,8 @@ package com.cdut.b2p.modules.shop.mapper;
 import com.cdut.b2p.common.po.annotation.MyBatisMapper;
 import com.cdut.b2p.modules.shop.po.ShopComment;
 import com.cdut.b2p.modules.shop.po.ShopCommentExample;
+import com.cdut.b2p.modules.shop.po.ShopCommentVo;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -29,4 +31,8 @@ public interface ShopCommentMapper {
     int updateByPrimaryKeySelective(ShopComment record);
 
     int updateByPrimaryKey(ShopComment record);
+    /**
+     * @desc 展示用户对某件商品的评论
+     */
+    public List<ShopCommentVo> selectCommentByGId(String gid);
 }

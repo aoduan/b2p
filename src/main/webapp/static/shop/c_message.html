@@ -1,46 +1,114 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>用户中心</title>
-<link rel="stylesheet" type="text/css"
-	href="./common/css/CompontsLoader.css" />
-<link rel="stylesheet" type="text/css"
-	href="./common/css/user_center_new.css" />
-<link href="./common/css/user-n2012.css" rel="stylesheet"
-	type="text/css" />
-<link rel="stylesheet" href="./common/css/bootstrap.min.css"/>
-<script src="./common/js/jquery.js"></script>
-<script src="./common/js/token.js"></script>
 
-<script src="./common/js/c_message.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link rel="icon" href="./common/img/page_logo.png" type="image/x-icon" />
+    <title>买家中心</title>
+	<link rel="stylesheet" type="text/css" href="./common/css/user_center_new.css"/>
+	<link rel="stylesheet" type="text/css" href="./common/css/CompontsLoader.css"/> 
+	<link rel="stylesheet" href="./common/css/bootstrap.min.css"/>
+    <script src="./common/js/jquery.js"></script>
+	<script src="./common/js/token.js"></script>
+    <script src="./common/js/c_index.js"></script>
+    <script src="./common/js/c_message.js"></script>
+
 </head>
+
 <body>
-	<div>
+    <!--顶部-->
+	<div id="commonTopbar" class="commonTopbar" style="min-width: 1190px;">
+		<!--包-->
+		<div class="w pos">
+			<!--顶左-->
+			<div class="bar_left">
+				<div id="commonTopbar_homepageLink">
+					<strong><a class="mytxt" href="index.html" target="_self" tongji_tag="">B@P首页</a></strong>
+				</div>
+			</div>
+			<!--顶右-->
+			<div class="bar_right">
+				<div id="commonTopbar_login">
+					<span title="cdut135" id="userNameOne" style="color:orange">my account</span><!--获取用户信息-->
+					<!-- <span class="red"><a style="color:#F00;margin: 0px;" href="" title="你有4条未读短信息">4</a></span>) -->
+					<a href="" style="margin-left:6px" onclick="clearToken();window.location.reload();" target="_self">退出</a>
+				</div>
+				<div id="commonTopbar_help" class="help-con haschild">
+					<a href="" class="mytxt" tongji_tag="pc_topbar_log_ai" target="_blank">联系客服</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+    <!--水平导航栏-->
+    <div class="header-guide">
+        <div class="header-container">
+        	<!-- <img id="uc-newlogo" src="./common/img/logo.png" onclick="" style="cursor:pointer"> -->
+			<ul class="header-ul" id="header-ul">
+				<li class="header-selected"><a class="a1"
+					target="_self" href="c_center.html">买家中心</a></li>
+				<li><a class="a1"target="_self" onclick=""
+					href="u_center.html">账户设置</a></li>
+				<li><a class="a1" target="_self" onclick=""
+					href="s_center.html">卖家中心</a></li>
+			</ul>
+			<div class="header-search-div">
+                
+                <a class="header-bt" onclick="" target="_self" href="goods_onshelf.html">发布信息</a>
+            </div>
+        </div>
+    </div>
 
-		<ul class="clearfix" id="details-ul">
-			<li class="selected"></li>
-		</ul>
-
-		<div class="resbo">
-			<div id="sc01">
-				<table cellspacing="0" cellpadding="0" border="0" width="100%"
-					id="favContent" class="table table-striped" id="table"">
-					<thead id="thead">
-						<th>消息描述</th>
-						<th>时间</th>
-						<th>发送人</th>
-						<th>操作</th>
-					</thead>
-					<tbody id="tbody">
-					</tbody>
-				</table>
+    <div class="uc-content-div">
+		<!--左侧垂直导航栏-->
+		<div class="leftmenu-div">
+			<!--左侧菜单-->
+			<div class="leftmenu-content">
+				<!--标题-->
+				<div class="leftmenu-content-header">
+					<a><span>买家中心</span></a>
+				</div>
+				<!--菜单-->
+				<ul class="leftmenu-content-ul">
+					<li class="" id="menu3">
+					<a id="19" target="_self" href="c_center.html"> 
+						<span>我的收藏</span>
+					</a>
+				    </li>
+				    <li id="menu4">
+					<a id="19" target="_self" href="c_cart.html"> 
+						<span >我的购物车</span>
+					</a>
+				    </li>
+					<li id="menu7">
+						<a id="140" target="_self" href="c_record.html">
+						<span>交易记录</span></a>
+					</li>
+					<li id="menu8" class="li-selected"><a id="140" target="_self" href="c_message.html"> 
+					<span >买家通知</span></a>
+					</li>
+				</ul>
 			</div>
 		</div>
 
-
+		<div class="rightmenu-div">
+	        <a class="tousu-bt" href="" target="_blank" onclick="">
+	        	<span></span>
+	        	<i>在线<br>客服</i>
+	        </a>
+	        <div id="message" style="display:block">
+        	 <table cellspacing="0" cellpadding="0" border="0" width="100%" id="favContent" class="basetb">
+              <thead id="tablehead">
+              </thead>
+              <tbody id="tbody">	
+			  </tbody>
+        	</table>
+        	</div>
+        </div>
+        
+	<div class="footer">
+		<span class="blk">B@P</span>
+		<span class="red"><a href="" target="_blank">联系客服</a></span>
 	</div>
-
-
 </body>
 </html>

@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cdut.b2p.common.controller.BaseController;
 import com.cdut.b2p.modules.shop.po.ShopComment;
+import com.cdut.b2p.modules.shop.po.ShopCommentVo;
 import com.cdut.b2p.modules.shop.security.annotation.ShopAuth;
 import com.cdut.b2p.modules.shop.service.ShopCommentService;
 
@@ -29,11 +30,13 @@ public class ShopCommentController extends BaseController{
 	 */
 	@RequestMapping(value="/getAll")
 	public String getAllByGoodsId(HttpServletResponse response,HttpServletRequest request) {
+		System.out.println("进入评论查询");
 		ModelAndView model=new ModelAndView();
 		//获取商品id
-		String gid=request.getParameter("gid");
-		List<ShopComment> list=shopCommentService.findCommentByGoods(gid);
-		model.addObject("CommentList", list);
+		String gid=request.getParameter("goods_id");
+		System.out.println("商品id："+gid);
+		List<ShopCommentVo> list=shopCommentService.selectCommentByGId(gid);
+		model.addObject("ShopCommentList", list);
 		return renderString(response, model);
 	}
 	/**
@@ -46,8 +49,9 @@ public class ShopCommentController extends BaseController{
 	@RequestMapping(value="/addComment",method=RequestMethod.POST)
 	public String addComment(HttpServletResponse response,HttpServletRequest request) {
 		String uid=(String) request.getAttribute("uid");
-		String gid=request.getParameter("gid");
+		String gid=request.getParameter("goods_id");
 		String message=request.getParameter("message");
+		System.out.println("发表评论："+uid+"\n"+gid+"\n"+message);
 		ShopComment comment=new ShopComment();
 		comment.setCommentGoodsId(gid);
 		comment.setCommentUserId(uid);

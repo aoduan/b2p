@@ -3,6 +3,8 @@ package com.cdut.b2p.modules.shop.mapper;
 import com.cdut.b2p.common.po.annotation.MyBatisMapper;
 import com.cdut.b2p.modules.shop.po.ShopOrder;
 import com.cdut.b2p.modules.shop.po.ShopOrderExample;
+import com.cdut.b2p.modules.shop.po.ShopOrderVo;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -29,4 +31,8 @@ public interface ShopOrderMapper {
     int updateByPrimaryKeySelective(ShopOrder record);
 
     int updateByPrimaryKey(ShopOrder record);
+    /**
+     * @desc 展示我的订单信息
+     */
+    public List<ShopOrderVo> myOrders(String uid);
 }

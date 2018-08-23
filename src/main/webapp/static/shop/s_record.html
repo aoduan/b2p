@@ -1,91 +1,93 @@
+<!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" href="./common/css/reset.css">
-    <link rel="stylesheet" href="./common/css/style.css">
-	<title>用户中心</title>
+	<title>卖家中心</title>
+	<link rel="icon" href="./common/img/page_logo.png" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="./common/css/user_center_new.css">
+	<link rel="stylesheet" type="text/css" href="./common/css/CompontsLoader.css">
+	<script src="./common/js/token.js"></script>
+	<script src="./common/js/path.js"></script>
+	<script src="./common/js/jquery.js"></script>
+	<script src="./common/js/s_index.js"></script>
 </head>
-<body class="bai">
-	<input type="text" name="rootPath" id="rootPath" value="/orderonline" style="display: none;">    
-	
-<form id="myorderlist" method="post">
-<div class="order">
-    
-    <div class="ownOrder">
-        
-        <!-- 当前第几页 -->
-		<input type="hidden" name="pageNo" id="pageNo" value="1">
-		<!-- 每页显示多少条记录 -->
-		<input type="hidden" name="pageSize" id="pageSize" value="5">
-		<!-- 页号开始的值 -->
-		<input type="hidden" name="startIndex" id="startIndex" value="1">  
-		<!-- 页号结束的值 -->
-		<input type="hidden" name="endIndex" id="endIndex" value="0">
-		<!-- 总共多少条记录 -->
-		<input type="hidden" name="totalRecord" id="totalRecord" value="0">
-		<!-- 订单ID -->
-		<input type="hidden" name="orderId" id="orderId" value="">
-		<!-- <input type="hidden" name="cancelOId" id="cancelOId" value=""> -->
-		<!-- tab page number -->
-    	<input type="hidden" id="listNo" name="listNo" value="1">
-    	<!-- <input type="hidden" id="orderState" name="orderState" value=""> -->
-        <div class="head">
-		
-			<div>商品名称</div>
-			<div>订单单号</div>
-			<div>交易时间</div>
-			<div>交易金额</div>
-			<div>订单状态</div><!--未发货 已发货 已取消 已完成-->
-			<div>操作</div><!--已发货 取消订单-->
-        </div>
-		
-		<div class="body">
-			<!--第一个table在bodytop里背景是蓝色-->
-			<div class="bodyTop">
-				<div class="table">
-					<div><span>前去付款前去付款4</span></div>
-					<div><span>1234567890</span></div>
-					<div><span>2018-11-11</span></div>
-					<div><span>999元</span></div>
-					<div><span>未付款</span></div>
-					<div><input type="submit" value="取消订单"><span>&nbsp;</span><input type="submit" value="已发货"></div>
-				</div>
-			</div>
-			<!--第二个table没在bodytop里背景是白色-->
-			<div class="table">
-					<div><span>前去付款前去付款4</span></div>
-					<div><span>1234567890</span></div>
-					<div><span>2018-11-11</span></div>
-					<div><span>999元</span></div>
-					<div><span>未付款</span></div>
-					<div><input type="submit" value="取消订单"><span>&nbsp;</span><input type="submit" value="已发货"></div>
-			</div>
-			<!--第三个table在bodytop里背景是蓝色-->
-			<div class="bodyTop">
-				<div class="table">
-					<div><span>前去付款前去付款4</span></div>
-					<div><span>1234567890</span></div>
-					<div><span>2018-11-11</span></div>
-					<div><span>999元</span></div>
-					<div><span>未付款</span></div>
-					<div><input type="submit" value="取消订单"><span>&nbsp;</span><input type="submit" value="已发货"></div>
-				</div>
-			</div>
-			
-		</div>
-		
-        <div class="pa">
-			<a class="prev "  lang="1">上一页</a>
-			<a class="next"  lang="0">下一页</a>
-			<span class="total">共0页</span>
-			<span class="word">到第</span><input type="text" class="pageNumber" value=""><span class="word">页</span>
-			<input type="button" class="confirm" value="确定">
-		</div>
-		
-    </div>
-</div>
 
-</form>
+<body>
+	<!--顶部-->
+	<div id="commonTopbar" class="commonTopbar" style="min-width: 1190px;">
+		<!--包-->
+		<div class="w pos">
+			<!--顶左-->
+			<div class="bar_left"><h2></h2>
+				<div id="commonTopbar_homepageLink">
+					<strong><a class="mytxt" target="_self" tongji_tag="" href="index.html">B@P首页</a></strong>
+				</div>
+			</div>
+			<!--顶右-->
+			<div class="bar_right">
+				<div id="commonTopbar_login">
+					<span title="cdut135" id="userNameOne" style="color:orange">my account</span><!--获取用户信息-->
+					
+					<a style="margin-left:6px" onclick="clearToken();window.location.reload();" target="_self">退出</a>
+				</div>
+				<div id="commonTopbar_help" class="help-con haschild">
+					<a class="mytxt" tongji_tag="pc_topbar_log_ai" target="_blank">联系客服</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--水平导航栏-->
+    <div class="header-guide">
+        <div class="header-container">
+        	 <ul class="header-ul" id="header-ul">
+				<li>
+					<a class="a1" target="_self" onclick="" href="c_center.html">买家中心</a>
+				</li>
+				<li>
+					<a class="a1" target="_self" onclick="" href="u_center.html">账户设置</a>
+				</li>
+				<li class="header-selected" >
+					<a class="a1" target="_self" onclick="" href="#">卖家中心</a>
+				</li>
+			</ul>
+            <div class="header-search-div"> 
+                <a class="header-bt" onclick="" target="_self" href="goods_onshelf.html">发布信息</a>
+            </div>
+        </div>
+    </div>
+
+	<div class="uc-content-div">
+
+		<!--左侧垂直导航栏-->
+		<div class="leftmenu-div">
+			<div class="leftmenu-content">
+				<div class="leftmenu-content-header">
+					<a><span>卖家中心</span></a>
+				</div>
+				<ul class="leftmenu-content-ul">
+					<li id="menu163"><a id="128"
+						href="s_center.html"> <span>我的商品</span>
+					</a></li>
+					<li id="menu183"  class="li-selected"><a id="71" href="s_record.html"> <span>交易记录</span>
+					</a></li>
+					<li id="menu182"><a id="43" href="s_message.html"> <span>卖家通知</span>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="rightmenu-div">
+			<a class="tousu-bt" target="_blank" onclick=""> <span></span> <i>在线<br>客服
+			</i></a>
+			<div id="myRecords" style="display: block; width: 100%;">
+		    </div>
+		</div>
+
+
+		<div class="footer">
+		<span class="blk">B@P</span> <span class="red"><a target="_blank">联系客服</a></span>
+	</div>
 
 </body>
 </html>

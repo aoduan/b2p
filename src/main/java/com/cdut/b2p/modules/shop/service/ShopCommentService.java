@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.cdut.b2p.modules.shop.po.ShopComment;
+import com.cdut.b2p.modules.shop.po.ShopCommentVo;
 
 
 public interface ShopCommentService {
@@ -54,7 +55,11 @@ public interface ShopCommentService {
 	 * @return
 	 */
 	public List<ShopComment> findAllComment();
-	
+	/**
+     * @desc 展示用户对某件商品的评论
+     * @param gid
+     */
+    public List<ShopCommentVo> selectCommentByGId(String gid);
 	
 	
 	/**
