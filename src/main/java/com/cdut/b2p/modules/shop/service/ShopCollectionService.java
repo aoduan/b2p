@@ -3,6 +3,7 @@ package com.cdut.b2p.modules.shop.service;
 import java.util.List;
 
 import com.cdut.b2p.modules.shop.po.ShopCollection;
+import com.cdut.b2p.modules.shop.po.ShopCollectionVo;
 
 /**
  * @title ShopCollectionService
@@ -11,12 +12,7 @@ import com.cdut.b2p.modules.shop.po.ShopCollection;
  * @Date   2018/8/18
  */
 public interface ShopCollectionService {
-	/**
-	 * @desc 添加一件收藏物
-	 * @param shopCollection
-	 * @return
-	 */
-	public boolean addCollection(ShopCollection shopCollection);
+	
 	/**
 	 * @desc 添加一件收藏物
 	 * @param uid 用户id
@@ -31,10 +27,25 @@ public interface ShopCollectionService {
 	 */
 	public List<ShopCollection> findCollectionByUser(String uid);
 	/**
+	 * @desc 根据用户id，查询收藏物
+	  * 图片 名称 收藏时间
+	 * @param uid
+	 * @return
+	 */
+	public List<ShopCollectionVo> selectMyCollection(String uid);
+	/**
 	 * @desc 删除id集，对应的收藏物
 	 * @param id
 	 * @return
 	 */
 	public boolean delCollection(String[]id);
+	
+	public boolean delCollection(String id);
+	
+	public boolean delCollection(String uid, String gid);
+	
+	public long countCollectionNums(String goods_id);
+	
+	public boolean isCollectd(String uid, String gid);
 	
 }

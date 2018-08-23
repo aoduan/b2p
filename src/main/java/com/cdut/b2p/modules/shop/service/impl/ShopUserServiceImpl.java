@@ -206,6 +206,7 @@ public class ShopUserServiceImpl implements ShopUserService{
 		user.setId(id);
 		user.setUserPassword(SecurityUtils.getMD5(pwd));
 		int count=shopUserMapper.updateByPrimaryKeySelective(user);
+		CacheUtils.remove("user_" + id);
 		if(count>0) {
 			return true;
 		}
@@ -220,6 +221,24 @@ public class ShopUserServiceImpl implements ShopUserService{
 			CacheUtils.put("user_" + uid, u);
 		}
 		return u;
+	}
+	/**
+	 * @desc 根据id，更新某用户的头像
+	 * @param id
+	 * @param fileName
+	 * @return
+	 */
+	@Override
+	public boolean updateImage(String id, String fileName) {
+		ShopUser user=new ShopUser();
+		user.setId(id);
+		user.setUserImage(fileName);
+		int count=shopUserMapper.updateByPrimaryKeySelective(user);
+		CacheUtils.remove("user_" + id);
+		if(count>0) {
+			return true;
+		}
+		return false;
 	}
 
 }

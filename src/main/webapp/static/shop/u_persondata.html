@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="./common/css/myinformation.css" />
+<link rel="stylesheet" type="text/css"
+	href="./common/css/user_center_new.css" />
+<link rel="stylesheet" type="text/css"
+	href="./common/css/CompontsLoader.css" />
+<script src="./common/js/jquery.js"></script>
+<script src="./common/js/jquery.form.js"></script>
+<script src="./common/js/token.js"></script>
+<script src="./common/js/u_center.js"></script>
+</head>
+
+<body>
+	<input type="hidden" id="csrftoken" value="" />
+	<input type="hidden" id="isbindwechat" value="false" />
+	<div id="conten">
+		<!--更改头像-->
+		<div id="userImgBox">
+			<!--更改途径-->
+			<ul id="userImgTabUl" class="userImgTabUl">
+				<li id="localFileImgTabLi" class="localFileImgTabLi userImgTabLi">
+					<span class="userImgTabLiSpan userImgTabLiShow"> 本地上传 </span>
+				</li>
+			</ul>
+
+			<!--界面UI-->
+			<ul id="userImgBoxUl" class="userImgBoxUl">
+
+				<li id="localFileImgBoxLi" class="userImgBoxLi" style="">
+					<div id="localFileImgBox" class="userImgBox">
+						<ul id="localFileUl" class="localFileUl">
+							<!--第一列-->
+							<li class="localFileLi">
+								<!--头像预览-->
+								<div id="localFileImgBorder" class="localFileImgBorder userImgBorder">
+									<img id="localFileImg" class="localFileImg userImg" src="./common/img/touxiang_default.gif" alt=""/>
+								</div> 
+								<!--上传头像-->
+								<div id="localFileImgBtnBox" class="localFileImgBtnBox">
+									<form id="subform" name="subform" method="post" enctype="multipart/form-data" target="formSubmit" action="">
+										<div id="localFileImgBtnDiv">
+											<div id="">上传头像</div>
+											<input type="file" size="38" class="localFileImgBtn" id="userface" name="file" style="display:block" onchange="change()"/>
+										</div>
+									     <input type="button" id="submitButton" value="更改头像" class="localFileImgBtn" style="display:none" onclick="upload()"/>
+										
+									</form>
+								</div>
+							</li>
+							<!--第二列-->
+							<li class="localFileLi">
+								<!--图片例子-->
+								<div id="roundnessSquare" class="localFileImgBorder userImgBorder">
+									<div id="mengceng"></div>
+									<img id="roundnessSquareImg" class="localFileImg userImg" src="./common/img/touxiang_default.gif" alt=""/>
+								</div> 
+								<!--图片格式-->
+							    <div class="localFilepreviewText">
+										<p class="localFilepreviewH1">圆形头像预览</p>
+										<p>图片格式：gif jpg png</p>
+										<p>最适尺寸：120*120px</p>
+							    </div>
+							</li>
+
+						</ul>
+
+					</div>
+				</li>
+
+			</ul>
+
+		</div>
+
+
+		<!--更改资料-->
+		<div id="changeData">
+			<!--标题-->
+			<div id="changeDataTitle" class="changeDataTitle">
+				<h4 id="changeDataTitleText" class="changeDataTitleText">
+					修改个人资料</h4>
+			</div>
+			<!--界面-->
+			<ul id="changeDataUl" class="changeDataUl">
+
+				<!--用户名-->
+				<li class="changeDataLi changeUsernameLi"><span
+					class="changeLabel"> 用户名： </span> <input type="text" id="userName"
+					value="cdut135" disabled="" /></li>
+
+				<!--改昵称-->
+				<li class="changeDataLi changeNicknameLi">
+					<div id="changeNicknameDiv">
+						<span class="changeLabel"> 昵 <span> 称 </span> 称：
+						</span> <input type="text" value="cdut135" id="userNickname"
+							maxlength="20" disabled="" />
+					</div>
+					<div id="changeNicenameBtnDiv">
+						<span class="changeNicknameBtn changeBtn" id="changeNicknameBtn"
+							onclick="clickLog('from=new_update_nickname')"> <i> </i>
+							修改
+						</span> <span class="changeNicknameBtn" id="changeNicknameSureBtn"
+							style="display: none"
+							onclick="clickLog('from=new_confirm_nickname')"> <i> </i>
+							确认
+						</span>
+					</div>
+				</li>
+
+				<!--改手机-->
+				<li class="changeDataLi changeNicknameLi">
+					<div id="changeNicknameDiv">
+						<span class="changeLabel"> 手 <span> 机 </span> 机：
+						</span> <input type="text" value="cdut135" id="userTelphone"
+							maxlength="20" disabled="" />
+					</div>
+					<div id="changeNicenameBtnDiv">
+						<span class="changeNicknameBtn changeBtn" id="changeNicknameBtn"
+							onclick="clickLog('from=new_update_nickname')"> <i> </i>
+							修改
+						</span> <span class="changeNicknameBtn" id="changeNicknameSureBtn"
+							style="display: none"
+							onclick="clickLog('from=new_confirm_nickname')"> <i> </i>
+							确认
+						</span>
+					</div>
+				</li>
+
+				<!--改邮箱-->
+				<li class="changeDataLi changeMobileLi">
+					<div id="changeMobileDiv">
+						<span class="changeLabel"> 邮 <span> 箱 </span> 箱：
+						</span> <input id="userEmail" type="text" value="135****1920" disabled="" />
+					</div>
+					<div id="changeMobileBtnDiv">
+						<span class="changemobileBtn changeBtn" id="changeMobileBtn"
+							onclick="clickLog('from=new_update_certemail')"> <i> </i>
+							<a id="changeMobileBtnUrl" class="changeMobileBtnUrl"> 修改 </a>
+						</span>
+					</div>
+				</li>
+
+			</ul>
+
+			<!--弹窗-->
+			<div id="changeSuccTip" style="display: none">
+				<i> </i>
+				<p>修改成功</p>
+			</div>
+
+		</div>
+	</div>
+</body>
+
+</html>

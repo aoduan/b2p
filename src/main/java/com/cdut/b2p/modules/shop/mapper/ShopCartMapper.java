@@ -3,6 +3,8 @@ package com.cdut.b2p.modules.shop.mapper;
 import com.cdut.b2p.common.po.annotation.MyBatisMapper;
 import com.cdut.b2p.modules.shop.po.ShopCart;
 import com.cdut.b2p.modules.shop.po.ShopCartExample;
+import com.cdut.b2p.modules.shop.po.ShopCartVo;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -29,4 +31,5 @@ public interface ShopCartMapper {
     int updateByPrimaryKeySelective(ShopCart record);
 
     int updateByPrimaryKey(ShopCart record);
+    List<ShopCartVo> selectMyCart(String uid);
 }

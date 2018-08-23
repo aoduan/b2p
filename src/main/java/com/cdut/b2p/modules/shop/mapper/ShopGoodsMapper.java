@@ -3,6 +3,8 @@ package com.cdut.b2p.modules.shop.mapper;
 import com.cdut.b2p.common.po.annotation.MyBatisMapper;
 import com.cdut.b2p.modules.shop.po.ShopGoods;
 import com.cdut.b2p.modules.shop.po.ShopGoodsExample;
+import com.cdut.b2p.modules.shop.po.ShopGoodsInfo;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -35,4 +37,10 @@ public interface ShopGoodsMapper {
     int updateByPrimaryKeyWithBLOBs(ShopGoods record);
 
     int updateByPrimaryKey(ShopGoods record);
+    /**
+     * @desc 对比商品
+     * @param shopGoodsInfo
+     * @return
+     */
+    List<ShopGoods> compareGoods(ShopGoodsInfo shopGoodsInfo);
 }

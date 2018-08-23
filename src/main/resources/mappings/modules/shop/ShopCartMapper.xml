@@ -12,6 +12,23 @@
     <result column="remarks" jdbcType="VARCHAR" property="remarks" />
     <result column="del_flag" jdbcType="CHAR" property="delFlag" />
   </resultMap>
+    <resultMap id="cartMap" type="com.cdut.b2p.modules.shop.po.ShopCartVo">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="cart_user_id" jdbcType="VARCHAR" property="cartUserId" />
+    <result column="cart_goods_id" jdbcType="VARCHAR" property="cartGoodsId" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="del_flag" jdbcType="CHAR" property="delFlag" />
+    <result column="goods_pics" jdbcType="VARCHAR" property="url"/>
+    <result column="goods_discrible" jdbcType="VARCHAR" property="describe"/>
+    <result column="goods_original_price" jdbcType="DECIMAL" property="oldPrice" />
+    <result column="goods_present_price" jdbcType="DECIMAL" property="nowPrice"/>
+    <result column="goods_old_level" jdbcType="CHAR" property="level"/>
+  </resultMap>
+  
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -281,4 +298,8 @@
       del_flag = #{delFlag,jdbcType=CHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+  <select id="selectMyCart" parameterType="java.lang.String" resultType="com.cdut.b2p.modules.shop.po.ShopCartVo" 
+   resultMap="cartMap">
+   select c.*,g.goods_pics,g.goods_discrible,g.goods_original_price,g.goods_present_price,g.goods_old_level   from shop_cart c,shop_goods g where c.cart_user_id=#{id} and c.del_flag='0' and c.cart_goods_id=g.id
+   </select>
 </mapper>

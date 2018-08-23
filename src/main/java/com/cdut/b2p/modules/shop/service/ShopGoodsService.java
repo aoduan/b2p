@@ -55,9 +55,15 @@ public interface ShopGoodsService {
 			Integer min_price,Integer max_price,
 			String area,Integer pageNum,Integer pageSize,String keyword);
 	
-	public ShopGoodsInfo findGoodsByGoodsId(String goods_id);
+	public ShopGoodsInfo findGoodsByGoodsId(String goods_id,boolean is_add);
 	
 	public List<ShopGoodsInfo> findRecommendGoods();
+	
+	public boolean updateGoodsClickTimes(String id,int times);
+	
+	public List<ShopGoodsInfo> findGoodsBySellerId(String uid);
+	
+	public ShopGoods findGoodsById(String goods_id);
 
 
 }

@@ -568,4 +568,8 @@
       del_flag = #{delFlag,jdbcType=CHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+  <!-- 对比商品 -->
+  <select id="compareGoods" parameterType="com.cdut.b2p.modules.shop.po.ShopGoodsInfo" resultType="com.cdut.b2p.modules.shop.po.ShopGoods">
+  	select * from shop_goods where goods_present_price between (#{goodsPresentPrice}-200) and (#{goodsPresentPrice}+300) order by goods_old_level;
+  </select>
 </mapper>

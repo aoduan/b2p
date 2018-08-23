@@ -23,8 +23,8 @@ import com.cdut.b2p.common.utils.JsonUtils;
 import com.cdut.b2p.modules.shop.po.ShopUser;
 import com.cdut.b2p.modules.shop.service.ShopChatService;
 import com.cdut.b2p.modules.shop.service.ShopUserService;
-import com.cdut.b2p.modules.shop.websocket.ChatTaskHandler;
 import com.cdut.b2p.modules.shop.websocket.po.Message;
+import com.cdut.b2p.modules.shop.websocket.task.ChatTaskHandler;
 
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.WebSocketMessage;

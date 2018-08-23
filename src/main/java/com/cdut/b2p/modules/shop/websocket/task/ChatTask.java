@@ -1,4 +1,4 @@
-package com.cdut.b2p.modules.shop.websocket;
+package com.cdut.b2p.modules.shop.websocket.task;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +13,7 @@ public class ChatTask {
 	@Autowired
 	ChatTaskHandler chatTaskHandler;
 
+	@Scheduled(cron = "*/5 * * * * ?")
 	public void execute() {
 		logger.debug("execute  ChatTask");
 		try {

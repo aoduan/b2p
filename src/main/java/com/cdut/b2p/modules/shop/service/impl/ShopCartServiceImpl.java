@@ -12,6 +12,7 @@ import com.cdut.b2p.common.utils.IdUtils;
 import com.cdut.b2p.modules.shop.mapper.ShopCartMapper;
 import com.cdut.b2p.modules.shop.po.ShopCart;
 import com.cdut.b2p.modules.shop.po.ShopCartExample;
+import com.cdut.b2p.modules.shop.po.ShopCartVo;
 import com.cdut.b2p.modules.shop.service.ShopCartService;
 import com.sun.corba.se.impl.presentation.rmi.IDLTypesUtil;
 
@@ -67,10 +68,10 @@ public class ShopCartServiceImpl  implements ShopCartService{
 	 */
 	@Transactional(readOnly=true)
 	@Override
-	public List<ShopCart> findCartByUser(String uid) {
+	public List<ShopCartVo> findCartByUser(String uid) {
 		ShopCartExample example=new ShopCartExample();
-		example.or().andCartUserIdEqualTo(uid);
-		List<ShopCart> list=shopCartMapper.selectByExample(example);
+		example.or().andCartUserIdEqualTo(uid).andDelFlagEqualTo("0");
+		List<ShopCartVo> list=shopCartMapper.selectMyCart(uid);
 		return list;
 	}
 	/**
@@ -95,6 +96,16 @@ public class ShopCartServiceImpl  implements ShopCartService{
 			return true;
 		}
 		return false;
+	}
+	/**
+	 * @desc 根据购物车的id，查询相应的记录信息
+	 * @param id
+	 * @return
+	 */
+	@Override
+	public ShopCart findCartById(String id) {
+		ShopCart cart=shopCartMapper.selectByPrimaryKey(id);
+		return cart;
 	}
 
 }

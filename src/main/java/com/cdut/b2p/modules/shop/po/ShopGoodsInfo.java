@@ -2,6 +2,7 @@ package com.cdut.b2p.modules.shop.po;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class ShopGoodsInfo implements Serializable{
 	  /**
@@ -107,6 +108,17 @@ public class ShopGoodsInfo implements Serializable{
      * 商品描述
      */
     private String goodsDesc;
+    
+    /**
+     * 商品描述
+     */
+    private String remarks;
+    
+    /**
+     * 商品描述
+     */
+    private Date uptime;
+
 
 	public String getId() {
 		return id;
@@ -259,7 +271,22 @@ public class ShopGoodsInfo implements Serializable{
 	public void setGoodsSellerId(String goodsSellerId) {
 		this.goodsSellerId = goodsSellerId;
 	}
-    
-    
+
+	public String getRemarks() {
+		return remarks;
+	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+
+	public Date getUptime() {
+		return uptime;
+	}
+
+	public void setUptime(Date uptime) {
+		this.uptime = uptime;
+	}
+
 
 }

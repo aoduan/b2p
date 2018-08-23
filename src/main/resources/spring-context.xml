@@ -102,11 +102,12 @@
 			value="classpath:${ehcache.configFile}" />
 	</bean>
 	
-	
-	<bean id="ChatTask" class="com.cdut.b2p.modules.shop.websocket.ChatTask"></bean>
-	<task:scheduler id="taskScheduler"/>
-	<task:scheduled-tasks scheduler="taskScheduler">
-		<task:scheduled ref="ChatTask" method="execute" cron="*/5 * * * * ?"/>
-    </task:scheduled-tasks>
-    
+	<bean id="ShopGoodsTask" class="com.cdut.b2p.common.task.ShopGoodsTask"></bean>
+	<bean id="ChatTask" class=" com.cdut.b2p.modules.shop.websocket.task.ChatTask"></bean>
+	<task:scheduler id="scheduler"/>
+	<task:scheduled-tasks scheduler="scheduler">
+        <task:scheduled ref="ShopGoodsTask" method="execute" cron="0 0 2 * * ?" />  
+        <task:scheduled ref="ChatTask" method="execute" cron="*/5 * * * * ?" />      
+    </task:scheduled-tasks>     
+
 </beans>

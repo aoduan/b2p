@@ -18,7 +18,7 @@ public class ShopUser implements Serializable {
     /**
      * 用户登录名
      */
-    @JsonIgnore
+    //@JsonIgnore
     private String userName;
 
     /**
@@ -35,7 +35,7 @@ public class ShopUser implements Serializable {
     /**
      * 用户邮箱
      */
-    @JsonIgnore
+    //@JsonIgnore
     private String userEmail;
 
     /**
@@ -59,7 +59,7 @@ public class ShopUser implements Serializable {
     /**
      * 用户手机
      */
-    @JsonIgnore
+    //@JsonIgnore
     private String userTelphone;
 
     /**

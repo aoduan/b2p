@@ -1,4 +1,6 @@
 package com.cdut.b2p.modules.shop.controller;
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -7,6 +9,8 @@ import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.tools.ant.types.FileList.FileName;
 import org.springframework.beans.factory.annotation.Autowired;
 /**
  * @title CustomerCenterController
@@ -15,13 +19,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.cdut.b2p.common.config.Global;
 import com.cdut.b2p.common.controller.BaseController;
 import com.cdut.b2p.common.utils.IdUtils;
 import com.cdut.b2p.common.utils.SecurityUtils;
 import com.cdut.b2p.modules.shop.po.ShopCart;
+import com.cdut.b2p.modules.shop.po.ShopCartVo;
 import com.cdut.b2p.modules.shop.po.ShopCollection;
+import com.cdut.b2p.modules.shop.po.ShopCollectionVo;
+import com.cdut.b2p.modules.shop.po.ShopGoods;
+import com.cdut.b2p.modules.shop.po.ShopGoodsInfo;
 import com.cdut.b2p.modules.shop.po.ShopOrder;
 import com.cdut.b2p.modules.shop.po.ShopUser;
 import com.cdut.b2p.modules.shop.po.ShopWorkorder;
@@ -32,6 +44,8 @@ import com.cdut.b2p.modules.shop.service.ShopGoodsService;
 import com.cdut.b2p.modules.shop.service.ShopOrderService;
 import com.cdut.b2p.modules.shop.service.ShopUserService;
 import com.cdut.b2p.modules.shop.service.ShopWorkorderService;
+
+import jdk.internal.dynalink.support.RuntimeContextLinkRequestImpl;
 
 @Controller
 @RequestMapping("${shopPath}/customerCenter")
@@ -61,6 +75,7 @@ public class CustomerCenterController extends BaseController{
 		String uid=(String) request.getAttribute("uid");
 		ShopUser user=shopUserService.findUserById(uid);
 		model.addObject("Customer", user);
+		System.err.println(user);
 		return renderString(response, model); 
 	}
 
@@ -72,7 +87,7 @@ public class CustomerCenterController extends BaseController{
 	 */
 	@ShopAuth
 	@RequestMapping(value="/myPWD",method=RequestMethod.POST)
-	public String myPWD(HttpServletResponse response,HttpServletRequest request) {
+	public String myPWD(HttpServletResponse response,HttpServletRequest request ) {
 		ModelAndView model=new ModelAndView();
 		System.out.println("修改密码");
 		String uid=(String) request.getAttribute("uid");
@@ -81,15 +96,43 @@ public class CustomerCenterController extends BaseController{
 		System.out.println(uid+"\n"+oldpwd+"\n"+newpwd);
 		ShopUser user=shopUserService.findUserById(uid);
 		if(!SecurityUtils.getMD5(oldpwd).equals(user.getUserPassword())) {
-			model.addObject("PWDMessage", "false");
+			model.addObject("PWDMessage", "no");
 			return renderString(response, model);
 		}
 		
 		shopUserService.updatePWD(uid, newpwd);
-		model.addObject("PWDMessage", "true");
+		model.addObject("PWDMessage", "yes");
 		return renderString(response, model);
 	}
-	
+	@ShopAuth
+	@RequestMapping(value="/uploadImage",method=RequestMethod.POST)
+	public String updateImage(@RequestParam(value="file") MultipartFile file,HttpServletResponse response,HttpServletRequest request) throws IllegalStateException, IOException {
+		
+		ModelAndView model=new ModelAndView();
+		String uid=(String) request.getAttribute("uid");
+		String path = request.getContextPath();
+		String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
+		// 获取文件上传的真实路径
+		String uploadPath = request.getSession().getServletContext().getRealPath("/");
+		// 上传文件过程
+
+		String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+
+		String destDir = Global.getUserfilesBaseDir();
+		File destFile = new File(uploadPath + destDir);
+		if (!destFile.exists()) {
+			destFile.mkdirs();
+		}
+		String fileName =  uid + "." + suffix;
+		File f = new File(destFile.getAbsoluteFile() + File.separator + fileName);
+		
+		file.transferTo(f);
+		f.createNewFile();
+		//进行数据更新
+		shopUserService.updateImage(uid, destDir + fileName);
+		model.addObject("Message", "yes");
+		return renderString(response, model);
+	}
 	/**
 	 * @desc 查询我的交易记录
 	 * @param response
@@ -171,7 +214,7 @@ public class CustomerCenterController extends BaseController{
 	 * @return
 	 */
 	@ShopAuth
-	@RequestMapping(value="/myFavorite",method=RequestMethod.POST)
+	@RequestMapping(value="/myCollection",method=RequestMethod.POST)
 	public String myFavorite(HttpServletResponse response,HttpServletRequest request) {
 		String uid=(String) request.getAttribute("uid");
 		String gid=request.getParameter("gid");
@@ -185,11 +228,14 @@ public class CustomerCenterController extends BaseController{
 	 * @return
 	 */
 	@ShopAuth
-	@RequestMapping(value="/selectMyFavorite",method=RequestMethod.POST)
+	@RequestMapping(value="/selectMyCollection",method=RequestMethod.POST)
 	public String selectMyFavorite(HttpServletResponse response,HttpServletRequest request) {
+		System.out.println("查询我的收藏物");
 		ModelAndView  model=new  ModelAndView();
 		String uid=(String) request.getAttribute("uid");
-		List<ShopCollection> list=shopCollectionService.findCollectionByUser(uid);
+		System.out.println(uid);
+		List<ShopCollectionVo> list=shopCollectionService.selectMyCollection(uid);
+		System.out.println(list);
 		model.addObject("CollectionList", list);
 		return renderString(response, model);
 	}
@@ -199,12 +245,13 @@ public class CustomerCenterController extends BaseController{
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping(value="/delMyFavorite",method=RequestMethod.POST)
-	public String delMyFavorite(HttpServletResponse response,HttpServletRequest request) {
-		String[] ids=request.getParameterValues("id");
-		shopCollectionService.delCollection(ids);
+	@RequestMapping(value="/delMyCollection",method=RequestMethod.POST)
+	public String delMyFavorite(HttpServletResponse response,HttpServletRequest request,@RequestParam(value="array[]") String[]array) {
+		System.out.println("修改收藏物记录");
+		shopCollectionService.delCollection(array);
 		return renderString(response, "删除成功");
 	}
+
 //	/**
 //	 * @desc 添加商品到购物车
 //	 * @param response
@@ -245,4 +292,102 @@ public class CustomerCenterController extends BaseController{
 //		shopCartService.delCart(ids);
 //		return renderString(response, "删除成功");
 //	}
+
+	
+	
+	/**
+	 * @desc 查询用户所接受到的订单消息
+	 * @param response
+	 * @param request
+	 * @return
+	 */
+	@ShopAuth
+	@RequestMapping(value="/selectMyMessage",method=RequestMethod.POST)
+	public String selectMyMessage(HttpServletResponse response,HttpServletRequest request) {
+		ModelAndView model=new ModelAndView();
+		String uid=(String) request.getAttribute("uid");
+		List<ShopWorkorder> list=shopWorkorderService.findWorkOrderByUser(uid);
+		model.addObject("MessageList", list);
+		return renderString(response, model);
+	}
+	/**
+	 * @desc 删除某些消息
+	 * @param response
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="/delMyMessage",method=RequestMethod.POST)
+	public String delMyMessage(HttpServletResponse response,HttpServletRequest request) {
+		String id=request.getParameter("w_id");
+		shopWorkorderService.delWorkOrderById(id);
+		return renderString(response, "删除成功");
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * @desc 添加商品到购物车
+	 * @param response
+	 * @param request
+	 * @return
+	 */
+	@ShopAuth
+	@RequestMapping(value="/myCart",method=RequestMethod.POST)
+	public String myCart(HttpServletResponse response,HttpServletRequest request) {
+		String uid=(String) request.getAttribute("uid");
+		String gid=request.getParameter("gid");
+		shopCartService.addCart(uid, gid);
+		return renderString(response, "添加成功");
+	}
+	/**
+	 * @desc 查询我的购物车
+	 * @param response
+	 * @param request
+	 * @return
+	 */
+	@ShopAuth
+	@RequestMapping("/selectMyCart")
+	public String selectMyCart(HttpServletResponse response,HttpServletRequest request) {
+		String uid=(String) request.getAttribute("uid");
+		ModelAndView model=new ModelAndView();
+		List<ShopCartVo> list=shopCartService.findCartByUser(uid);
+		model.addObject("CartList", list);
+		return renderString(response, model);
+	}
+	/**
+	 * @desc 删除购物车中的某些商品
+	 * @param response
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="/delMyCart",method=RequestMethod.POST)
+	public String delMyCart(HttpServletResponse response,HttpServletRequest request) {
+		String id=request.getParameter("c_id");
+		String[]ids= {id};
+		System.out.println("删除购物车："+id);
+		shopCartService.delCart(ids);
+		return renderString(response, "删除成功");
+	}
+	/**
+	 * @desc 对选中的物品，进行对比功能
+	 * @param response
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="/compareMyCart",method=RequestMethod.POST)
+	public String compareMyCart(HttpServletResponse response,HttpServletRequest request) {
+		ModelAndView model=new ModelAndView();
+		String id=request.getParameter("c_id");
+		ShopCart cart=shopCartService.findCartById(id);
+		//获取商品id
+		ShopGoodsInfo goods=shopGoodsService.findGoodsByGoodsId(cart.getCartGoodsId(), false);
+		//对比功能->价格
+		return renderString(response, model);
+	}
+
 }

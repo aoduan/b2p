@@ -50,7 +50,7 @@
 				</div>
 				<!-- 个人中心 -->
 				<div id="topbar_mymenu" class="haschild">
-					<a id="topbar_tomy" target="_self" href="#">平安中心</a> <span
+					<a id="topbar_tomy" target="_self" href="u_center.html">平安中心</a> <span
 						class="arrow"></span>
 
 				</div>
@@ -137,17 +137,17 @@
 
 						<div class="button_li">
 							<span class="talk_button download_button" id="contact">联系卖家</span>
-
+							<span class="buy_button download_button" id="buy">我要购买</span>
 						</div>
 
-						<div class="buy_warn"></div>
+						
 
-						<!-- <div class="want_li"> -->
-							<!-- <span class="want_left"> <img src="common/img/want.png"> -->
-								<!-- 想要 -->
-							<!-- </span> <span class="want_right"> <span class="want_no">宝贝还没有被收藏，快来抢沙发</span> -->
-							<!-- </span> -->
-						<!-- </div> -->
+						<div class="want_li"> 
+							 <span onclick="want()" class="want_left" id="want"> <img id="want_img" flag="" src="common/img/want.png">
+								 <a id="want_text"></a> 
+							 </span> <span class="want_right"> <span class="want_no" id="want_no"></span>
+							</span> 
+						 </div> 
 					</div>
 
 				</div>
@@ -173,8 +173,8 @@
 				<!-- 图片 -->
 				<div class="info_baby">
 					<h3 class="box_title">宝贝图片</h3>
-					<div class="boby_pic">
-						<img id=goods_img2 src="">
+					<div class="boby_pic" id="goods_img2">
+						
 
 					</div>
 				</div>

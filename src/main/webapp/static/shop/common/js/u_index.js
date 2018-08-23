@@ -7,9 +7,11 @@ $.ajax({
     url:"/b2p/shop/customerCenter/myInfo",
     data: {},
     success:function(data){
-    	alert(data.model.Customer.userName);
-    	if(data.model.Customer.userName!=null||data.model.Customer.userName!=""){
-    		$("#userNameOne").html(data.model.Customer.userName);
+		if(GLOBAL_TOKEN == ""){
+			window.location.href="./login.html";
+		}
+    	if(data.model.Customer.userNickname!=null||data.model.Customer.userNickname!=""){
+    		$("#userNameOne").html(data.model.Customer.userNickname);
     	}
     },
     error:function(data){

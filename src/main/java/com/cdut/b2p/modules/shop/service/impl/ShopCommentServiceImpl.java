@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cdut.b2p.common.utils.IdUtils;
 import com.cdut.b2p.modules.shop.mapper.ShopCommentMapper;
 import com.cdut.b2p.modules.shop.po.ShopComment;
 import com.cdut.b2p.modules.shop.po.ShopCommentExample;
@@ -29,7 +30,11 @@ public class ShopCommentServiceImpl implements ShopCommentService {
 	@Transactional(readOnly=false)
 	@Override
 	public boolean addComment(ShopComment shopComment) {
-		int count=shopCommentMapper.insert(shopComment);
+		shopComment.setId(IdUtils.uuid());
+		shopComment.setCreateDate(new Date());
+		shopComment.setUpdateDate(new Date());
+		shopComment.setDelFlag("0");
+		int count=shopCommentMapper.insertSelective(shopComment);
 		if(count>0) {
 			return true;
 		}
@@ -43,7 +48,12 @@ public class ShopCommentServiceImpl implements ShopCommentService {
 	@Transactional(readOnly=false)
 	@Override
 	public boolean deleteComment(String id) {
-		int count=shopCommentMapper.deleteByPrimaryKey(id);
+		ShopCommentExample example=new ShopCommentExample();
+		example.or().andIdEqualTo(id);
+		ShopComment comment=new ShopComment();
+		comment.setUpdateDate(new Date());
+		comment.setDelFlag("1");
+		int count=shopCommentMapper.updateByExampleSelective(comment, example);
 		if(count>=0) {
 			return true;
 		}
@@ -101,7 +111,7 @@ public class ShopCommentServiceImpl implements ShopCommentService {
 	@Override
 	public List<ShopComment> findCommentByGoods(String gid) {
 		ShopCommentExample example=new ShopCommentExample();
-		example.or().andCommentGoodsIdEqualTo(gid);
+		example.or().andCommentGoodsIdEqualTo(gid).andDelFlagEqualTo("0");
 		List<ShopComment> list=shopCommentMapper.selectByExample(example);
 		return list;
 	}
@@ -113,6 +123,7 @@ public class ShopCommentServiceImpl implements ShopCommentService {
 	@Override
 	public List<ShopComment> findAllComment() {
 		ShopCommentExample example=new ShopCommentExample();
+		example.or().andDelFlagEqualTo("0");
 		List<ShopComment> list=shopCommentMapper.selectByExample(example);
 		return list;
 	}

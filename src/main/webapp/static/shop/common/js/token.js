@@ -7,3 +7,8 @@ if(s != null){
 }else{
 	GLOBAL_TOKEN = ''
 }
+
+function clearToken(){
+	localStorage.cdutb2p_shop_token = "";
+	sessionStorage.cdutb2p_shop_token = "";
+}

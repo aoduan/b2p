@@ -54,11 +54,19 @@ public interface ShopUserService {
 	 */
 	public boolean updatePWD(String id,String pwd);
 	/**
+	 * @desc 根据id，更新某用户的头像
+	 * @param id
+	 * @param fileName
+	 * @return
+	 */
+	public boolean updateImage(String id,String fileName);
+	/**
 	 * @desc  根id删除某个用户
 	 * @author zsb
 	 * @param id
 	 * @return
 	 */
+	
 	
 	public boolean deleteUser(String id);
 

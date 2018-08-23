@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="icon" href="./common/img/page_logo.png" type="image/x-icon" />
 	<title>用户中心</title>
-
+	<link rel="stylesheet" type="text/css" href="./common/css/user_center_new.css">	
 	<link rel="stylesheet" type="text/css" href="./common/css/CompontsLoader.css">
-	<link rel="stylesheet" type="text/css" href="./common/css/user_center_new.css">
 	<script src="./common/js/jquery.js"></script>
 	<script src="./common/js/token.js"></script>
 	<script src="./common/js/u_index.js"></script>
@@ -18,9 +18,13 @@
 		<!--包-->
 		<div class="w pos">
 			<!--顶左-->
-			<div class="bar_left"><h2>成都</h2>
+			<div class="bar_left"><h2></h2>
 				<div id="commonTopbar_homepageLink">
+<<<<<<< HEAD
 					<strong><a class="mytxt" target="_self" href ="index.html" tongji_tag="">B@P首页</a></strong>
+=======
+					<strong><a class="mytxt" target="_self" tongji_tag="" href="index.html">B@P首页</a></strong>
+>>>>>>> refs/remotes/upstream/master
 				</div>
 			</div>
 			<!--顶右-->
@@ -28,13 +32,7 @@
 				<div id="commonTopbar_login">
 					<span title="cdut135" id="userNameOne" style="color:orange">my account</span><!--获取用户信息-->
 					
-					<a style="margin-left:6px" target="_self">退出</a>
-				</div>
-				<div id="commonTopbar_mymenu" class="haschild">
-					<a id="commonTopbar_tomy" target="_blank" href="Usercenter.html" tongji_tag="pc_topbar_log_my">买家中心</a>
-				</div>
-				<div id="commonTopbar_vip" class="haschild">
-					<a class="mytxt" target="_blank">卖家中心</a>
+					<a style="margin-left:6px" onclick="clearToken();window.location.reload();" target="_self">退出</a>
 				</div>
 				<div id="commonTopbar_help" class="help-con haschild">
 					<a class="mytxt" tongji_tag="pc_topbar_log_ai" target="_blank">联系客服</a>
@@ -49,28 +47,18 @@
         	<!-- <img id="uc-newlogo" src="./common/img/logo.png" onclick="" style="cursor:pointer"> -->
             <ul class="header-ul" id="header-ul">
 				<li>
-					<a class="a1" target="_self" onclick="">买家中心</a>
+					<a class="a1" target="_self" onclick="" href="c_center.html">买家中心</a>
 				</li>
 				<li class="header-selected">
 					<a class="a1" target="_self" onclick="">账户设置</a>
 				</li>
 				<li>
-					<a class="a1" target="_self" onclick="">我的资金</a>
-				</li>
-				<li>
-					<a class="a1" target="_blank" onclick="">卖家中心</a>
+					<a class="a1" target="_self" onclick="" href="s_center.html">卖家中心</a>
 				</li>
 			</ul>
             <div class="header-search-div">
-                <form onsubmit="b_query();return false;">
-			        <div class="header-input-div" id="searchbar">
-			                        <span id="key">
-			                            <input type="text" id="keyword" name="key" class="header-input" onblur="win.closeToolTipWindow();" placeholder="搜索" autocomplete="off" onkeyup="win.GetContentData();">
-			                        </span>
-			            <input type="submit" class="header-input-search-bt" id="searchbtn" value="" onclick="">
-			        </div>
-			    </form>
-                <a class="header-bt" onclick="" target="_blank">发布信息</a>
+                
+                <a class="header-bt" onclick="" target="_self" href="goods_onshelf.html">发布信息</a>
             </div>
         </div>
     </div>
@@ -112,7 +100,7 @@
 				frameborder="0" 
 				width="815px"  
 				height="750px"  
-				src="./persondata.html">
+				src="./u_persondata.html">
 	    </iframe>
 		</div>
 		<div id="myPWD" style="display:none">
@@ -122,7 +110,7 @@
 				frameborder="0" 
 				width="815px"  
 				height="750px"  
-				src="./password.html">
+				src="./u_password.html">
 	    </iframe>
 		</div>
 		<div id="myMessage" style="display:none">
@@ -132,7 +120,7 @@
 				frameborder="0" 
 				width="815px"  
 				height="750px"  
-				src="./message.html">
+				src="./u_message.html">
 	    </iframe>
 		</div>
 		
@@ -142,10 +130,9 @@
 	</div>
 
 	<div class="footer">
-		<span class="blk">B@P</span><span class="red"><a target="_blank">联系客服</a></span>
+		<span class="blk">B@P</span>
+		<span class="red"><a href="" target="_blank">联系客服</a></span>
 	</div>
-
-	<div></div>
 
 </body>
 </html>

@@ -12,6 +12,19 @@
     <result column="remarks" jdbcType="VARCHAR" property="remarks" />
     <result column="del_flag" jdbcType="CHAR" property="delFlag" />
   </resultMap>
+  <resultMap id="collectionMap" type="com.cdut.b2p.modules.shop.po.ShopCollectionVo">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="collection_user_id" jdbcType="VARCHAR" property="collectionUserId" />
+    <result column="collection_goods_id" jdbcType="VARCHAR" property="collectionGoodsId" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="del_flag" jdbcType="CHAR" property="delFlag" />
+    <result column="goods_pics" jdbcType="VARCHAR" property="url"/>
+     <result column="goods_discrible" jdbcType="VARCHAR" property="describe"/>
+  </resultMap>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -281,4 +294,9 @@
       del_flag = #{delFlag,jdbcType=CHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+  <select id="selectMyCollection" parameterType="java.lang.String" resultType="com.cdut.b2p.modules.shop.po.ShopCollectionVo" 
+   resultMap="collectionMap">
+   select c.*,g.goods_pics,g.goods_discrible from shop_collection c,shop_goods g where c.collection_user_id=#{id} and c.del_flag='0' and c.collection_goods_id=g.id
+   </select>
+  
 </mapper>

@@ -122,7 +122,7 @@ public class ShopOrderServiceImpl implements ShopOrderService{
 	@Override
 	public List<ShopOrder> findOrderByCustomer(String id) {
 		ShopOrderExample example=new ShopOrderExample();
-		example.or().andOrderBuyerIdEqualTo(id).andDelFlagEqualTo("0");
+		example.or().andOrderBuyerIdEqualTo(id).andDelFlagEqualTo("0").andOrderStatusEqualTo("1");
 		List<ShopOrder> list=shopOrderMapper.selectByExample(example);
 		return list;
 	}

@@ -1,4 +1,4 @@
-package com.cdut.b2p.modules.shop.websocket;
+package com.cdut.b2p.modules.shop.websocket.task;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 

@@ -1,123 +1,50 @@
 package com.cdut.b2p.modules.shop.po;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class ShopCartVo implements Serializable{
+/**
+ * @desc ShopCartVo是ShopCart类的扩展类
+ * @author zsb
+ *
+ */
+public class ShopCartVo extends  ShopCart{
 
-	/**
-     * 商品品牌
-     */
-  
-    private String goodsBrand;
-
-    /**
-     * 商品型号
-     */
-    private String goodsBrandModel;
-
-    /**
-     * 商品标题
-     */
-    private String goodsTitle;
-
-    /**
-     * 商品原价
-     */
-    private BigDecimal goodsOriginalPrice;
-
-    /**
-     * 商品现价
-     */
-    private BigDecimal goodsPresentPrice;
-
-    /**
-     * 商品新旧程度
-     */
-    private String goodsOldLevel;
-
-    /**
-     * 商品数量
-     */
-    private Integer goodsNums;
-
-    /**
-     * 商品图片
-     */
-    private String goodsPics;
-    
-    /**
-     * 商品状态
-     */
-    private String goodsStatus;
-    
-    public String getGoodsBrand() {
-		return goodsBrand;
+	private static final long serialVersionUID = 1L;
+	private String url;//图片路径
+	private String describe;//商品描述
+	private BigDecimal oldPrice;//原价
+	private BigDecimal nowPrice;//现价
+	private String level;//新旧程度
+	public String getUrl() {
+		return url;
 	}
-
-	public void setGoodsBrand(String goodsBrand) {
-		this.goodsBrand = goodsBrand;
+	public void setUrl(String url) {
+		this.url = url;
 	}
-
-	public String getGoodsBrandModel() {
-		return goodsBrandModel;
+	public String getDescribe() {
+		return describe;
 	}
-
-	public void setGoodsBrandModel(String goodsBrandModel) {
-		this.goodsBrandModel = goodsBrandModel;
+	public void setDescribe(String describe) {
+		this.describe = describe;
 	}
-
-	public String getGoodsTitle() {
-		return goodsTitle;
+	public BigDecimal getOldPrice() {
+		return oldPrice;
 	}
-
-	public void setGoodsTitle(String goodsTitle) {
-		this.goodsTitle = goodsTitle;
+	public void setOldPrice(BigDecimal oldPrice) {
+		this.oldPrice = oldPrice;
 	}
-
-	public BigDecimal getGoodsOriginalPrice() {
-		return goodsOriginalPrice;
+	public BigDecimal getNowPrice() {
+		return nowPrice;
 	}
-
-	public void setGoodsOriginalPrice(BigDecimal goodsOriginalPrice) {
-		this.goodsOriginalPrice = goodsOriginalPrice;
+	public void setNowPrice(BigDecimal nowPrice) {
+		this.nowPrice = nowPrice;
 	}
-
-	public BigDecimal getGoodsPresentPrice() {
-		return goodsPresentPrice;
+	public String getLevel() {
+		return level;
 	}
-
-	public void setGoodsPresentPrice(BigDecimal goodsPresentPrice) {
-		this.goodsPresentPrice = goodsPresentPrice;
+	public void setLevel(String level) {
+		this.level = level;
 	}
-
-	public String getGoodsOldLevel() {
-		return goodsOldLevel;
-	}
-
-	public void setGoodsOldLevel(String goodsOldLevel) {
-		this.goodsOldLevel = goodsOldLevel;
-	}
-
-	public Integer getGoodsNums() {
-		return goodsNums;
-	}
-
-	public void setGoodsNums(Integer goodsNums) {
-		this.goodsNums = goodsNums;
-	}
-	public String getGoodsPics() {
-		return goodsPics;
-	}
-
-	public void setGoodsPics(String goodsPics) {
-		this.goodsPics = goodsPics;
-	}
-	public String getGoodsStatus() {
-		return goodsStatus;
-	}
-
-	public void setGoodsStatus(String goodsStatus) {
-		this.goodsStatus = goodsStatus;
-	}
+	
+	
 }

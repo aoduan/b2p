@@ -310,7 +310,7 @@ strong.green-1 {
 
 ul#details-ul {
 	height: 27px;
-	background: url(//img.58cdn.com.cn/ui6/my/images/details-menu-bg.gif) bottom repeat-x;
+	background: url(../img/details-menu-bg.gif) bottom repeat-x;
 	padding: 0 0 0 10px
 }
 
@@ -320,7 +320,7 @@ ul#details-ul li {
 	margin: 0 4px 0 0;
 	display: inline-block;
 	cursor: pointer;
-	background: url(//img.58cdn.com.cn/ui6/my/images/details-menu-n.gif) 100% -27px no-repeat;
+	background: url(../img/details-menu-n.gif) 100% -27px no-repeat;
 	padding-right: 2px
 }
 
@@ -329,7 +329,7 @@ ul#details-ul li a {
 	line-height: 27px;
 	font-size: 12px;
 	padding: 0 15px;
-	background: url(//img.58cdn.com.cn/ui6/my/images/details-menu-n.gif) 0 -27px no-repeat
+	background: url(../img/details-menu-n.gif) 0 -27px no-repeat
 }
 
 ul#details-ul li a i {

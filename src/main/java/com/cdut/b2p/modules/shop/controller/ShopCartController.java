@@ -54,7 +54,7 @@ public class ShopCartController extends BaseController{
 	public String selectMyCart(HttpServletResponse response,HttpServletRequest request) {
 		String uid=(String) request.getAttribute("uid");
 		ModelAndView model=new ModelAndView();
-		List<ShopCart> list=shopCartService.findCartByUser(uid);
+		List<ShopCartVo> list=shopCartService.findCartByUser(uid);
 		model.addObject("CartList", list);
 		return renderString(response, model);
 	}

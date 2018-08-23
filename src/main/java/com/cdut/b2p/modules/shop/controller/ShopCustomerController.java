@@ -23,6 +23,7 @@ import com.cdut.b2p.common.utils.CacheUtils;
 import com.cdut.b2p.modules.shop.po.ShopGoods;
 import com.cdut.b2p.modules.shop.po.ShopGoodsInfo;
 import com.cdut.b2p.modules.shop.security.annotation.ShopAuth;
+import com.cdut.b2p.modules.shop.service.ShopCollectionService;
 import com.cdut.b2p.modules.shop.service.ShopGoodsService;
 import com.cdut.b2p.modules.shop.service.ShopUserService;
 import com.cdut.b2p.modules.sys.po.SysArea;
@@ -45,6 +46,72 @@ public class ShopCustomerController extends BaseController{
 	@Autowired
 	private SysDictService sysDictService;
 	
+	@Autowired
+	private ShopCollectionService shopCollectionService;
+	
+	/**
+	 * 删除收藏
+	 */
+	@ShopAuth
+	@RequestMapping(value = "goods/collection/del", method = RequestMethod.POST)
+	public String del_collection(HttpServletRequest request, HttpServletResponse response
+			,String goods_id) {
+		String uid = (String) request.getAttribute("uid");
+		
+		boolean flag = shopCollectionService.delCollection(uid, goods_id);
+		long nums = shopCollectionService.countCollectionNums(goods_id);
+		if(flag) {
+			return renderSuccessString(response, "删除收藏成功",nums);
+		}else {
+			return renderErrorString(response, "删除收藏失败");
+		}
+    	
+	}
+	
+	/**
+	 * 添加收藏
+	 */
+	@ShopAuth
+	@RequestMapping(value = "goods/collection/add", method = RequestMethod.POST)
+	public String add_to_collection(HttpServletRequest request, HttpServletResponse response
+			,String goods_id) {
+		String uid = (String) request.getAttribute("uid");
+		
+		boolean flag = shopCollectionService.addCollection(uid, goods_id);
+		long nums = shopCollectionService.countCollectionNums(goods_id);
+		if(flag) {
+			return renderSuccessString(response, "添加收藏成功",nums);
+		}else {
+			return renderErrorString(response, "添加收藏失败");
+		}
+    	
+	}
+	
+	/**
+	 * 获取收藏次数
+	 */
+	@ShopAuth
+	@RequestMapping(value = "goods/collection/nums", method = RequestMethod.POST)
+	public String count_collection(HttpServletRequest request, HttpServletResponse response
+			,String goods_id) {
+		String uid = (String) request.getAttribute("uid");
+		long nums = shopCollectionService.countCollectionNums(goods_id);
+		boolean is = shopCollectionService.isCollectd(uid, goods_id);
+		Object[] obj = new Object[] {nums, is};
+    	return renderSuccessString(response, "获取收藏次数成功", obj);
+	}
+	
+	/**
+	 * 获取收藏次数
+	 */
+	@RequestMapping(value = "goods/collection/nums_no", method = RequestMethod.POST)
+	public String count_collection_no_login(HttpServletRequest request, HttpServletResponse response
+			,String goods_id) {
+		
+		long nums = shopCollectionService.countCollectionNums(goods_id);
+		Object[] obj = new Object[] {nums};
+    	return renderSuccessString(response, "获取收藏次数成功", obj);
+	}
 	
 	/**
 	 * 获取商品展示
@@ -62,7 +129,7 @@ public class ShopCustomerController extends BaseController{
 	 */
 	@RequestMapping(value = "goods/info", method = RequestMethod.POST)
 	public String info(HttpServletRequest request, HttpServletResponse response,String goods_id) {
-		ShopGoodsInfo info = shopGoodsService.findGoodsByGoodsId(goods_id);
+		ShopGoodsInfo info = shopGoodsService.findGoodsByGoodsId(goods_id, true);
 		
     	return renderSuccessString(response, "获取商品成功", info);
 	}

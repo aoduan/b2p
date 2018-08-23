@@ -1,13 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-	<link rel="stylesheet" href="./common/css/reset.css">
-    <link rel="stylesheet" href="./common/css/style.css">
-    <!-- <link rel="stylesheet" href="./common/css/new.css"> -->
-    <!-- <link rel="stylesheet" href="./common/css/cancel.css"> -->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title>用户中心</title>
+	<link rel="stylesheet" href="./common/css/reset.css"/>
+    <link rel="stylesheet" href="./common/css/style.css"/>
+    <link rel="stylesheet" href="./common/css/bootstrap.min.css"/>
+    <script src="./common/js/jquery.js"></script>
+	<script src="./common/js/token.js"></script>
+	
+	<script src="./common/js/c_record.js"></script>
 	
 </head>
 <body class="bai">
@@ -34,39 +36,19 @@
 		<!-- tab page number -->
     	<input type="hidden" id="listNo" name="listNo" value="1">
     	<!-- <input type="hidden" id="orderState" name="orderState" value=""> -->
-        <div class="head">
-		
-			<div>商品名称</div>
-			<div>交易时间</div>
-			<div>交易金额</div>
-			
-        </div>
-		
-		<div class="body">
-			<!--第一个table在bodytop里背景是蓝色-->
-			<div class="bodyTop">
-				<div class="table">
-					<div><span> 4</span></div>
-					<div><span> 4</span></div>
-					<div><span> 4</span><span>元</span></div>
-				</div>
-			</div>
-			<!--第二个table没在bodytop里背景是白色-->
-			<div class="table">
-				<div><span> 4</span></div>
-				<div><span> 4</span></div>
-				<div><span> 4</span><span>元</span></div>
-			</div>
-			<!--第三个table在bodytop里背景是蓝色-->
-			<div class="bodyTop">
-				<div class="table">
-					<div><span> 4</span></div>
-					<div><span> 4</span></div>
-					<div><span> 4</span><span>元</span></div>
-				</div>
-			</div>
-			
+		<div class="contaniner">
+			<table class="table table-striped" id="table">
+				<thead id="thead">
+					<th>商品编号</th>
+					<th>交易时间</th>
+					<th>金额</th>
+					<th>状态</th>
+				</thead>
+				<tbody id="tbody">
+				</tbody>
+			</table>
 		</div>
+		
 		
         <div class="pa">
 			<a class="prev "  lang="1">上一页</a>

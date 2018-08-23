@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="icon" href="./common/img/page_logo.png" type="image/x-icon" />
+<title>修改二手手机信息</title>
+<link rel="stylesheet" type="text/css"
+	href="./common/css/CompontsLoader.css">
+<link rel="stylesheet" type="text/css"
+	href="./common/css/user_center_new.css">
+<link rel="stylesheet" type="text/css"
+	href="./common/css/ershou_pub.css">
+<link rel="stylesheet" type="text/css" href="./upload/css/style.css">
+<link rel="stylesheet" type="text/css"
+	href="./upload/css/webuploader.css">
+
+<script src="./common/js/token.js"></script>
+<script src="./common/js/path.js"></script>
+<script src="./common/js/jquery.js"></script>
+<script src="./common/js/jquery.validate.min.js"></script>
+<script src="./common/js/messages_zh.js"></script>
+
+<script src="./layer/layer.js"></script>
+<script src="./common/js/jquery.cookie.js"></script>
+<script src="./upload/js/webuploader.js"></script>
+<script src="./upload/js/upload.js"></script>
+<script src="./common/js/pc_goods_edit.js"></script>
+
+</head>
+
+<body>
+	<!--顶部-->
+	<div id="commonTopbar" class="commonTopbar" style="min-width: 1190px;">
+		<!--包-->
+		<div class="w pos">
+			<!--顶左-->
+			<div class="bar_left"><h2></h2>
+				<div id="commonTopbar_homepageLink">
+					<strong><a class="mytxt" target="_self" tongji_tag="" href="index.html">B@P首页</a></strong>
+				</div>
+			</div>
+			<!--顶右-->
+			<div class="bar_right">
+				<div id="commonTopbar_login">
+					<span title="cdut135" id="userNameOne" style="color:orange">my account</span><!--获取用户信息-->
+					
+					<a style="margin-left:6px" onclick="clearToken();window.location.reload();" target="_self">退出</a>
+				</div>
+				<div id="commonTopbar_help" class="help-con haschild">
+					<a class="mytxt" tongji_tag="pc_topbar_log_ai" target="_blank">联系客服</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+    <!--水平导航栏-->
+    <div class="header-guide">
+        <div class="header-container">
+        	<!-- <img id="uc-newlogo" src="./common/img/logo.png" onclick="" style="cursor:pointer"> -->
+			<ul class="header-ul" id="header-ul">
+				<li class="a1"><a class="a1"
+					target="_self" href="c_center.html">买家中心</a></li>
+				<li><a class="a1"target="_self" onclick=""
+					href="u_center.html">账户设置</a></li>
+				<li><a class="a1" target="_self" onclick=""
+					href="s_center.html">卖家中心</a></li>
+			</ul>
+			<div class="header-search-div">
+                
+                
+            </div>
+        </div>
+    </div>
+
+
+	<!-- paytype end -->
+	<div class="minheightout w" style="">
+
+		<div class="c"></div>
+
+		<div id="formWrap" style="">
+
+			<form action="" name="postForm" id="postForm" style="">
+
+				<!--基本信息-->
+				<div class="block_wrap">
+					<div class="block_title">
+						<h2>基本信息</h2>
+					</div>
+					<div class="block_content">
+
+						<!--选择手机品牌-->
+						<div class="rows_wrap clearfix">
+							<!--标题-->
+							<div class="rows_title">
+								<span><span class="rows_title_star">*</span>类别</span>
+							</div>
+							<!--内容-->
+							<div class="rows_content">
+								<div class="tip"></div>
+								<div class="volatile_wrap">
+									<div class="volatile_required_wrap clearfix">
+										<select class="selectordef" name="ObjectType" id="brand_select">
+											<option value="">苹果</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						
+						<div class="rows_wrap clearfix hh-price">
+							<div class="rows_content">
+								<div class="tip" id="brand_model_tip"></div>
+								<div class="input_text_wrap clearfix" 
+									style="position: relative;">
+									<input type="inputText" tabindex="3" id="brand_model"
+										autocomplete="off" style="width: 132px;" required>
+								</div>
+							</div>
+							<div class="rows_title">
+								<span><span class="rows_title_star">*</span>型号</span>
+							</div>
+						</div>
+
+						<!--几成新-->
+						<div class="rows_wrap clearfix">
+							<div class="rows_content">
+								<div class="tip" id="select_oldlevel_tip"></div>
+								<select class="selectordef" name="oldlevel" id="select_oldlevel">
+									<option selected value="10">全新</option>
+									<option value="9">9成新</option>
+									<option value="8">8成新及以下</option>
+								</select>
+							</div>
+							<div class="rows_title">
+								<span><span class="rows_title_star">*</span>新旧</span>
+							</div>
+						</div>
+
+						<!--价钱-->
+						<div class="rows_wrap clearfix hh-price">
+							<div class="rows_content">
+								<div class="tip" id="pre_price_tip"></div>
+								<div class="input_text_wrap clearfix" 
+									style="position: relative;">
+									<input type="inputText" tabindex="3" id="pre_price"
+										autocomplete="off" style="width: 132px;" number="true"><span>元</span>
+								</div>
+							</div>
+							<div class="rows_title">
+								<span><span class="rows_title_star">*</span>商品原价</span>
+							</div>
+						</div>
+
+						<!--价钱-->
+						<div class="rows_wrap clearfix hh-price">
+							<div class="rows_content">
+								<div class="tip" id="pre_price_tip"></div>
+								<div class="input_text_wrap clearfix" 
+									style="position: relative;">
+									<input type="inputText" tabindex="3" id="now_price"
+										autocomplete="off" style="width: 132px;" number="true" ><span>元</span>
+								</div>
+							</div>
+							<div class="rows_title">
+								<span><span class="rows_title_star">*</span>转让价格</span>
+							</div>
+						</div>
+
+						<!--地址信息-->
+						<div class="rows_wrap clearfix hh-local-item">
+							<div class="rows_title">
+								<span><span class="rows_title_star">*</span>交易地点</span>
+							</div>
+							<div class="rows_content">
+								<div class="tip"></div>
+								<select class="selectordef" id="select_area_province">
+									
+								</select> 
+								<select class="selectordef" id="select_area_city">
+									
+								</select> 
+								<select class="selectordef" id="select_area_area">
+									
+								</select>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+
+				<!--描述-->
+				<div class="block_wrap" style="">
+					<div class="block_title">
+						<h2>宝贝描述</h2>
+					</div>
+					<div class="block_content" style="">
+						<!--标题-->
+						<div class="rows_wrap clearfix">
+							<div class="rows_content">
+								<div class="tip" id="title_tip"></div>
+								<div class="input_text_wrap" name="Title"
+									style="position: relative;">
+									<input type="inputText" tabindex="7" id="title"
+										autocomplete="off" maxlength="30" style="width: 395px;" minlength="10" maxlength="100">
+								</div>
+							</div>
+							<div class="rows_title">
+								<span><span class="rows_title_star">*</span>标题</span>
+							</div>
+						</div>
+
+						<!--正文-->
+						<div class="rows_wrap clearfix" style="">
+
+
+							<div class="rows_content" style="">
+								<div class="tip" id="describe_tip"></div>
+								<!-- <textarea id="miaoshu" width="18" height="28"><textarea> -->
+								<textarea rows="10" cols="100" id="describe"  minlength="10" maxlength="200"></textarea>
+							</div>
+
+							<div class="rows_title">
+								<span><span class="rows_title_star">*</span>详细介绍</span>
+							</div>
+
+
+						</div>
+
+						<div class="rows_wrap clearfix" style="">
+
+
+							<div class="rows_content" style="">
+								<div class="tip"></div>
+
+
+								<div id="wrapper">
+									<div id="container">
+										<!--头部，相册选择和格式选择-->
+
+										<div id="uploader">
+											<div class="queueList">
+												<div id="dndArea" class="placeholder">
+													<div id="filePicker"></div>
+													
+												</div>
+											</div>
+											<div class="statusBar" style="display: none;">
+												<div class="progress">
+													<span class="text">0%</span> <span class="percentage"></span>
+												</div>
+												<div class="info"></div>
+												<div class="btns">
+													<div id="filePicker2"></div>
+													<div class="uploadBtn">开始上传</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="rows_title">
+								<span><span class="rows_title_star">*</span>图片</span>
+							</div>
+
+
+						</div>
+
+
+
+					</div>
+				</div>
+
+
+
+				<!--提交-->
+				<div class="block_wrap">
+					<div class="block_title" style="display: none;">
+						<h2></h2>
+					</div>
+					<div class="block_content">
+						<div class="rows_wrap clearfix">
+							<div class="rows_content">
+								<div class="tip"></div>
+								<div class="submit_wrap" id="submit">
+									<span>修改</span>
+								</div>
+							</div>
+							<div class="rows_title">
+								<span></span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</form>
+		</div>
+
+		<div class="footer">
+			<span class="blk">B@P</span> <span class="red"><a
+				target="_blank">联系客服</a></span>
+		</div>
+
+	</div>
+
+</body>
+</html>

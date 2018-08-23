@@ -133,6 +133,21 @@ public class Global {
 		}
 		return dir;
 	}
+	
+	public static String getGoodsfilesBaseDir() {
+		String dir = getConfig("goodsfiles.basedir");
+		if (StringUtils.isBlank(dir)) {
+			try {
+				dir = ServletContextFactory.getServletContext().getRealPath("/");
+			} catch (Exception e) {
+				return "";
+			}
+		}
+		if (!dir.endsWith("/")) {
+			dir += "/";
+		}
+		return dir;
+	}
 
 	/**
 	 * 获取工程路径
